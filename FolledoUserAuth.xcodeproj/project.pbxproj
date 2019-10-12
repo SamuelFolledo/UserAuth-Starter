@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		335289DB235255470084E405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DA235255470084E405 /* AppDelegate.swift */; };
+		335289DD235255470084E405 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DC235255470084E405 /* SceneDelegate.swift */; };
+		335289DF235255470084E405 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DE235255470084E405 /* ViewController.swift */; };
+		335289E2235255470084E405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335289E0235255470084E405 /* Main.storyboard */; };
+		335289E4235255490084E405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335289E3235255490084E405 /* Assets.xcassets */; };
+		335289E7235255490084E405 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335289E5235255490084E405 /* LaunchScreen.storyboard */; };
+		335289F2235255490084E405 /* FolledoUserAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289F1235255490084E405 /* FolledoUserAuthTests.swift */; };
+		335289FD235255490084E405 /* FolledoUserAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289FC235255490084E405 /* FolledoUserAuthUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		335289EE235255490084E405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 335289CF235255470084E405 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 335289D6235255470084E405;
+			remoteInfo = FolledoUserAuth;
+		};
+		335289F9235255490084E405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 335289CF235255470084E405 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 335289D6235255470084E405;
+			remoteInfo = FolledoUserAuth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		335289D7235255470084E405 /* FolledoUserAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolledoUserAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		335289DA235255470084E405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		335289DC235255470084E405 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		335289DE235255470084E405 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		335289E1235255470084E405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		335289E3235255490084E405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		335289E6235255490084E405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		335289E8235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		335289ED235255490084E405 /* FolledoUserAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FolledoUserAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		335289F1235255490084E405 /* FolledoUserAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolledoUserAuthTests.swift; sourceTree = "<group>"; };
+		335289F3235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		335289F8235255490084E405 /* FolledoUserAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FolledoUserAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		335289FC235255490084E405 /* FolledoUserAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolledoUserAuthUITests.swift; sourceTree = "<group>"; };
+		335289FE235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		335289D4235255470084E405 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289EA235255490084E405 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289F5235255490084E405 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		335289CE235255470084E405 = {
+			isa = PBXGroup;
+			children = (
+				335289D9235255470084E405 /* FolledoUserAuth */,
+				335289F0235255490084E405 /* FolledoUserAuthTests */,
+				335289FB235255490084E405 /* FolledoUserAuthUITests */,
+				335289D8235255470084E405 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		335289D8235255470084E405 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				335289D7235255470084E405 /* FolledoUserAuth.app */,
+				335289ED235255490084E405 /* FolledoUserAuthTests.xctest */,
+				335289F8235255490084E405 /* FolledoUserAuthUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		335289D9235255470084E405 /* FolledoUserAuth */ = {
+			isa = PBXGroup;
+			children = (
+				335289DA235255470084E405 /* AppDelegate.swift */,
+				335289DC235255470084E405 /* SceneDelegate.swift */,
+				335289DE235255470084E405 /* ViewController.swift */,
+				335289E0235255470084E405 /* Main.storyboard */,
+				335289E3235255490084E405 /* Assets.xcassets */,
+				335289E5235255490084E405 /* LaunchScreen.storyboard */,
+				335289E8235255490084E405 /* Info.plist */,
+			);
+			path = FolledoUserAuth;
+			sourceTree = "<group>";
+		};
+		335289F0235255490084E405 /* FolledoUserAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				335289F1235255490084E405 /* FolledoUserAuthTests.swift */,
+				335289F3235255490084E405 /* Info.plist */,
+			);
+			path = FolledoUserAuthTests;
+			sourceTree = "<group>";
+		};
+		335289FB235255490084E405 /* FolledoUserAuthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				335289FC235255490084E405 /* FolledoUserAuthUITests.swift */,
+				335289FE235255490084E405 /* Info.plist */,
+			);
+			path = FolledoUserAuthUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		335289D6235255470084E405 /* FolledoUserAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33528A01235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuth" */;
+			buildPhases = (
+				335289D3235255470084E405 /* Sources */,
+				335289D4235255470084E405 /* Frameworks */,
+				335289D5235255470084E405 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FolledoUserAuth;
+			productName = FolledoUserAuth;
+			productReference = 335289D7235255470084E405 /* FolledoUserAuth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		335289EC235255490084E405 /* FolledoUserAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33528A04235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthTests" */;
+			buildPhases = (
+				335289E9235255490084E405 /* Sources */,
+				335289EA235255490084E405 /* Frameworks */,
+				335289EB235255490084E405 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				335289EF235255490084E405 /* PBXTargetDependency */,
+			);
+			name = FolledoUserAuthTests;
+			productName = FolledoUserAuthTests;
+			productReference = 335289ED235255490084E405 /* FolledoUserAuthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		335289F7235255490084E405 /* FolledoUserAuthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33528A07235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthUITests" */;
+			buildPhases = (
+				335289F4235255490084E405 /* Sources */,
+				335289F5235255490084E405 /* Frameworks */,
+				335289F6235255490084E405 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				335289FA235255490084E405 /* PBXTargetDependency */,
+			);
+			name = FolledoUserAuthUITests;
+			productName = FolledoUserAuthUITests;
+			productReference = 335289F8235255490084E405 /* FolledoUserAuthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		335289CF235255470084E405 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = SamuelFolledo;
+				TargetAttributes = {
+					335289D6235255470084E405 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					335289EC235255490084E405 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 335289D6235255470084E405;
+					};
+					335289F7235255490084E405 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 335289D6235255470084E405;
+					};
+				};
+			};
+			buildConfigurationList = 335289D2235255470084E405 /* Build configuration list for PBXProject "FolledoUserAuth" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 335289CE235255470084E405;
+			productRefGroup = 335289D8235255470084E405 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				335289D6235255470084E405 /* FolledoUserAuth */,
+				335289EC235255490084E405 /* FolledoUserAuthTests */,
+				335289F7235255490084E405 /* FolledoUserAuthUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		335289D5235255470084E405 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				335289E7235255490084E405 /* LaunchScreen.storyboard in Resources */,
+				335289E4235255490084E405 /* Assets.xcassets in Resources */,
+				335289E2235255470084E405 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289EB235255490084E405 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289F6235255490084E405 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		335289D3235255470084E405 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				335289DF235255470084E405 /* ViewController.swift in Sources */,
+				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
+				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289E9235255490084E405 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				335289F2235255490084E405 /* FolledoUserAuthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335289F4235255490084E405 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				335289FD235255490084E405 /* FolledoUserAuthUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		335289EF235255490084E405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 335289D6235255470084E405 /* FolledoUserAuth */;
+			targetProxy = 335289EE235255490084E405 /* PBXContainerItemProxy */;
+		};
+		335289FA235255490084E405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 335289D6235255470084E405 /* FolledoUserAuth */;
+			targetProxy = 335289F9235255490084E405 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		335289E0235255470084E405 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				335289E1235255470084E405 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		335289E5235255490084E405 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				335289E6235255490084E405 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		335289FF235255490084E405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		33528A00235255490084E405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		33528A02235255490084E405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33528A03235255490084E405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		33528A05235255490084E405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuthTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FolledoUserAuth.app/FolledoUserAuth";
+			};
+			name = Debug;
+		};
+		33528A06235255490084E405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuthTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FolledoUserAuth.app/FolledoUserAuth";
+			};
+			name = Release;
+		};
+		33528A08235255490084E405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuthUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FolledoUserAuth;
+			};
+			name = Debug;
+		};
+		33528A09235255490084E405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9NY68F4K3P;
+				INFOPLIST_FILE = FolledoUserAuthUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SamuelFolledo.FolledoUserAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FolledoUserAuth;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		335289D2235255470084E405 /* Build configuration list for PBXProject "FolledoUserAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				335289FF235255490084E405 /* Debug */,
+				33528A00235255490084E405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33528A01235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33528A02235255490084E405 /* Debug */,
+				33528A03235255490084E405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33528A04235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33528A05235255490084E405 /* Debug */,
+				33528A06235255490084E405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33528A07235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33528A08235255490084E405 /* Debug */,
+				33528A09235255490084E405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 335289CF235255470084E405 /* Project object */;
+}
