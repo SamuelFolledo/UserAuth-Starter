@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
+		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
+		3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9D1235261270045CFF8 /* String+extensions.swift */; };
+		3349B9D4235261380045CFF8 /* UIImageView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9D3235261380045CFF8 /* UIImageView+extensions.swift */; };
+		3349B9D6235261500045CFF8 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9D5235261500045CFF8 /* UILabel+extensions.swift */; };
 		335289DB235255470084E405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DA235255470084E405 /* AppDelegate.swift */; };
 		335289DD235255470084E405 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DC235255470084E405 /* SceneDelegate.swift */; };
 		335289DF235255470084E405 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289DE235255470084E405 /* ViewController.swift */; };
@@ -39,7 +43,10 @@
 /* Begin PBXFileReference section */
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		3349B9CC23525DD10045CFF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
+		3349B9D1235261270045CFF8 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
+		3349B9D3235261380045CFF8 /* UIImageView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extensions.swift"; sourceTree = "<group>"; };
+		3349B9D5235261500045CFF8 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		335289D7235255470084E405 /* FolledoUserAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolledoUserAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		335289DA235255470084E405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		335289DC235255470084E405 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,10 +91,22 @@
 		3349B9CD23525F030045CFF8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3349B9CE235260B70045CFF8 /* Extensions */,
 				3349B9C823525DBF0045CFF8 /* Constants.swift */,
 				3349B9CA23525DC70045CFF8 /* Service.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3349B9CE235260B70045CFF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */,
+				3349B9D1235261270045CFF8 /* String+extensions.swift */,
+				3349B9D3235261380045CFF8 /* UIImageView+extensions.swift */,
+				3349B9D5235261500045CFF8 /* UILabel+extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		335289CE235255470084E405 = {
@@ -121,7 +140,6 @@
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
 				335289E8235255490084E405 /* Info.plist */,
 				3349B9CD23525F030045CFF8 /* Helpers */,
-				3349B9CC23525DD10045CFF8 /* README.md */,
 			);
 			path = FolledoUserAuth;
 			sourceTree = "<group>";
@@ -276,10 +294,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
+				3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */,
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
 				3349B9CB23525DC70045CFF8 /* Service.swift in Sources */,
 				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
 				3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */,
+				3349B9D4235261380045CFF8 /* UIImageView+extensions.swift in Sources */,
+				3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */,
+				3349B9D6235261500045CFF8 /* UILabel+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
