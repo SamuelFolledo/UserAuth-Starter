@@ -19,7 +19,7 @@ class LoginView: UIView {
         return tf
     }()
     
-    let password: UITextField = {
+    let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.keyboardType = .default
         tf.isSecureTextEntry = true
@@ -72,6 +72,11 @@ class LoginView: UIView {
     
     fileprivate func setupView() {
         
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, submitButton, facebookButton, anonymousButton])
+        stackView.axis = .vertical
+        
+        self.addSubview(stackView)
+//        stackView.anchor()
     }
 
 }

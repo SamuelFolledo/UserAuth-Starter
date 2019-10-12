@@ -48,9 +48,7 @@ class AuthEmailView: UIView {
     
     let loginView: UIView = {
         let view = UIView()
-        let stack
-        
-        
+//        let stack
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

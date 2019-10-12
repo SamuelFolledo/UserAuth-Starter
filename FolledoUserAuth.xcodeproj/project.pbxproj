@@ -11,6 +11,7 @@
 		33364DA72352833100259081 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA62352833100259081 /* AuthenticationVC.swift */; };
 		33364DAA2352879600259081 /* AuthEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA92352879600259081 /* AuthEmailView.swift */; };
 		33364DAC235298A800259081 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAB235298A800259081 /* LoginView.swift */; };
+		33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
 		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
@@ -49,6 +50,7 @@
 		33364DA62352833100259081 /* AuthenticationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		33364DA92352879600259081 /* AuthEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEmailView.swift; sourceTree = "<group>"; };
 		33364DAB235298A800259081 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView_Layouts+extensions.swift"; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				3349B9D1235261270045CFF8 /* String+extensions.swift */,
 				3349B9D3235261380045CFF8 /* UIImageView+extensions.swift */,
 				3349B9D5235261500045CFF8 /* UILabel+extensions.swift */,
+				33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
+				33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */,
 				3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */,
 				33364DAA2352879600259081 /* AuthEmailView.swift in Sources */,
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
