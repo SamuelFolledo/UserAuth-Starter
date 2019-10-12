@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33364DA523526A1B00259081 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33364DA423526A1B00259081 /* Authentication.storyboard */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
 		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33364DA423526A1B00259081 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				335289DC235255470084E405 /* SceneDelegate.swift */,
 				335289DE235255470084E405 /* ViewController.swift */,
 				335289E0235255470084E405 /* Main.storyboard */,
+				33364DA423526A1B00259081 /* Authentication.storyboard */,
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
 				335289E8235255490084E405 /* Info.plist */,
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33364DA523526A1B00259081 /* Authentication.storyboard in Resources */,
 				335289E7235255490084E405 /* LaunchScreen.storyboard in Resources */,
 				335289E4235255490084E405 /* Assets.xcassets in Resources */,
 				335289E2235255470084E405 /* Main.storyboard in Resources */,
