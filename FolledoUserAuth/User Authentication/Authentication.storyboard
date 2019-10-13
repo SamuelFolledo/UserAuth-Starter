@@ -390,6 +390,7 @@
                         <outlet property="codeTextField" destination="hWC-41-tfy" id="c8m-DM-Xvu"/>
                         <outlet property="confirmPassView" destination="JVu-iO-NBv" id="2X6-6P-5r2"/>
                         <outlet property="confirmPasswordTextField" destination="WZk-D0-BmQ" id="SIh-pY-kGC"/>
+                        <outlet property="emailAuthStackView" destination="ZhQ-H2-4Ka" id="f9X-Do-SGv"/>
                         <outlet property="emailSegmentedControl" destination="WD1-Qs-nKt" id="J4c-S4-QDi"/>
                         <outlet property="emailTextField" destination="Sdp-q0-7gW" id="d0p-hE-4Uy"/>
                         <outlet property="emailView" destination="Abm-Lg-mGd" id="SLe-1S-rOD"/>

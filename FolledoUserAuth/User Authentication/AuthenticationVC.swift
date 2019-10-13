@@ -31,6 +31,7 @@ class AuthenticationVC: UIViewController {
     
     @IBOutlet weak var nameStackView: UIStackView!
     @IBOutlet weak var confirmPassView: UIView!
+    @IBOutlet weak var emailAuthStackView: UIStackView!
     
 //MARK: Properties
     
@@ -54,6 +55,14 @@ class AuthenticationVC: UIViewController {
     func setUp() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
+        
+        emailSegmentedControl.addTarget(self, action: #selector(handleSegmentedControlValueChanged(_:)), for: .valueChanged)
+        nameStackView.isHidden = true
+        confirmPassView.isHidden = true
+        facebookButton.isHidden = false
+        anonymousButton.isHidden = false
+        
+        
     }
     
     
@@ -82,6 +91,21 @@ class AuthenticationVC: UIViewController {
         self.view.endEditing(false)
     }
     
-    
+    @objc fileprivate func handleSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: //login
+            nameStackView.isHidden = true
+            confirmPassView.isHidden = true
+            facebookButton.isHidden = false
+            anonymousButton.isHidden = false
+        case 1:
+            nameStackView.isHidden = false
+            confirmPassView.isHidden = false
+            facebookButton.isHidden = true
+            anonymousButton.isHidden = true
+        default:
+            break
+        }
+    }
     
 }
