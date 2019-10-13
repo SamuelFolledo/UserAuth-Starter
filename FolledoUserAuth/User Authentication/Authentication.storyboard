@@ -11,14 +11,14 @@
         <scene sceneID="McN-vS-feY">
             <objects>
                 <viewController storyboardIdentifier="AuthVC" modalPresentationStyle="fullScreen" id="oGr-Uf-QFT" customClass="AuthenticationVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eeF-aE-WOH">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="eeF-aE-WOH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="fPM-0u-ahx">
+                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="fPM-0u-ahx">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-hv-Iue" userLabel="content View">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-hv-Iue" userLabel="content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYw-Oq-9cL" userLabel="ProfilePic View">
@@ -105,6 +105,9 @@
                                                                 <state key="normal" title="Text Me">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="textMeButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="5Wu-mx-19I"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -131,7 +134,7 @@
                                                         <rect key="frame" x="5" y="5" width="340" height="385.33333333333331"/>
                                                         <subviews>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-Qs-nKt">
-                                                                <rect key="frame" x="56.666666666666671" y="0.0" width="226.66666666666663" height="45.666666666666664"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="340" height="45.666666666666664"/>
                                                                 <segments>
                                                                     <segment title="Login"/>
                                                                     <segment title="Register"/>
@@ -288,6 +291,9 @@
                                                                 <state key="normal" title="Login">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="submitButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="e48-2u-X0u"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQg-Se-Bnq">
                                                                 <rect key="frame" x="56.666666666666671" y="291.99999999999994" width="226.66666666666663" height="44.666666666666686"/>
@@ -295,6 +301,9 @@
                                                                 <state key="normal" title="Facebook Login">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="facebookButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="lfd-AR-aAs"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEE-op-slb">
                                                                 <rect key="frame" x="56.666666666666671" y="340.66666666666669" width="226.66666666666663" height="44.666666666666686"/>
@@ -302,6 +311,9 @@
                                                                 <state key="normal" title="Signin Anonymously">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="anonymousButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="XOj-eR-X2M"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -317,7 +329,7 @@
                                                             <constraint firstItem="gg5-kW-ZdG" firstAttribute="width" secondItem="Sdp-q0-7gW" secondAttribute="width" id="n6T-S3-vCg"/>
                                                             <constraint firstItem="3Rf-yS-O4i" firstAttribute="width" secondItem="1Ex-3c-JdE" secondAttribute="width" id="pkI-Pa-sMf"/>
                                                             <constraint firstItem="4bR-0H-tps" firstAttribute="width" secondItem="ZhQ-H2-4Ka" secondAttribute="width" multiplier="1:2" constant="-1" id="rVA-BA-W21"/>
-                                                            <constraint firstItem="WD1-Qs-nKt" firstAttribute="width" secondItem="ZhQ-H2-4Ka" secondAttribute="width" multiplier="2:3" id="uxi-oa-ywY"/>
+                                                            <constraint firstItem="WD1-Qs-nKt" firstAttribute="width" secondItem="ZhQ-H2-4Ka" secondAttribute="width" id="uxi-oa-ywY"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -373,8 +385,20 @@
                     </view>
                     <navigationItem key="navigationItem" title="User Authentication" id="gqe-0h-awX"/>
                     <connections>
+                        <outlet property="anonymousButton" destination="IEE-op-slb" id="Qne-jU-ll7"/>
+                        <outlet property="codeTextField" destination="hWC-41-tfy" id="c8m-DM-Xvu"/>
+                        <outlet property="confirmPasswordTextField" destination="WZk-D0-BmQ" id="SIh-pY-kGC"/>
+                        <outlet property="emailSegmentedControl" destination="WD1-Qs-nKt" id="J4c-S4-QDi"/>
+                        <outlet property="emailTextField" destination="Sdp-q0-7gW" id="d0p-hE-4Uy"/>
                         <outlet property="emailView" destination="Abm-Lg-mGd" id="SLe-1S-rOD"/>
+                        <outlet property="facebookButton" destination="wQg-Se-Bnq" id="2rt-wX-vDN"/>
+                        <outlet property="firstNameTextField" destination="4bR-0H-tps" id="WIt-US-abD"/>
+                        <outlet property="lastNameTextField" destination="v4s-Gs-DPe" id="4aL-RJ-Jrd"/>
+                        <outlet property="passwordTextField" destination="gg5-kW-ZdG" id="wvz-Fz-MbO"/>
+                        <outlet property="phoneTextField" destination="Ghs-F5-NtS" id="163-7R-4uj"/>
                         <outlet property="phoneView" destination="noE-GG-2s6" id="dEC-eI-nz6"/>
+                        <outlet property="submitEmailButton" destination="3Rf-yS-O4i" id="Joz-Jw-syT"/>
+                        <outlet property="textMeButton" destination="Cqb-4L-0e2" id="fnl-Gw-66m"/>
                         <outlet property="userImageView" destination="coN-M8-Y1G" id="Dai-OJ-Ehw"/>
                     </connections>
                 </viewController>

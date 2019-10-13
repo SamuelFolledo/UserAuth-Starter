@@ -17,6 +17,20 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
     
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var textMeButton: UIButton!
+    
+    @IBOutlet weak var emailSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var submitEmailButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var anonymousButton: UIButton!
+    
 //MARK: Properties
     
         
@@ -38,10 +52,26 @@ class AuthenticationVC: UIViewController {
     
     
     
+
+    
+//MARK: IBActions
+    @IBAction func textMeButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func anonymousButtonTapped(_ sender: Any) {
+    }
+    
+    
 //MARK: Helpers
     
     
     
-//MARK: IBActions
-
+    
 }
