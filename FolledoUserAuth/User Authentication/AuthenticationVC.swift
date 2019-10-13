@@ -11,8 +11,6 @@ import UIKit
 class AuthenticationVC: UIViewController {
 
 //MARK: IBOulets
-        
-        
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
@@ -31,6 +29,9 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var anonymousButton: UIButton!
     
+    @IBOutlet weak var nameStackView: UIStackView!
+    @IBOutlet weak var confirmPassView: UIView!
+    
 //MARK: Properties
     
         
@@ -41,7 +42,8 @@ class AuthenticationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = .gray
+        
+        setUp()
         
     }
     
@@ -49,7 +51,10 @@ class AuthenticationVC: UIViewController {
     
     
 //MARK: Methods
-    
+    func setUp() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
     
     
 
@@ -60,17 +65,22 @@ class AuthenticationVC: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func anonymousButtonTapped(_ sender: Any) {
+        
     }
     
     
 //MARK: Helpers
-    
+    @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
+        self.view.endEditing(false)
+    }
     
     
     
