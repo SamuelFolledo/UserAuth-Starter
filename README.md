@@ -7,7 +7,7 @@
 - **Learning** Firebase Authentication: *email login/register, Facebook login/register, phone login/register, anonymous signin*
 
 ## Login View
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="621" height="1104`"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="310" height="550`"> 
 
 ## Register View
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/register.png" width="621" height="1104`"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/register.png" width="310" height="550`"> 
