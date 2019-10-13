@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     
 //MARK: Properties
-    
+    var currentUser: String?
     
     
     
@@ -26,8 +26,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let currentUser = currentUser {
+            print("we have a user = \(currentUser)")
+        } else {
+            self.performSegue(withIdentifier: "toAuthIdentifier", sender: nil)
+        }
+    }
+    
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        switch identifier {
+//        case "toAuthIdentifier":
+//            let vc = segue.destination as! AuthenticationVC
+//
+//        default:
+//            print("Weird identifier \(identifier)")
+//        }
+//    }
     
     
     

@@ -13,9 +13,10 @@ class AuthenticationVC: UIViewController {
 //MARK: IBOulets
         
         
-        
-        
-        
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var phoneView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    
 //MARK: Properties
     
         
@@ -26,6 +27,8 @@ class AuthenticationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = .gray
+        
     }
     
     
