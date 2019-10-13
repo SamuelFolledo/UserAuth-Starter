@@ -10,6 +10,8 @@
 		33364DA523526A1B00259081 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33364DA423526A1B00259081 /* Authentication.storyboard */; };
 		33364DA72352833100259081 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA62352833100259081 /* AuthenticationVC.swift */; };
 		33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */; };
+		33444BB8235311EA0062BB97 /* register.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 33444BB6235311EA0062BB97 /* register.PNG */; };
+		33444BB9235311EA0062BB97 /* login.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 33444BB7235311EA0062BB97 /* login.PNG */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
 		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
@@ -47,6 +49,8 @@
 		33364DA423526A1B00259081 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		33364DA62352833100259081 /* AuthenticationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView_Layouts+extensions.swift"; sourceTree = "<group>"; };
+		33444BB6235311EA0062BB97 /* register.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.PNG; sourceTree = "<group>"; };
+		33444BB7235311EA0062BB97 /* login.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.PNG; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
@@ -103,6 +107,15 @@
 			path = "User Authentication";
 			sourceTree = "<group>";
 		};
+		33444BBA235312350062BB97 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				33444BB7235311EA0062BB97 /* login.PNG */,
+				33444BB6235311EA0062BB97 /* register.PNG */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		3349B9CD23525F030045CFF8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +169,7 @@
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
 				335289E8235255490084E405 /* Info.plist */,
+				33444BBA235312350062BB97 /* assets */,
 				3349B9CD23525F030045CFF8 /* Helpers */,
 			);
 			path = FolledoUserAuth;
@@ -283,8 +297,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33444BB9235311EA0062BB97 /* login.PNG in Resources */,
 				33364DA523526A1B00259081 /* Authentication.storyboard in Resources */,
 				335289E7235255490084E405 /* LaunchScreen.storyboard in Resources */,
+				33444BB8235311EA0062BB97 /* register.PNG in Resources */,
 				335289E4235255490084E405 /* Assets.xcassets in Resources */,
 				335289E2235255470084E405 /* Main.storyboard in Resources */,
 			);

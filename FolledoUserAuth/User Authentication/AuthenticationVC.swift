@@ -62,6 +62,7 @@ class AuthenticationVC: UIViewController {
         facebookButton.isHidden = false
         anonymousButton.isHidden = false
         
+        codeTextField.isEnabled = false
         
     }
     
