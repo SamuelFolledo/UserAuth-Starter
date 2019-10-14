@@ -16,7 +16,8 @@ class ProfileVC: UIViewController {
     
     
 //MARK: IBOulets
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var lastTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!

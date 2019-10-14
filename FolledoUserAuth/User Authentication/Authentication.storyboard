@@ -358,12 +358,12 @@
                         <outlet property="emailTextField" destination="Sdp-q0-7gW" id="d0p-hE-4Uy"/>
                         <outlet property="emailView" destination="Abm-Lg-mGd" id="SLe-1S-rOD"/>
                         <outlet property="facebookButton" destination="wQg-Se-Bnq" id="2rt-wX-vDN"/>
+                        <outlet property="logoImageView" destination="coN-M8-Y1G" id="9GV-ct-erH"/>
                         <outlet property="passwordTextField" destination="gg5-kW-ZdG" id="wvz-Fz-MbO"/>
                         <outlet property="phoneTextField" destination="Ghs-F5-NtS" id="163-7R-4uj"/>
                         <outlet property="phoneView" destination="noE-GG-2s6" id="dEC-eI-nz6"/>
                         <outlet property="submitEmailButton" destination="3Rf-yS-O4i" id="Joz-Jw-syT"/>
                         <outlet property="textMeButton" destination="Cqb-4L-0e2" id="fnl-Gw-66m"/>
-                        <outlet property="userImageView" destination="coN-M8-Y1G" id="Dai-OJ-Ehw"/>
                         <segue destination="a6L-An-gmg" kind="presentation" identifier="toNameVC" modalPresentationStyle="fullScreen" id="K8E-An-O7p"/>
                     </connections>
                 </viewController>
@@ -401,7 +401,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="103.66666666666667"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_photo" translatesAutoresizingMaskIntoConstraints="NO" id="zrw-n5-AKF" userLabel="profile ImageView">
-                                                <rect key="frame" x="134.33333333333334" y="0.0" width="104" height="103.66666666666667"/>
+                                                <rect key="frame" x="134.66666666666669" y="0.0" width="103.66666666666669" height="103.66666666666667"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zrw-n5-AKF" secondAttribute="height" id="kLf-Db-nfP"/>
@@ -516,8 +516,9 @@
                     <connections>
                         <outlet property="firstTextField" destination="slU-gf-AwG" id="TMe-FE-4CU"/>
                         <outlet property="lastTextField" destination="Wa2-aQ-vGz" id="BlI-1K-5gd"/>
-                        <outlet property="profileImageView" destination="zrw-n5-AKF" id="sGT-RJ-ORb"/>
+                        <outlet property="logoImageView" destination="Fu2-TO-zxq" id="jy7-Bz-jB3"/>
                         <outlet property="submitButton" destination="OZG-yV-aHw" id="YGk-CD-udB"/>
+                        <outlet property="userImageView" destination="zrw-n5-AKF" id="gEC-Cu-lyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8o-ZN-jwW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

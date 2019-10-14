@@ -11,7 +11,7 @@ import UIKit
 class AuthenticationVC: UIViewController {
 
 //MARK: IBOulets
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
     
