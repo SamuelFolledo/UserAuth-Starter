@@ -48,7 +48,7 @@ class ProfileVC: UIViewController {
         
 //MARK: IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
-        popBack(2)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -61,14 +61,6 @@ class ProfileVC: UIViewController {
         self.view.endEditing(false)
     }
     
-    func popBack(_ nb: Int) { //method that pops View controller to a certain amount nb
-        if let viewControllers: [UIViewController] = self.navigationController?.viewControllers {
-            guard viewControllers.count < nb else {
-                self.navigationController?.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
-                return
-            }
-        }
-    }
         
 
 }
