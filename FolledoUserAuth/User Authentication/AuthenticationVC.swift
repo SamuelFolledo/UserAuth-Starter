@@ -72,7 +72,7 @@ class AuthenticationVC: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "toNameVC", sender: nil)
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {

@@ -27,7 +27,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="XYO-k3-em0"/>
                     <connections>
-                        <segue destination="pjS-Qf-zgn" kind="presentation" identifier="toAuthIdentifier" modalPresentationStyle="fullScreen" id="uRf-8E-WGH"/>
+                        <segue destination="pjS-Qf-zgn" kind="presentation" identifier="toAuthVC" modalPresentationStyle="fullScreen" id="uRf-8E-WGH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

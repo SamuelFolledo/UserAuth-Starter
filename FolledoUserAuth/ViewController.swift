@@ -34,13 +34,13 @@ class ViewController: UIViewController {
         if let currentUser = currentUser {
             print("we have a user = \(currentUser)")
         } else {
-            self.performSegue(withIdentifier: "toAuthIdentifier", sender: nil)
+            self.performSegue(withIdentifier: "toAuthVC", sender: nil)
         }
     }
     
 //    override func performSegue(withIdentifier identifier: String, sender: Any?) {
 //        switch identifier {
-//        case "toAuthIdentifier":
+//        case "toAuthVC":
 //            let vc = segue.destination as! AuthenticationVC
 //
 //        default:
