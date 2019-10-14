@@ -93,10 +93,19 @@ class AuthenticationVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0: //login
             confirmPassView.isHidden = true
+            emailAuthStackView_Height.constant *= 0.66
+            confirmPassView.alpha = 0
+            submitEmailButton.setTitle("Login", for: .normal)
         case 1:
             confirmPassView.isHidden = false
+            emailAuthStackView_Height.constant *= 1.33
+            confirmPassView.alpha = 1
+            submitEmailButton.setTitle("Register", for: .normal)
         default:
             break
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
         }
     }
     
