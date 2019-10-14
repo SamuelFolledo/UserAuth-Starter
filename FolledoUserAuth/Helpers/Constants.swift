@@ -8,21 +8,25 @@
 
 import Foundation
 import UIKit
-//import FirebaseDatabase
+import FirebaseDatabase
+
+let firDatabase = Database.database().reference()
 
 //ids and keys for one signal
 public let kONESIGNALAPPID: String = "586d3ef3-6411-41d0-ab81-2a797a16a50b"
 public let kONESIGNALID: String = "OneSignalId"
 let kUSERID: String = "userID"
-let kNAME: String = "name"
+let kFIRSTNAME: String = "firstName"
+let kLASTNAME: String = "lastName"
+let kFULLNAME: String = "fullName"
 let kEMAIL: String = "email"
 let kAVATARURL: String = "avatarURL"
-let kTEXT: String = "text"
 let kCURRENTUSER: String = "currentUser" //for userDefaults
-let kUSERS: String = "user" //fore firebase
+let kUSERS: String = "user" //for firebase
 let kMESSAGES: String = "message"
 let kPUSHID: String = "pushId"
 
+//MARK: Other Constants
 let kCREATEDAT: String = "createdAt"
 let kUPDATEDAT: String = "updatedAt"
 let kGAMESESSIONS: String = "gameSessions"
@@ -80,11 +84,6 @@ let kLEVEL: String = "level"
 let kRESULT: String = "result"
 let kOPPONENTUID: String = "opponentUid"
 
-
-let kSMILEYURL: String = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/220px-Smiley.svg.png"
-//let firDatabase = Database.database().reference()
-
-
 //colors from UIColor extension
 let kCOLOR_FFFFFF: UIColor = UIColor(rgb: 0xFFFFFF)
 let kCOLOR_1B1E1F: UIColor = UIColor(rgb: 0x1B1E1F)
@@ -96,10 +95,8 @@ let kREDCGCOLOR = UIColor.red.cgColor
 let kCLEARCGCOLOR = UIColor.clear.cgColor
 let kGREENCGCOLOR = UIColor.green.cgColor
 
-
 //fonts
 let kHEADERTEXT: UIFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
-
 
 //controller storyboard id
 let kCHATCONTROLLER: String = "chatController"
