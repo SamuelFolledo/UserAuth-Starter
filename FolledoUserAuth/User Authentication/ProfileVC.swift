@@ -9,29 +9,23 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-
-
+      
+//MARK: Properties
+    
+    
+    
+    
 //MARK: IBOulets
-       
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var lastTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-    
-        
-//MARK: Properties
-        
-            
-            
-            
             
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         setUp()
-        
     }
     
     
@@ -41,6 +35,8 @@ class ProfileVC: UIViewController {
     func setUp() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
+        
+        
     }
         
         
