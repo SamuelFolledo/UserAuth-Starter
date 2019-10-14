@@ -20,8 +20,6 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var textMeButton: UIButton!
     
     @IBOutlet weak var emailSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -29,9 +27,9 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var anonymousButton: UIButton!
     
-    @IBOutlet weak var nameStackView: UIStackView!
     @IBOutlet weak var confirmPassView: UIView!
     @IBOutlet weak var emailAuthStackView: UIStackView!
+    @IBOutlet weak var emailAuthStackView_Height: NSLayoutConstraint!
     
 //MARK: Properties
     
@@ -57,7 +55,6 @@ class AuthenticationVC: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         emailSegmentedControl.addTarget(self, action: #selector(handleSegmentedControlValueChanged(_:)), for: .valueChanged)
-        nameStackView.isHidden = true
         confirmPassView.isHidden = true
         facebookButton.isHidden = false
         anonymousButton.isHidden = false
@@ -95,15 +92,9 @@ class AuthenticationVC: UIViewController {
     @objc fileprivate func handleSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0: //login
-            nameStackView.isHidden = true
             confirmPassView.isHidden = true
-            facebookButton.isHidden = false
-            anonymousButton.isHidden = false
         case 1:
-            nameStackView.isHidden = false
             confirmPassView.isHidden = false
-            facebookButton.isHidden = true
-            anonymousButton.isHidden = true
         default:
             break
         }
