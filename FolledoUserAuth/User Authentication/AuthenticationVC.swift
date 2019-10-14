@@ -89,7 +89,7 @@ class AuthenticationVC: UIViewController {
         self.view.endEditing(false)
     }
     
-    @objc fileprivate func handleSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc fileprivate func handleSegmentedControlValueChanged(_ sender: UISegmentedControl) { //method that will update email views for login and register
         switch sender.selectedSegmentIndex {
         case 0: //login
             confirmPassView.isHidden = true

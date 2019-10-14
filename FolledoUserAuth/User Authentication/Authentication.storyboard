@@ -24,7 +24,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYw-Oq-9cL" userLabel="ProfilePic View">
                                                 <rect key="frame" x="160" y="10" width="94" height="93.666666666666671"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_photo" translatesAutoresizingMaskIntoConstraints="NO" id="coN-M8-Y1G">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SFLogo" translatesAutoresizingMaskIntoConstraints="NO" id="coN-M8-Y1G">
                                                         <rect key="frame" x="0.0" y="0.0" width="94" height="93.666666666666671"/>
                                                     </imageView>
                                                 </subviews>
@@ -390,6 +390,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile_photo" width="512" height="512"/>
+        <image name="SFLogo" width="971" height="979"/>
     </resources>
 </document>
