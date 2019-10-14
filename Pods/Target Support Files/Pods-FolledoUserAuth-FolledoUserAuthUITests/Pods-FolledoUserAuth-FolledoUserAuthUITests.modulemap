@@ -1,0 +1,6 @@
+framework module Pods_FolledoUserAuth_FolledoUserAuthUITests {
+  umbrella header "Pods-FolledoUserAuth-FolledoUserAuthUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

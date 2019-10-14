@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C27DFECF627EA141142B2D9 /* Pods_FolledoUserAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE961C265B33BA854AAC60A5 /* Pods_FolledoUserAuth.framework */; };
+		2EBC6CD801D43829B2213567 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CECED3FE3D6ADC72AB6353 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework */; };
 		33364DA523526A1B00259081 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33364DA423526A1B00259081 /* Authentication.storyboard */; };
 		33364DA72352833100259081 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA62352833100259081 /* AuthenticationVC.swift */; };
 		33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */; };
 		333B841D23545B060061FB2C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B841C23545B060061FB2C /* ProfileVC.swift */; };
+		3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */; };
 		33444BBD2353131E0062BB97 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBB2353131E0062BB97 /* login.png */; };
 		33444BBE2353131E0062BB97 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBC2353131E0062BB97 /* register.png */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
@@ -27,6 +30,7 @@
 		335289E7235255490084E405 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335289E5235255490084E405 /* LaunchScreen.storyboard */; };
 		335289F2235255490084E405 /* FolledoUserAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289F1235255490084E405 /* FolledoUserAuthTests.swift */; };
 		335289FD235255490084E405 /* FolledoUserAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289FC235255490084E405 /* FolledoUserAuthUITests.swift */; };
+		592EE74C6E4756610E33349D /* Pods_FolledoUserAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +51,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1394EF31BD137FD9EBCB7B50 /* Pods-FolledoUserAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.debug.xcconfig"; sourceTree = "<group>"; };
+		198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FolledoUserAuthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33364DA423526A1B00259081 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		33364DA62352833100259081 /* AuthenticationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView_Layouts+extensions.swift"; sourceTree = "<group>"; };
 		333B841C23545B060061FB2C /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33444BBB2353131E0062BB97 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		33444BBC2353131E0062BB97 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -73,6 +80,13 @@
 		335289F8235255490084E405 /* FolledoUserAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FolledoUserAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		335289FC235255490084E405 /* FolledoUserAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolledoUserAuthUITests.swift; sourceTree = "<group>"; };
 		335289FE235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.release.xcconfig"; sourceTree = "<group>"; };
+		6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		84C9B8E1F71240CB1BBBBFA9 /* Pods-FolledoUserAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuthTests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuthTests/Pods-FolledoUserAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
+		892281D53F18A4DF14D9BFCC /* Pods-FolledoUserAuth-FolledoUserAuthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth-FolledoUserAuthUITests.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A7CECED3FE3D6ADC72AB6353 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FolledoUserAuth_FolledoUserAuthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6AE8531C88D10BF5C247FB2 /* Pods-FolledoUserAuthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuthTests.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuthTests/Pods-FolledoUserAuthTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE961C265B33BA854AAC60A5 /* Pods_FolledoUserAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FolledoUserAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C27DFECF627EA141142B2D9 /* Pods_FolledoUserAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				592EE74C6E4756610E33349D /* Pods_FolledoUserAuthTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBC6CD801D43829B2213567 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +165,8 @@
 				335289F0235255490084E405 /* FolledoUserAuthTests */,
 				335289FB235255490084E405 /* FolledoUserAuthUITests */,
 				335289D8235255470084E405 /* Products */,
+				6B19BC0FE26FD6DF538EA972 /* Pods */,
+				954EAEAE3AE3DF1659F6CD31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +191,7 @@
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
 				335289E8235255490084E405 /* Info.plist */,
+				3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */,
 				33444BBA235312350062BB97 /* assets */,
 				3349B9CD23525F030045CFF8 /* Helpers */,
 			);
@@ -196,6 +216,30 @@
 			path = FolledoUserAuthUITests;
 			sourceTree = "<group>";
 		};
+		6B19BC0FE26FD6DF538EA972 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1394EF31BD137FD9EBCB7B50 /* Pods-FolledoUserAuth.debug.xcconfig */,
+				68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */,
+				6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */,
+				892281D53F18A4DF14D9BFCC /* Pods-FolledoUserAuth-FolledoUserAuthUITests.release.xcconfig */,
+				84C9B8E1F71240CB1BBBBFA9 /* Pods-FolledoUserAuthTests.debug.xcconfig */,
+				B6AE8531C88D10BF5C247FB2 /* Pods-FolledoUserAuthTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		954EAEAE3AE3DF1659F6CD31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE961C265B33BA854AAC60A5 /* Pods_FolledoUserAuth.framework */,
+				A7CECED3FE3D6ADC72AB6353 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework */,
+				198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,9 +247,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33528A01235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuth" */;
 			buildPhases = (
+				D18C6ED33EA319F6E738AA40 /* [CP] Check Pods Manifest.lock */,
 				335289D3235255470084E405 /* Sources */,
 				335289D4235255470084E405 /* Frameworks */,
 				335289D5235255470084E405 /* Resources */,
+				A5463EA6BECC635FB979EEBD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +266,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33528A04235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthTests" */;
 			buildPhases = (
+				627D5B1C2E6F009190D9D75D /* [CP] Check Pods Manifest.lock */,
 				335289E9235255490084E405 /* Sources */,
 				335289EA235255490084E405 /* Frameworks */,
 				335289EB235255490084E405 /* Resources */,
@@ -238,9 +285,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33528A07235255490084E405 /* Build configuration list for PBXNativeTarget "FolledoUserAuthUITests" */;
 			buildPhases = (
+				9C547983266537A3DA2774E2 /* [CP] Check Pods Manifest.lock */,
 				335289F4235255490084E405 /* Sources */,
 				335289F5235255490084E405 /* Frameworks */,
 				335289F6235255490084E405 /* Resources */,
+				EE7D77C98ADFC9167AEBB7E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,6 +355,7 @@
 				335289E4235255490084E405 /* Assets.xcassets in Resources */,
 				33444BBE2353131E0062BB97 /* register.png in Resources */,
 				335289E2235255470084E405 /* Main.storyboard in Resources */,
+				3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +374,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		627D5B1C2E6F009190D9D75D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FolledoUserAuthTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C547983266537A3DA2774E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FolledoUserAuth-FolledoUserAuthUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5463EA6BECC635FB979EEBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D18C6ED33EA319F6E738AA40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FolledoUserAuth-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE7D77C98ADFC9167AEBB7E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		335289D3235255470084E405 /* Sources */ = {
@@ -512,6 +665,7 @@
 		};
 		33528A02235255490084E405 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1394EF31BD137FD9EBCB7B50 /* Pods-FolledoUserAuth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +684,7 @@
 		};
 		33528A03235255490084E405 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +703,7 @@
 		};
 		33528A05235255490084E405 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84C9B8E1F71240CB1BBBBFA9 /* Pods-FolledoUserAuthTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -570,6 +726,7 @@
 		};
 		33528A06235255490084E405 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6AE8531C88D10BF5C247FB2 /* Pods-FolledoUserAuthTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -592,6 +749,7 @@
 		};
 		33528A08235255490084E405 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -612,6 +770,7 @@
 		};
 		33528A09235255490084E405 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 892281D53F18A4DF14D9BFCC /* Pods-FolledoUserAuth-FolledoUserAuthUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
