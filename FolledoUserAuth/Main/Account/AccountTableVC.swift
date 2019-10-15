@@ -26,6 +26,7 @@ class AccountTableVC: UITableViewController {
         self.tableView.register(AccountCell.self, forCellReuseIdentifier: cellID)
         self.tableView.rowHeight = UITableView.automaticDimension //but we still have to automatically make them resize to the contents inside of it
         self.tableView.estimatedRowHeight = 100 //to make the cell have a limit and save memory //now in cellForRowAt layoutSubviews()
+        tableView.tableFooterView = UIView() //PB ep77 21mins to remove the additional line separator underneath our products
     }
     
 //MARK: Methods
