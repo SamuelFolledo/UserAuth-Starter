@@ -237,22 +237,24 @@ class AuthenticationVC: UIViewController {
             passwordTextField.hasError(); values.errorCount += 1
             Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
         }
-        if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
-            if confirmPass.count < 6 {
-                confirmPasswordTextField.hasError(); values.errorCount += 1
-            } else {
-                if confirmPass == passwordTextField.text?.trimmedString() {
-                    values.password = confirmPass
-                    confirmPasswordTextField.hasNoError()
+        if emailSegmentedControl.selectedSegmentIndex == 1 { //if we are registering, also check confirm password field
+            if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
+                if confirmPass.count < 6 {
+                    confirmPasswordTextField.hasError(); values.errorCount += 1
                 } else {
-                    confirmPasswordTextField.hasError()
-                    passwordTextField.hasError()
-                    values.errorCount += 1
-                    Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
+                    if confirmPass == passwordTextField.text?.trimmedString() {
+                        values.password = confirmPass
+                        confirmPasswordTextField.hasNoError()
+                    } else {
+                        confirmPasswordTextField.hasError()
+                        passwordTextField.hasError()
+                        values.errorCount += 1
+                        Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
+                    }
                 }
+            } else {
+                confirmPasswordTextField.hasError(); values.errorCount += 1
             }
-        } else {
-            confirmPasswordTextField.hasError(); values.errorCount += 1
         }
         print("THERE ARE \(values.errorCount) ERRORS")
         return values
