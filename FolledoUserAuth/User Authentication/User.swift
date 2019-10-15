@@ -12,15 +12,17 @@ import Firebase
 import FirebaseAuth
 
 class User: NSObject {
+    var userID: String
+    var username: String
     var firstName: String
     var lastName: String
     var fullName: String
     var email: String
     var avatarURL: String
-    var userID: String
 
-    init(_userID: String, _firstName: String, _lastName: String, _email: String, _avatarURL: String = "") {
+    init(_userID: String, _username: String, _firstName: String, _lastName: String, _email: String, _avatarURL: String = "") {
         userID = _userID
+        username = _username
         firstName = _firstName
         lastName = _lastName
         fullName = _firstName + _lastName
@@ -30,6 +32,7 @@ class User: NSObject {
     
     init(_dictionary: [String: Any]) {
         self.userID = _dictionary[kUSERID] as! String
+        self.username = _dictionary[kUSERNAME] as! String
         self.firstName = _dictionary[kFIRSTNAME] as! String
         self.lastName = _dictionary[kLASTNAME] as! String
         self.fullName = _dictionary[kFULLNAME] as! String
@@ -136,8 +139,8 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: User?) -> Void
 
 func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary
     return NSDictionary(
-        objects: [user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL],
-        forKeys: [kUSERID as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kAVATARURL as NSCopying])
+        objects: [user.userID, user.username, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL],
+        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kAVATARURL as NSCopying])
 }
 
 

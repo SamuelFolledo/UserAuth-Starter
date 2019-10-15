@@ -16,6 +16,7 @@ let firDatabase = Database.database().reference()
 public let kONESIGNALAPPID: String = "586d3ef3-6411-41d0-ab81-2a797a16a50b"
 public let kONESIGNALID: String = "OneSignalId"
 let kUSERID: String = "userID"
+let kUSERNAME: String = "username"
 let kFIRSTNAME: String = "firstName"
 let kLASTNAME: String = "lastName"
 let kFULLNAME: String = "fullName"

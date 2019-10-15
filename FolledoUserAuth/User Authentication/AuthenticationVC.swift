@@ -115,9 +115,9 @@ class AuthenticationVC: UIViewController {
                 if let error = error {
                     Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 } else { //if no error registering user...
-                    print("USER SUCCESSFULLY REGISTER \(String(describing: User.currentUser()))")
                     let uid = User.currentId()
-                    self.registerUserIntoDatabaseWithUID(uid: uid, values: [kEMAIL: inputValues.email])
+                    let userValues:[String: Any] = [kEMAIL: inputValues.email, kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kUSERNAME: "", kAVATARURL: ""]
+                    self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
                 }
             }
         default:
@@ -125,32 +125,18 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    
-    
-    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) {
+    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
         let usersReference = firDatabase.child(kUSERS).child(uid)
         usersReference.setValue(values, withCompletionBlock: { (error, ref) in
             if let error = error {
                 Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 return
-            } else {
-                let userValues:[String: Any] = [kFIRSTNAME: "", kLASTNAME: "", kAVATARURL: ""]
-                let gameStatsValues = [kWINS: 0, kLOSES: 0, kMATCHESUID: [], kMATCHESDICTIONARY:[], kEXPERIENCES: 0, kLEVEL: 0] as [String : Any] //pass the url
-                
-                let gameRef = usersReference.child(kGAMESTATS) //this is the reference for user's win, lose, and experience stats
-                gameRef.setValue(gameStatsValues, withCompletionBlock: { (error, ref) in
-                    if let error = error {
-                        Service.presentAlert(on: self, title: "Firebase Register Error", message: error.localizedDescription)
-                        return
-                    } else {
-                        
-                        DispatchQueue.main.async {
-                            let user = User(_dictionary: values)
-                            saveUserLocally(user: user)
-                            saveUserInBackground(user: user)
-                        }
-                    }
-                })
+            } else { //if no error, save user
+                DispatchQueue.main.async {
+                    let user = User(_dictionary: values)
+                    saveUserLocally(user: user)
+                    saveUserInBackground(user: user)
+                }
             }
         })
     }
