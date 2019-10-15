@@ -125,6 +125,8 @@ class User: NSObject {
         if let avatarURL = values[kAVATARURL] {
             user.avatarURL = avatarURL as! String
         }
+        saveUserLocally(user: user)
+        saveUserInBackground(user: user)
     }
 }
 

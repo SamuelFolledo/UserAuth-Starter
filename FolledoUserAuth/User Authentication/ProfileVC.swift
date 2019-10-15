@@ -45,6 +45,8 @@ class ProfileVC: UIViewController {
 //MARK: IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
         
+        
+//        User.updateCurrentUser(values: <#T##[String : Any]#>, withBlock: <#T##(String?) -> Void#>)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     

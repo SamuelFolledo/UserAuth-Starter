@@ -37,9 +37,7 @@ class AuthenticationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         setUp()
-        
     }
     
     
@@ -49,11 +47,9 @@ class AuthenticationVC: UIViewController {
     func setUp() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
-        
         emailSegmentedControl.addTarget(self, action: #selector(handleSegmentedControlValueChanged(_:)), for: .valueChanged)
         confirmPassView.isHidden = true
         codeTextField.isEnabled = false
-        
     }
     
     private func submitUserEmail() { //submitButton method that handles register and login
@@ -75,35 +71,11 @@ class AuthenticationVC: UIViewController {
     }
     
     private func login() {
-        var errorCounter = 0
+        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
         let initialTime = Date()
-        
-        guard let email = emailTextField.text?.trimmedString() else {
-            emailTextField.layer.borderColor = kREDCGCOLOR; return
-        }
-        guard let password = passwordTextField.text?.trimmedString() else {
-            passwordTextField.layer.borderColor = kREDCGCOLOR; return
-        }
-        
-        if !(email.isValidEmail) { //if email is not valid
-            errorCounter += 1
-            emailTextField.layer.borderColor = kREDCGCOLOR
-            Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid. Please try again with another email")
-        } else {
-            emailTextField.layer.borderColor = kCLEARCGCOLOR
-        }
-        if password.count < 6 {
-            errorCounter += 1
-            passwordTextField.layer.borderColor = kREDCGCOLOR
-            Service.presentAlert(on: self, title: "Password Count Error", message: "Password must be at least 6 characters")
-            return
-        } else {
-            passwordTextField.layer.borderColor = kCLEARCGCOLOR
-        }
-        
-        switch errorCounter {
+        switch inputValues.errorCount {
         case 0:
-            User.loginUserWith(email: email, password: password) { (error) in
+            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
                     return
@@ -254,5 +226,4 @@ class AuthenticationVC: UIViewController {
         print("THERE ARE \(values.errorCount) ERRORS")
         return values
     }
-    
 }
