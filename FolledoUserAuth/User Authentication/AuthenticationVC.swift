@@ -15,11 +15,9 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
-    
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var textMeButton: UIButton!
-    
     @IBOutlet weak var emailSegmentedControl: UISegmentedControl!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,10 +25,7 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var submitEmailButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var anonymousButton: UIButton!
-    
     @IBOutlet weak var confirmPassView: UIView!
-    @IBOutlet weak var emailAuthStackView: UIStackView!
-    @IBOutlet weak var emailAuthStackView_Height: NSLayoutConstraint!
     
 //MARK: Properties
     
@@ -57,10 +52,26 @@ class AuthenticationVC: UIViewController {
         
         emailSegmentedControl.addTarget(self, action: #selector(handleSegmentedControlValueChanged(_:)), for: .valueChanged)
         confirmPassView.isHidden = true
-        facebookButton.isHidden = false
-        anonymousButton.isHidden = false
         codeTextField.isEnabled = false
         
+    }
+    
+    private func submitUserEmail() { //submitButton method that handles register and login
+        switch emailSegmentedControl.selectedSegmentIndex {
+        case 0: //if user is logging in
+            login()
+            guard let currentUser = User.currentUser() else { print("No user"); return }
+            if currentUser.fullName == "" || currentUser.avatarURL == "" {
+                self.performSegue(withIdentifier: "toNameVC", sender: nil)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        case 1: //if user is registering
+            register()
+            self.performSegue(withIdentifier: "toNameVC", sender: nil)
+        default:
+            break
+        }
     }
     
     private func login() {
@@ -148,21 +159,7 @@ class AuthenticationVC: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        switch emailSegmentedControl.selectedSegmentIndex {
-        case 0: //if user is logging in
-            login()
-            guard let currentUser = User.currentUser() else { print("No user"); return }
-            if currentUser.fullName == "" || currentUser.avatarURL == "" {
-                self.performSegue(withIdentifier: "toNameVC", sender: nil)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-        case 1: //if user is registering
-            register()
-            self.performSegue(withIdentifier: "toNameVC", sender: nil)
-        default:
-            break
-        }
+        submitUserEmail()
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {
@@ -183,12 +180,10 @@ class AuthenticationVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0: //login
             confirmPassView.isHidden = true
-            emailAuthStackView_Height.constant *= 0.66
             confirmPassView.alpha = 0
             submitEmailButton.setTitle("Login", for: .normal)
         case 1:
             confirmPassView.isHidden = false
-            emailAuthStackView_Height.constant *= 1.33
             confirmPassView.alpha = 1
             submitEmailButton.setTitle("Register", for: .normal)
         default:
