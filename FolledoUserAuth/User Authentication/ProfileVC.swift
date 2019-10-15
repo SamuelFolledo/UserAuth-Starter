@@ -9,9 +9,8 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-      
+    
 //MARK: Properties
-    var currentUser: User?
     
     
     
@@ -22,7 +21,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var lastTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-            
+    
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +38,13 @@ class ProfileVC: UIViewController {
         self.view.addGestureRecognizer(tap)
         userImageView.isUserInteractionEnabled = true
     }
-     
-      
     
-        
+    
+    
+    
 //MARK: IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
+        
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -63,6 +63,6 @@ class ProfileVC: UIViewController {
         self.view.endEditing(false)
     }
     
-        
+    
 
 }

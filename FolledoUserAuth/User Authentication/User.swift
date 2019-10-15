@@ -25,7 +25,7 @@ class User: NSObject {
         username = _username
         firstName = _firstName
         lastName = _lastName
-        fullName = _firstName + _lastName
+        fullName = "\(_firstName) \(_lastName)"
         email = _email
         avatarURL = _avatarURL
     }
@@ -85,7 +85,7 @@ class User: NSObject {
     }
     
     
-    //MARK: Logout
+//MARK: Logout
     class func logOutCurrentUser(withBlock: (_ success: Bool) -> Void) {
         print("Logging outttt...")
         UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
@@ -105,6 +105,26 @@ class User: NSObject {
         user?.delete(completion: { (error) in
             completion(error)
         })
+    }
+    
+    class func updateCurrentUser(values: [String:Any], withBlock: @escaping (_ error: String?) -> Void) { //update anything but userID
+        guard let user = self.currentUser() else { return }
+        if let username = values[kUSERNAME] {
+            user.username = username as! String
+        }
+        if let firstName = values[kFIRSTNAME] {
+            user.firstName = firstName as! String
+        }
+        if let lastName = values[kLASTNAME] {
+            user.lastName = lastName as! String
+        }
+        user.fullName = "\(user.firstName) \(user.lastName)"
+        if let email = values[kEMAIL] {
+            user.email = email as! String
+        }
+        if let avatarURL = values[kAVATARURL] {
+            user.avatarURL = avatarURL as! String
+        }
     }
 }
 
