@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ProfileVC: UIViewController {
     
@@ -39,24 +40,26 @@ class ProfileVC: UIViewController {
         userImageView.isUserInteractionEnabled = true
     }
     
-    
-    
-    
 //MARK: IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
         let inputValues: (errorCount: Int, firstName: String, lastName: String, username: String) = checkInputValues()
         switch inputValues.errorCount {
         case 0:
-
-//            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
-//                if let error = error {
-//                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
-//                    return
-//                } else { //if no errors
-//                    //        User.updateCurrentUser(values: <#T##[String : Any]#>, withBlock: <#T##(String?) -> Void#>)
-//                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-//                }
-//            }
+            getImageURL(imageView: userImageView) { (imageURL, error) in
+                if let error = error {
+                    Service.presentAlert(on: self, title: "Error Uploading Image", message: error)
+                } else {
+                    let userValues: [String: Any] = [kFIRSTNAME: inputValues.firstName, kLASTNAME: inputValues.lastName, kUSERNAME: inputValues.username, kAVATARURL: imageURL!]
+                    User.updateCurrentUser(values: userValues) { (error) in
+                        if let error = error {
+                            Service.presentAlert(on: self, title: "Error Updating User", message: error)
+                        } else {
+                            print("Successfuly updated user! \(userDictionaryFrom(user: User.currentUser()!))")
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
         default:
             Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
             return
@@ -122,5 +125,4 @@ class ProfileVC: UIViewController {
         print("THERE ARE \(values.errorCount) ERRORS")
         return values
     }
-
 }
