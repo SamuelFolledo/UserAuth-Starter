@@ -28,4 +28,9 @@ extension UIImageView {
         guard let url = URL(string: link) else { return }
         downloaded(fromURL: url, contentMode: mode)
     }
+    func rounded(){
+        let height = self.frame.height
+        self.layer.cornerRadius = height / 2 //half of the imageView to make it round
+        self.layer.masksToBounds = true
+    }
 }

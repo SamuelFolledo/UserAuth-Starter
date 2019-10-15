@@ -12,7 +12,9 @@ import FirebaseStorage
 class ProfileVC: UIViewController {
     
 //MARK: Properties
-    
+    var userImagePicker: UIImagePickerController?
+    var imageAdded = false
+    var imageName = ""
     
     
 //MARK: IBOulets
@@ -38,6 +40,11 @@ class ProfileVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
         userImageView.isUserInteractionEnabled = true
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(handleUpdateProfileImage))
+        userImageView.addGestureRecognizer(imageTap)
+        userImageView.rounded()
+        userImagePicker = UIImagePickerController()
+        userImagePicker?.delegate = self
     }
     
 //MARK: IBActions
@@ -79,6 +86,34 @@ class ProfileVC: UIViewController {
 //MARK: Helpers
     @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
         self.view.endEditing(false)
+    }
+    
+    @objc func handleUpdateProfileImage() {
+        let optionMenu = UIAlertController(title: "Update Photo Using?", message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (alert) in
+            self.userImagePicker?.sourceType = .camera
+            self.userImagePicker?.allowsEditing = true
+            self.present(self.userImagePicker!, animated: true, completion: nil)
+        }
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (alert) in
+            self.userImagePicker?.sourceType = .photoLibrary
+            self.userImagePicker?.allowsEditing = true
+            self.present(self.userImagePicker!, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+            optionMenu.dismiss(animated: true, completion: nil)
+        }
+
+        optionMenu.addAction(cameraAction)
+        optionMenu.addAction(photoLibraryAction)
+        optionMenu.addAction(cancelAction)
+        
+        if let popoverController = optionMenu.popoverPresentationController {
+            popoverController.sourceView = self.userImageView
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        self.present(optionMenu, animated: true, completion: nil)
     }
     
     fileprivate func checkInputValues() -> (errorCount: Int, firstName: String, lastName: String, username: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
@@ -124,5 +159,20 @@ class ProfileVC: UIViewController {
         }
         print("THERE ARE \(values.errorCount) ERRORS")
         return values
+    }
+}
+
+//MARK: Extensions
+extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            userImageView.contentMode = .scaleAspectFit
+            userImageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
