@@ -11,13 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
 //MARK: IBOulets
-    
+    @IBOutlet weak var profileButton: UIBarButtonItem!
     
     
     
     
 //MARK: Properties
-    var currentUser: String?
     
     
     
@@ -26,13 +25,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let currentUser = User.currentUser()?.email {
-            print("we have a user = \(currentUser)")
+        if let firstName = User.currentUser()?.firstName {
+            if firstName != "" {
+                profileButton.title = firstName
+            } else { self.performSegue(withIdentifier: "toAuthVC", sender: nil) }
         } else {
             self.performSegue(withIdentifier: "toAuthVC", sender: nil)
         }
@@ -50,7 +52,9 @@ class ViewController: UIViewController {
     
     
 //MARK: IBActions
-    
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        
+    }
     
 }
 

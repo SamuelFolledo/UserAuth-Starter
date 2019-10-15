@@ -15,7 +15,7 @@
             </objects>
             <point key="canvasLocation" x="461" y="668"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,8 +25,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XYO-k3-em0"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="XYO-k3-em0">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="9GR-Xa-WN2">
+                            <connections>
+                                <action selector="profileButtonTapped:" destination="BYZ-38-t0r" id="wBs-tz-mrx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="profileButton" destination="9GR-Xa-WN2" id="QAP-tY-OZp"/>
                         <segue destination="pjS-Qf-zgn" kind="presentation" identifier="toAuthVC" modalPresentationStyle="fullScreen" id="uRf-8E-WGH"/>
                     </connections>
                 </viewController>
