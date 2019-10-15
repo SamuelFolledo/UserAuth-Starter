@@ -31,22 +31,13 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let currentUser = currentUser {
+        if let currentUser = User.currentUser()?.email {
             print("we have a user = \(currentUser)")
         } else {
             self.performSegue(withIdentifier: "toAuthVC", sender: nil)
         }
     }
     
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        switch identifier {
-//        case "toAuthVC":
-//            let vc = segue.destination as! AuthenticationVC
-//
-//        default:
-//            print("Weird identifier \(identifier)")
-//        }
-//    }
     
     
     

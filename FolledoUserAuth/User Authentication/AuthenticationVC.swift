@@ -116,7 +116,7 @@ class AuthenticationVC: UIViewController {
                     Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 } else { //if no error registering user...
                     let uid = User.currentId()
-                    let userValues:[String: Any] = [kEMAIL: inputValues.email, kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kUSERNAME: "", kAVATARURL: ""]
+                    let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
                     self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
                 }
             }
@@ -254,7 +254,7 @@ class AuthenticationVC: UIViewController {
         } else {
             confirmPasswordTextField.hasError(); values.errorCount += 1
         }
-        print("there are \(values.errorCount) errors")
+        print("THERE ARE \(values.errorCount) ERRORS")
         return values
     }
     
