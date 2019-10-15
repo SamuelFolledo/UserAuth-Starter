@@ -28,6 +28,7 @@ class AccountCell: UITableViewCell {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.rounded()
         return imageView
     }()
     

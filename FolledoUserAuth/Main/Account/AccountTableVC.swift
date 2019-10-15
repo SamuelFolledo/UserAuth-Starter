@@ -14,6 +14,7 @@ class AccountTableVC: UITableViewController {
     var cellData: [CellData] = [CellData]()
     let cellID: String = "accountCellID"
     var rows = 0
+    var profileImage: UIImage?
     
 //MARK: IBOutlets
     
@@ -27,6 +28,12 @@ class AccountTableVC: UITableViewController {
         self.tableView.rowHeight = UITableView.automaticDimension //but we still have to automatically make them resize to the contents inside of it
         self.tableView.estimatedRowHeight = 100 //to make the cell have a limit and save memory //now in cellForRowAt layoutSubviews()
         tableView.tableFooterView = UIView() //PB ep77 21mins to remove the additional line separator underneath our products
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let url = URL(string: User.currentUser()!.avatarURL) else { return }
+        getImage(fromURL: url)
     }
     
 //MARK: Methods
@@ -45,17 +52,24 @@ class AccountTableVC: UITableViewController {
     
 //MARK: Helpers
     func createDataCell() {
-        let cell1 = CellData.init(cellImage: UIImage(named: "profile_photo"), cellTitle: "Profile")
-        let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
-        let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
-        let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
-        let cell5 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Logout")
-        insertRowMode3(row: 0, cell: cell1) {
-            self.insertRowMode3(row: 1, cell: cell2) {
-                self.insertRowMode3(row: 2, cell: cell3) {
-                    self.insertRowMode3(row: 3, cell: cell4) {
-                        self.insertRowMode3(row: 4, cell: cell5) {
-                            print("Done inserting rows")
+        let url = URL(string: User.currentUser()!.avatarURL)
+        if let data = try? Data(contentsOf: url!) {
+            if let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    let cell1 = CellData.init(cellImage: image, cellTitle: "Profile")
+                    let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
+                    let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
+                    let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
+                    let cell5 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Logout")
+                    self.insertRowMode3(row: 0, cell: cell1) {
+                        self.insertRowMode3(row: 1, cell: cell2) {
+                            self.insertRowMode3(row: 2, cell: cell3) {
+                                self.insertRowMode3(row: 3, cell: cell4) {
+                                    self.insertRowMode3(row: 4, cell: cell5) {
+                                        print("Done inserting rows")
+                                    }
+                                }
+                            }
                         }
                     }
                 }
