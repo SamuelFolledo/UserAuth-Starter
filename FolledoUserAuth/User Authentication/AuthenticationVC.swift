@@ -59,7 +59,6 @@ class AuthenticationVC: UIViewController {
         confirmPassView.isHidden = true
         facebookButton.isHidden = false
         anonymousButton.isHidden = false
-        
         codeTextField.isEnabled = false
         
     }
@@ -108,46 +107,19 @@ class AuthenticationVC: UIViewController {
     }
     
     private func register() {
-        var errorCounter = 0
-        let methodStart = Date()
-        
-        guard let email = emailTextField.text?.trimmedString() else {
-            emailTextField.layer.borderColor = kREDCGCOLOR; return
-        }
-        if !(email.isValidEmail) { //if email is not valid
-            emailTextField.layer.borderColor = kREDCGCOLOR
-            errorCounter += 1
-            Service.presentAlert(on: self, title: "Invalid Email Format", message: "Email format is not valid. Please try again with correct or another email")
-        } else {
-            emailTextField.layer.borderColor = kCLEARCGCOLOR
-        }
-        
-        guard let password = passwordTextField.text?.trimmedString() else {
-            passwordTextField.layer.borderColor = kREDCGCOLOR; return
-        }
-                
-        if password.count < 6 {
-            errorCounter += 1
-            passwordTextField.layer.borderColor = kREDCGCOLOR
-            Service.presentAlert(on: self, title: "Password Count Error", message: "Password must be at least 6 characters")
-        } else {
-            passwordTextField.layer.borderColor = kCLEARCGCOLOR
-        }
-        print("there are \(errorCounter) errors")
-        
-        switch errorCounter {
+        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
+//        let methodStart = Date()
+        switch inputValues.errorCount {
         case 0: //if 0 errorCounter... Register
-            User.registerUserWith(email: email, password: password) { (error) in
+            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 } else { //if no error registering user...
-                    
-                    print("USER SUCCESSFULLY REGISTER \(User.currentUser())")
+                    print("USER SUCCESSFULLY REGISTER \(String(describing: User.currentUser()))")
                     let uid = User.currentId()
-                    
+                    self.registerUserIntoDatabaseWithUID(uid: uid, values: [kEMAIL: inputValues.email])
                 }
             }
-            
         default:
             Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
         }
@@ -241,7 +213,7 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    func getLengthOfSubmission(initialTime: Date) {
+    func getLengthOfSubmission(initialTime: Date) { //present an alert controller that displays the time spent to finish execution since initial time
         DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
             let methodFinish = Date()
             let executionTime = methodFinish.timeIntervalSince(initialTime) //to get the executionTime
@@ -250,6 +222,54 @@ class AuthenticationVC: UIViewController {
             }
             Service.alertWithActions(on: self, actions: [okAction], title: "Success!", message: "Successfully logged in \(executionTime) milliseconds")
         })
+    }
+    
+    fileprivate func checkInputValues() -> (errorCount: Int, email: String, password: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
+        var values: (errorCount: Int, email: String, password: String) = (0, "", "")
+        if let email = emailTextField.text?.trimmedString() { //check if email exists
+            if !(email.isValidEmail) {
+                emailTextField.hasError()
+                values.errorCount += 1
+                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
+            } else {
+                values.email = email
+                emailTextField.hasNoError()
+            }
+        } else {
+            emailTextField.hasError(); values.errorCount += 1
+            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
+        }
+        if let password = passwordTextField.text?.trimmedString(){
+            if password.count < 6 {
+                passwordTextField.hasError(); values.errorCount += 1
+                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
+            } else {
+                values.password = password
+                passwordTextField.hasNoError()
+            }
+        } else {
+            passwordTextField.hasError(); values.errorCount += 1
+            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
+        }
+        if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
+            if confirmPass.count < 6 {
+                confirmPasswordTextField.hasError(); values.errorCount += 1
+            } else {
+                if confirmPass == passwordTextField.text?.trimmedString() {
+                    values.password = confirmPass
+                    confirmPasswordTextField.hasNoError()
+                } else {
+                    confirmPasswordTextField.hasError()
+                    passwordTextField.hasError()
+                    values.errorCount += 1
+                    Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
+                }
+            }
+        } else {
+            confirmPasswordTextField.hasError(); values.errorCount += 1
+        }
+        print("there are \(values.errorCount) errors")
+        return values
     }
     
 }
