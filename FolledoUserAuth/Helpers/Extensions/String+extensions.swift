@@ -17,7 +17,13 @@ extension String {
     }
     
     var isValidName: Bool {
-        let regex = "[A-Za-z]*[ ]?[A-Za-z]*[.]?[ ]?[A-Za-z]*" //regex for full name //will take the following name formats, Samuel || Samuel P. || Samuel P. Folledo || Samuel Folledo
+        let regex = "[A-Za-z]*[ ]?[A-Za-z]*[.]?[ ]?[A-Za-z]{1,30}" //regex for full name //will take the following name formats, Samuel || Samuel P. || Samuel P. Folledo || Samuel Folledo
+        let test = NSPredicate(format: "SELF MATCHES %@", regex)
+        return test.evaluate(with: self) //evaluate
+    }
+    
+    var isValidUsername: Bool {
+        let regex = "[A-Z0-9a-zâéè._+-]{1,15}" //regex for user name //accept any US characters, other characters, and symbols like (. _ + -)
         let test = NSPredicate(format: "SELF MATCHES %@", regex)
         return test.evaluate(with: self) //evaluate
     }

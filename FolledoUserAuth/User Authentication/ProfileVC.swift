@@ -44,10 +44,23 @@ class ProfileVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func submitButtonTapped(_ sender: Any) {
-        
-        
-//        User.updateCurrentUser(values: <#T##[String : Any]#>, withBlock: <#T##(String?) -> Void#>)
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let inputValues: (errorCount: Int, firstName: String, lastName: String, username: String) = checkInputValues()
+        switch inputValues.errorCount {
+        case 0:
+
+//            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
+//                if let error = error {
+//                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
+//                    return
+//                } else { //if no errors
+//                    //        User.updateCurrentUser(values: <#T##[String : Any]#>, withBlock: <#T##(String?) -> Void#>)
+//                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                }
+//            }
+        default:
+            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
+            return
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: Any) { //delete user if they went back
@@ -65,6 +78,49 @@ class ProfileVC: UIViewController {
         self.view.endEditing(false)
     }
     
-    
+    fileprivate func checkInputValues() -> (errorCount: Int, firstName: String, lastName: String, username: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
+        var values: (errorCount: Int, firstName: String, lastName: String, username: String) = (0, "", "", "")
+        if let firstName = firstTextField.text?.trimmedString() { //check if first name exists
+            if !(firstName.isValidName) { //if name is not valid
+                firstTextField.hasError()
+                values.errorCount += 1
+                Service.presentAlert(on: self, title: "Invalid First Name", message: "First name format is not valid, please use characters and whitespace only")
+            } else {
+                values.firstName = firstName
+                firstTextField.hasNoError()
+            }
+        } else {
+            firstTextField.hasError(); values.errorCount += 1
+            Service.presentAlert(on: self, title: "Invalid Last Name", message: "Field is empty")
+        }
+        if let lastName = lastTextField.text?.trimmedString() { //if last name exists
+            if !(lastName.isValidName) { //if name is not valid
+                lastTextField.hasError()
+                values.errorCount += 1
+                Service.presentAlert(on: self, title: "Invalid Last Name", message: "Last name format is not valid, please use characters and whitespace only")
+            } else {
+                values.lastName = lastName
+                lastTextField.hasNoError()
+            }
+        } else {
+            lastTextField.hasError(); values.errorCount += 1
+            Service.presentAlert(on: self, title: "Invalid Last Name", message: "Field is empty")
+        }
+        if let username = usernameTextField.text?.trimmedString() { //if username exists
+            if !(username.isValidUsername) { //if not a valid username
+                usernameTextField.hasError()
+                values.errorCount += 1
+                Service.presentAlert(on: self, title: "Invalid Username", message: "Username format is not valid. Please use characters, whitespace, and the following symbols . _ + - only")
+            } else {
+                values.username = username
+                usernameTextField.hasNoError()
+            }
+        } else {
+            usernameTextField.hasError(); values.errorCount += 1
+            Service.presentAlert(on: self, title: "Invalid Username", message: "Field is empty")
+        }
+        print("THERE ARE \(values.errorCount) ERRORS")
+        return values
+    }
 
 }
