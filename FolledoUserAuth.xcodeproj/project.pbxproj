@@ -16,6 +16,8 @@
 		3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */; };
 		3341F6FB23550311008DD935 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F6FA23550311008DD935 /* User.swift */; };
 		3341F6FD23554434008DD935 /* UITextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F6FC23554434008DD935 /* UITextField+extensions.swift */; };
+		3341F701235575D3008DD935 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F700235575D3008DD935 /* AccountVC.swift */; };
+		3341F704235576F5008DD935 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F703235576F5008DD935 /* AccountCell.swift */; };
 		33444BBD2353131E0062BB97 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBB2353131E0062BB97 /* login.png */; };
 		33444BBE2353131E0062BB97 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBC2353131E0062BB97 /* register.png */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
@@ -62,6 +64,8 @@
 		3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3341F6FA23550311008DD935 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3341F6FC23554434008DD935 /* UITextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extensions.swift"; sourceTree = "<group>"; };
+		3341F700235575D3008DD935 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		3341F703235576F5008DD935 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		33444BBB2353131E0062BB97 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		33444BBC2353131E0062BB97 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -127,9 +131,35 @@
 				33364DA423526A1B00259081 /* Authentication.storyboard */,
 				33364DA62352833100259081 /* AuthenticationVC.swift */,
 				333B841C23545B060061FB2C /* ProfileVC.swift */,
-				3341F6FA23550311008DD935 /* User.swift */,
 			);
 			path = "User Authentication";
+			sourceTree = "<group>";
+		};
+		3341F6FE2355742A008DD935 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3341F6FA23550311008DD935 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3341F6FF23557447008DD935 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				335289E0235255470084E405 /* Main.storyboard */,
+				335289DE235255470084E405 /* ViewController.swift */,
+				3341F702235576C8008DD935 /* Account */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3341F702235576C8008DD935 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				3341F700235575D3008DD935 /* AccountVC.swift */,
+				3341F703235576F5008DD935 /* AccountCell.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		33444BBA235312350062BB97 /* assets */ = {
@@ -191,8 +221,8 @@
 			children = (
 				335289DA235255470084E405 /* AppDelegate.swift */,
 				335289DC235255470084E405 /* SceneDelegate.swift */,
-				335289DE235255470084E405 /* ViewController.swift */,
-				335289E0235255470084E405 /* Main.storyboard */,
+				3341F6FF23557447008DD935 /* Main */,
+				3341F6FE2355742A008DD935 /* Model */,
 				33364DA82352836900259081 /* User Authentication */,
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
@@ -497,8 +527,10 @@
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
 				3349B9CB23525DC70045CFF8 /* Service.swift in Sources */,
 				33364DA72352833100259081 /* AuthenticationVC.swift in Sources */,
+				3341F704235576F5008DD935 /* AccountCell.swift in Sources */,
 				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
 				3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */,
+				3341F701235575D3008DD935 /* AccountVC.swift in Sources */,
 				3349B9D4235261380045CFF8 /* UIImageView+extensions.swift in Sources */,
 				3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */,
 				3349B9D6235261500045CFF8 /* UILabel+extensions.swift in Sources */,

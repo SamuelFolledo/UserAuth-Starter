@@ -29,6 +29,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="9GR-Xa-WN2">
                             <connections>
                                 <action selector="profileButtonTapped:" destination="BYZ-38-t0r" id="wBs-tz-mrx"/>
+                                <segue destination="AuR-Xk-mOx" kind="show" id="lkg-eZ-eXb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -40,6 +41,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--AccountVC-->
+        <scene sceneID="0rY-15-oeB">
+            <objects>
+                <viewController id="AuR-Xk-mOx" customClass="AccountVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="55q-ht-z1u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lFB-vY-Y7b">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tYX-c5-8C3" customClass="AccountCell" customModule="FolledoUserAuth" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tYX-c5-8C3" id="ElK-9A-hwY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lFB-vY-Y7b" firstAttribute="width" secondItem="3th-kn-udd" secondAttribute="width" id="Exo-jE-VWg"/>
+                            <constraint firstItem="lFB-vY-Y7b" firstAttribute="centerX" secondItem="3th-kn-udd" secondAttribute="centerX" id="LAG-bN-xkP"/>
+                            <constraint firstItem="lFB-vY-Y7b" firstAttribute="height" secondItem="3th-kn-udd" secondAttribute="height" id="NdZ-Pn-qNm"/>
+                            <constraint firstItem="lFB-vY-Y7b" firstAttribute="centerY" secondItem="3th-kn-udd" secondAttribute="centerY" id="TTl-CW-umW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3th-kn-udd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0r2-w4-yGU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mJu-Up-Tjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2123" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="owv-Lw-5iE">
