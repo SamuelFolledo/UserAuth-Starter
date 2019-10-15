@@ -56,15 +56,8 @@ class AuthenticationVC: UIViewController {
         switch emailSegmentedControl.selectedSegmentIndex {
         case 0: //if user is logging in
             login()
-            guard let currentUser = User.currentUser() else { print("No user"); return }
-            if currentUser.fullName == "" || currentUser.avatarURL == "" {
-                self.performSegue(withIdentifier: "toNameVC", sender: nil)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
         case 1: //if user is registering
             register()
-            self.performSegue(withIdentifier: "toNameVC", sender: nil)
         default:
             break
         }
@@ -72,7 +65,6 @@ class AuthenticationVC: UIViewController {
     
     private func login() {
         let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-        let initialTime = Date()
         switch inputValues.errorCount {
         case 0:
             User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
@@ -80,7 +72,12 @@ class AuthenticationVC: UIViewController {
                     Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
                     return
                 } else {
-                    self.getLengthOfSubmission(initialTime: initialTime)
+                    guard let currentUser = User.currentUser() else { print("No user"); return }
+                    if currentUser.fullName == "" || currentUser.avatarURL == "" {
+                        self.performSegue(withIdentifier: "toNameVC", sender: nil)
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         default:
@@ -101,6 +98,7 @@ class AuthenticationVC: UIViewController {
                     let uid = User.currentId()
                     let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
                     self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
+                    self.performSegue(withIdentifier: "toNameVC", sender: nil)
                 }
             }
         default:

@@ -15,7 +15,6 @@ class AccountTableVC: UITableViewController {
     let cellID: String = "accountCellID"
     var rows = 0
     
-    
 //MARK: IBOutlets
     
     
@@ -27,9 +26,7 @@ class AccountTableVC: UITableViewController {
         self.tableView.register(AccountCell.self, forCellReuseIdentifier: cellID)
         self.tableView.rowHeight = UITableView.automaticDimension //but we still have to automatically make them resize to the contents inside of it
         self.tableView.estimatedRowHeight = 100 //to make the cell have a limit and save memory //now in cellForRowAt layoutSubviews()
-        
     }
-    
     
 //MARK: Methods
     func insertRowMode3(row: Int, cell: CellData, completion: @escaping ()-> Void) { //cell animation
@@ -45,35 +42,28 @@ class AccountTableVC: UITableViewController {
     
     
     
-    
 //MARK: Helpers
-    
-    
     func createDataCell() {
         let cell1 = CellData.init(cellImage: UIImage(named: "profile_photo"), cellTitle: "Profile")
         let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
         let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
         let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
         let cell5 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Logout")
-      
         insertRowMode3(row: 0, cell: cell1) {
-            self.insertRowMode3(row: 1, cell: cell2, completion: {
-                self.insertRowMode3(row: 2, cell: cell3, completion: {
+            self.insertRowMode3(row: 1, cell: cell2) {
+                self.insertRowMode3(row: 2, cell: cell3) {
                     self.insertRowMode3(row: 3, cell: cell4) {
                         self.insertRowMode3(row: 4, cell: cell5) {
                             print("Done inserting rows")
                         }
                     }
-                })
-            })
+                }
+            }
         }
     }
     
-
-    
 //didSelectRow
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         switch indexPath.row {
         case 0:
             print("Profile coming soon")
@@ -104,21 +94,13 @@ class AccountTableVC: UITableViewController {
         return cellData.count
     }
     
-    
-    
-    
- 
-    
 //handleLogout
     @objc func handleLogout() {
         User.logOutCurrentUser { (success) in
             if !success {
-                Service.presentAlert(on: self, title: "Error Logging Out", message: "Error logging out. Please try again")
-            } else {
-                print("Logout successfuly")
-                self.dismiss(animated: true, completion: nil)
+                Service.presentAlert(on: self, title: "Error Logging Out", message: "Error logging out. Please try again"); return
             }
+            self.navigationController?.popViewController(animated: true)
         }
     }
-
 }
