@@ -105,5 +105,7 @@ let kLOGINCONTROLLER: String = "loginController"
 let kANIMATIONCONTROLLER: String = "animationController"
 let kMENUCONTROLLER: String = "menuController"
 
-let kTOCUTSOMLOGINVC: String = "toCustomLoginVC"
+//Storyboard Identifiers
+let kTOAUTHENTICATIONVC: String = "toAuthenticationVC"
 let kTONAMEVC: String = "toNameVC"
+let kTOAUTHMENUVC: String = "toAuthMenuVC"

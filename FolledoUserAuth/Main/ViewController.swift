@@ -34,9 +34,9 @@ class ViewController: UIViewController {
         if let firstName = User.currentUser()?.firstName {
             if firstName != "" {
                 profileButton.title = firstName
-            } else { self.performSegue(withIdentifier: "toAuthVC", sender: nil) }
+            } else { self.performSegue(withIdentifier: kTOAUTHMENUVC, sender: nil) }
         } else {
-            self.performSegue(withIdentifier: "toAuthVC", sender: nil)
+            self.performSegue(withIdentifier: kTOAUTHMENUVC, sender: nil)
         }
     }
     

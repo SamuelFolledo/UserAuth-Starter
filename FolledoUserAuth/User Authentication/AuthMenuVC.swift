@@ -53,14 +53,15 @@ class AuthMenuVC: UIViewController {
     }
     
     private func submitUserEmail() { //submitButton method that handles register and login
-        switch emailSegmentedControl.selectedSegmentIndex {
-        case 0: //if user is logging in
-            login()
-        case 1: //if user is registering
-            register()
-        default:
-            break
-        }
+        performSegue(withIdentifier: kTOAUTHENTICATIONVC, sender: nil)
+//        switch emailSegmentedControl.selectedSegmentIndex {
+//        case 0: //if user is logging in
+//            login()
+//        case 1: //if user is registering
+//            register()
+//        default:
+//            break
+//        }
     }
     
 //    private func checkUser
@@ -76,7 +77,7 @@ class AuthMenuVC: UIViewController {
                 } else {
                     guard let currentUser = User.currentUser() else { print("No user"); return }
                     if currentUser.fullName == "" || currentUser.avatarURL == "" {
-                        self.performSegue(withIdentifier: "toNameVC", sender: nil)
+                        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
                     } else {
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -100,7 +101,7 @@ class AuthMenuVC: UIViewController {
                     let uid = User.currentId()
                     let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
                     self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
-                    self.performSegue(withIdentifier: "toNameVC", sender: nil)
+                    self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
                 }
             }
         default:

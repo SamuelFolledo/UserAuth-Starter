@@ -20,6 +20,7 @@
 		3341F704235576F5008DD935 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F703235576F5008DD935 /* AccountCell.swift */; };
 		33444BBD2353131E0062BB97 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBB2353131E0062BB97 /* login.png */; };
 		33444BBE2353131E0062BB97 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBC2353131E0062BB97 /* register.png */; };
+		3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348A66E237E7652003A9576 /* UnderlinedTextField.swift */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
 		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
@@ -68,6 +69,7 @@
 		3341F703235576F5008DD935 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		33444BBB2353131E0062BB97 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		33444BBC2353131E0062BB97 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		3348A66E237E7652003A9576 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
@@ -171,9 +173,18 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		3348A66D237E760F003A9576 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				3348A66E237E7652003A9576 /* UnderlinedTextField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		3349B9CD23525F030045CFF8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3348A66D237E760F003A9576 /* CustomViews */,
 				3349B9CE235260B70045CFF8 /* Extensions */,
 				3349B9C823525DBF0045CFF8 /* Constants.swift */,
 				3349B9CA23525DC70045CFF8 /* Service.swift */,
@@ -522,6 +533,7 @@
 				3341F6FD23554434008DD935 /* UITextField+extensions.swift in Sources */,
 				333B841D23545B060061FB2C /* ProfileVC.swift in Sources */,
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
+				3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */,
 				33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */,
 				3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */,
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
