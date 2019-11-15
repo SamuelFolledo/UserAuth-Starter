@@ -21,6 +21,7 @@
 		33444BBD2353131E0062BB97 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBB2353131E0062BB97 /* login.png */; };
 		33444BBE2353131E0062BB97 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 33444BBC2353131E0062BB97 /* register.png */; };
 		3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348A66E237E7652003A9576 /* UnderlinedTextField.swift */; };
+		3348A671237E865B003A9576 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348A670237E865B003A9576 /* AuthenticationVC.swift */; };
 		3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9C823525DBF0045CFF8 /* Constants.swift */; };
 		3349B9CB23525DC70045CFF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CA23525DC70045CFF8 /* Service.swift */; };
 		3349B9D0235260D10045CFF8 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */; };
@@ -70,6 +71,7 @@
 		33444BBB2353131E0062BB97 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		33444BBC2353131E0062BB97 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		3348A66E237E7652003A9576 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		3348A670237E865B003A9576 /* AuthenticationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
 		3349B9C823525DBF0045CFF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3349B9CA23525DC70045CFF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3349B9CF235260D10045CFF8 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				33364DA423526A1B00259081 /* Authentication.storyboard */,
 				33364DA62352833100259081 /* AuthMenuVC.swift */,
+				3348A670237E865B003A9576 /* AuthenticationVC.swift */,
 				333B841C23545B060061FB2C /* ProfileVC.swift */,
 			);
 			path = "User Authentication";
@@ -531,6 +534,7 @@
 			files = (
 				3341F6FB23550311008DD935 /* User.swift in Sources */,
 				3341F6FD23554434008DD935 /* UITextField+extensions.swift in Sources */,
+				3348A671237E865B003A9576 /* AuthenticationVC.swift in Sources */,
 				333B841D23545B060061FB2C /* ProfileVC.swift in Sources */,
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
 				3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */,
