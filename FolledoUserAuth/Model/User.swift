@@ -57,14 +57,19 @@ class User: NSObject {
         return nil //if we dont have user in our UserDefaults, then return nil
     }
     
-    class func registerUserWith(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
+    class func registerUserWith(email: String, password: String, completion: @escaping (_ error: Error?, _ user: User?) -> Void) { //do u think I should return the user here on completion?
         Auth.auth().createUser(withEmail: email, password: password) { (firUser, error) in
             if let error = error {
-                completion(error)
-                return
+                completion(error,nil)
             }
-            completion(error)
+            completion(nil,nil)
+//            completion(nil, firUser?.user)
+//            firUser?.user.
+            
+//            let userDictionary = ((firUser. as! NSDictionary).allValues as NSArray).firstObject! as! [String: Any]
+//            let user = User(_dictionary: userDictionary)
         }
+//        Auth.auth().creat
     }
     
     class func loginUserWith(email: String, password: String, withBlock: @escaping (_ error: Error?) -> Void) {
@@ -73,6 +78,10 @@ class User: NSObject {
                 withBlock(error)
                 return
             }
+            guard let currentUser = firUser else { return }
+            print("user is = \(currentUser.user)")
+            print("user data is = \(currentUser.user.providerData)")
+            print("firuser is = \(currentUser)")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { //it is important to have some DELAY
                 let uid: String = firUser!.user.uid
                 fetchUserWith(userId: uid, completion: { (user) in

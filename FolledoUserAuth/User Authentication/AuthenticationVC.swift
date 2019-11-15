@@ -63,6 +63,8 @@ class AuthenticationVC: UIViewController {
         }
     }
     
+//    private func checkUser
+    
     private func login() {
         let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
         switch inputValues.errorCount {
@@ -91,7 +93,7 @@ class AuthenticationVC: UIViewController {
 //        let methodStart = Date()
         switch inputValues.errorCount {
         case 0: //if 0 errorCounter... Register
-            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error) in
+            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error, user) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 } else { //if no error registering user...
