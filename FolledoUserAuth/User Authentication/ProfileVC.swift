@@ -16,7 +16,6 @@ class ProfileVC: UIViewController {
     var imageAdded = false
     var imageName = ""
     
-    
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -28,13 +27,9 @@ class ProfileVC: UIViewController {
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUp()
     }
     
-    
-        
-        
 //MARK: Methods
     func setUp() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
@@ -80,7 +75,6 @@ class ProfileVC: UIViewController {
             }
         })
         navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -104,11 +98,9 @@ class ProfileVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
             optionMenu.dismiss(animated: true, completion: nil)
         }
-
         optionMenu.addAction(cameraAction)
         optionMenu.addAction(photoLibraryAction)
         optionMenu.addAction(cancelAction)
-        
         if let popoverController = optionMenu.popoverPresentationController {
             popoverController.sourceView = self.userImageView
             popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
