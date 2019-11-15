@@ -14,11 +14,9 @@ class UnderlinedTextField: UITextField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         borderStyle = .none
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         bottomLine.backgroundColor = defaultUnderlineColor
-
         self.addSubview(bottomLine)
         bottomLine.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 1).isActive = true
         bottomLine.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
