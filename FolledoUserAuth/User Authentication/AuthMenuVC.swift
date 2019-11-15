@@ -53,7 +53,14 @@ class AuthMenuVC: UIViewController {
     }
     
     private func submitUserEmail() { //submitButton method that handles register and login
-        performSegue(withIdentifier: kTOAUTHENTICATIONVC, sender: nil)
+        let nav = self.navigationController //grab an instance of the current navigationController
+        DispatchQueue.main.async { //make sure all UI updates are on the main thread.
+            nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
+            let vc:UIViewController = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kAUTHENTICATIONVC) as UIViewController //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+            nav?.pushViewController(vc, animated: false)
+        }
+//        performSegue(withIdentifier: kTOAUTHENTICATIONVC, sender: nil)
+        
 //        switch emailSegmentedControl.selectedSegmentIndex {
 //        case 0: //if user is logging in
 //            login()

@@ -79,7 +79,8 @@ class ProfileVC: UIViewController {
                 Service.presentAlert(on: self, title: "Error Deleting User", message: error.localizedDescription)
             }
         })
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     
