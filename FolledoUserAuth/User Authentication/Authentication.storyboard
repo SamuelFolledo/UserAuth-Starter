@@ -577,7 +577,7 @@
         <!--AuthenticationVC-->
         <scene sceneID="oVu-Rg-0J8">
             <objects>
-                <viewController id="Qmz-IY-LMC" customClass="AuthenticationVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="partialCurl" id="Qmz-IY-LMC" customClass="AuthenticationVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gH4-PO-b9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -697,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8A-Ec-5X4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2789.8550724637685" y="690.48913043478262"/>
+            <point key="canvasLocation" x="2742" y="298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jOt-n8-Exc">
@@ -715,12 +715,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiR-HF-Duf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="18"/>
+            <point key="canvasLocation" x="3561" y="-130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JYr-g6-2If">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hEz-hc-upZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="hEz-hc-upZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0EC-Xf-cy3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -733,7 +733,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aj7-aN-Smw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882.608695652174" y="689.67391304347836"/>
+            <point key="canvasLocation" x="1951" y="73"/>
         </scene>
     </scenes>
     <resources>
