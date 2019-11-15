@@ -1,5 +1,5 @@
 //
-//  AuthenticationVC.swift
+//  AuthMenuVC.swift
 //  FolledoUserAuth
 //
 //  Created by Macbook Pro 15 on 10/12/19.
@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 
-class AuthenticationVC: UIViewController {
+class AuthMenuVC: UIViewController {
 
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!

@@ -10,7 +10,7 @@
 		2C27DFECF627EA141142B2D9 /* Pods_FolledoUserAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE961C265B33BA854AAC60A5 /* Pods_FolledoUserAuth.framework */; };
 		2EBC6CD801D43829B2213567 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CECED3FE3D6ADC72AB6353 /* Pods_FolledoUserAuth_FolledoUserAuthUITests.framework */; };
 		33364DA523526A1B00259081 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33364DA423526A1B00259081 /* Authentication.storyboard */; };
-		33364DA72352833100259081 /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA62352833100259081 /* AuthenticationVC.swift */; };
+		33364DA72352833100259081 /* AuthMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DA62352833100259081 /* AuthMenuVC.swift */; };
 		33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */; };
 		333B841D23545B060061FB2C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B841C23545B060061FB2C /* ProfileVC.swift */; };
 		3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */; };
@@ -58,7 +58,7 @@
 		1394EF31BD137FD9EBCB7B50 /* Pods-FolledoUserAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.debug.xcconfig"; sourceTree = "<group>"; };
 		198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FolledoUserAuthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33364DA423526A1B00259081 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
-		33364DA62352833100259081 /* AuthenticationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVC.swift; sourceTree = "<group>"; };
+		33364DA62352833100259081 /* AuthMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMenuVC.swift; sourceTree = "<group>"; };
 		33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView_Layouts+extensions.swift"; sourceTree = "<group>"; };
 		333B841C23545B060061FB2C /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				33364DA423526A1B00259081 /* Authentication.storyboard */,
-				33364DA62352833100259081 /* AuthenticationVC.swift */,
+				33364DA62352833100259081 /* AuthMenuVC.swift */,
 				333B841C23545B060061FB2C /* ProfileVC.swift */,
 			);
 			path = "User Authentication";
@@ -526,7 +526,7 @@
 				3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */,
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
 				3349B9CB23525DC70045CFF8 /* Service.swift in Sources */,
-				33364DA72352833100259081 /* AuthenticationVC.swift in Sources */,
+				33364DA72352833100259081 /* AuthMenuVC.swift in Sources */,
 				3341F704235576F5008DD935 /* AccountCell.swift in Sources */,
 				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
 				3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */,

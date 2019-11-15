@@ -104,3 +104,6 @@ let kCHATCONTROLLER: String = "chatController"
 let kLOGINCONTROLLER: String = "loginController"
 let kANIMATIONCONTROLLER: String = "animationController"
 let kMENUCONTROLLER: String = "menuController"
+
+let kTOCUTSOMLOGINVC: String = "toCustomLoginVC"
+let kTONAMEVC: String = "toNameVC"
