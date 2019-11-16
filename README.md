@@ -6,6 +6,16 @@
 - **Prototyping** apps to immediately see a live app with P2P features and connectivity
 - **Learning** Firebase Authentication: *email login/register, Facebook login/register, phone login/register, anonymous signin*
 
+## How to Setup?
+1.  __Fork and Change Directory in Terminal__
+2. __Install the pods__ in the terminal by running:
+    `
+    $ pod install
+    `
+3. Create Project in Firebase
+4. Enable Authentication and Real Time Database
+5. Test
+
 ## Login View
 <img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="310" height="550`"> 
 
