@@ -45,14 +45,11 @@ class AuthenticationVC: UIViewController {
     private func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
-        topErrorLabel.isHidden = true
-        topErrorLabel.textColor = .systemRed
-        bottomErrorLabel.isHidden = true
-        bottomErrorLabel.textColor = .systemRed
-        topLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        bottomLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        continueButton.layer.cornerRadius = continueButton.frame.height / 10
-        continueButton.clipsToBounds = true
+        topErrorLabel.isAuthErrorLabel()
+        bottomErrorLabel.isAuthErrorLabel()
+        topLabel.isAuthLabel()
+        bottomLabel.isAuthLabel()
+        continueButton.isAuthButton()
     }
     
     

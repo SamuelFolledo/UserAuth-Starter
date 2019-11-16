@@ -19,9 +19,9 @@ class FinishRegistrationVC: UIViewController {
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var lastTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var firstTextField: UnderlinedTextField!
+    @IBOutlet weak var lastTextField: UnderlinedTextField!
+    @IBOutlet weak var usernameTextField: UnderlinedTextField!
     @IBOutlet weak var submitButton: UIButton!
     
 //MARK: LifeCycle
@@ -32,6 +32,7 @@ class FinishRegistrationVC: UIViewController {
     
 //MARK: Methods
     func setUp() {
+        navigationItem.title = "Finish Registration"
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
         userImageView.isUserInteractionEnabled = true
@@ -40,6 +41,7 @@ class FinishRegistrationVC: UIViewController {
         userImageView.rounded()
         userImagePicker = UIImagePickerController()
         userImagePicker?.delegate = self
+        submitButton.isAuthButton()
     }
     
 //MARK: IBActions
