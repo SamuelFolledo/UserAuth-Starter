@@ -10,13 +10,13 @@ import UIKit
 
 extension UITextField {
 //    @discardableResult
-    func hasError() {
-        self.layer.borderWidth = 1
-        self.layer.borderColor = kREDCGCOLOR
-    }
-//    @discardableResult
-    func hasNoError() {
-        self.layer.borderWidth = 1
-        self.layer.borderColor = kCLEARCGCOLOR
-    }
+//    func hasError() {
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = kREDCGCOLOR
+//    }
+////    @discardableResult
+//    func hasNoError() {
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = kCLEARCGCOLOR
+//    }
 }

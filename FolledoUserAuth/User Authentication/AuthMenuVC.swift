@@ -51,81 +51,65 @@ class AuthMenuVC: UIViewController {
         confirmPassView.isHidden = true
         codeTextField.isEnabled = false
     }
-    
-    private func submitUserEmail() { //submitButton method that handles register and login
-        Service.toAuthenticationVC(fromVC: self, isEmailAuth: true)
-//        performSegue(withIdentifier: kTOAUTHENTICATIONVC, sender: nil)
         
-//        switch emailSegmentedControl.selectedSegmentIndex {
-//        case 0: //if user is logging in
-//            login()
-//        case 1: //if user is registering
-//            register()
+//    private func login() {
+//        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
+//        switch inputValues.errorCount {
+//        case 0:
+//            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
+//                if let error = error {
+//                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
+//                    return
+//                } else {
+//                    guard let currentUser = User.currentUser() else { print("No user"); return }
+//                    if currentUser.fullName == "" || currentUser.avatarURL == "" {
+//                        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
+//                    } else {
+//                        self.dismiss(animated: true, completion: nil)
+//                    }
+//                }
+//            }
 //        default:
-//            break
+//            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
+//            return
 //        }
-    }
+//    }
     
-//    private func checkUser
+//    private func register() {
+//        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
+////        let methodStart = Date()
+//        switch inputValues.errorCount {
+//        case 0: //if 0 errorCounter... Register
+//            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error, user) in
+//                if let error = error {
+//                    Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
+//                } else { //if no error registering user...
+//                    let uid = User.currentId()
+//                    let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
+//                    self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
+//                    self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
+//                }
+//            }
+//        default:
+//            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
+//        }
+//    }
     
-    private func login() {
-        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-        switch inputValues.errorCount {
-        case 0:
-            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
-                if let error = error {
-                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
-                    return
-                } else {
-                    guard let currentUser = User.currentUser() else { print("No user"); return }
-                    if currentUser.fullName == "" || currentUser.avatarURL == "" {
-                        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-                    } else {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
-        default:
-            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-            return
-        }
-    }
-    
-    private func register() {
-        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-//        let methodStart = Date()
-        switch inputValues.errorCount {
-        case 0: //if 0 errorCounter... Register
-            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error, user) in
-                if let error = error {
-                    Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-                } else { //if no error registering user...
-                    let uid = User.currentId()
-                    let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
-                    self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
-                    self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-                }
-            }
-        default:
-            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-        }
-    }
-    
-    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
-        let usersReference = firDatabase.child(kUSERS).child(uid)
-        usersReference.setValue(values, withCompletionBlock: { (error, ref) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-                return
-            } else { //if no error, save user
-                DispatchQueue.main.async {
-                    let user = User(_dictionary: values)
-                    saveUserLocally(user: user)
-                    saveUserInBackground(user: user)
-                }
-            }
-        })
-    }
+//    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
+//        let usersReference = firDatabase.child(kUSERS).child(uid)
+//        usersReference.setValue(values, withCompletionBlock: { (error, ref) in
+//            if let error = error {
+//                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
+//                return
+//            } else { //if no error, save user
+//                DispatchQueue.main.async {
+//                    let user = User(_dictionary: values)
+//                    saveUserLocally(user: user)
+//                    saveUserInBackground(user: user)
+//                }
+//            }
+//        })
+//    }
     
     
 //MARK: IBActions
@@ -134,7 +118,6 @@ class AuthMenuVC: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-//        submitUserEmail()
         Service.toAuthenticationVC(fromVC: self, isEmailAuth: true)
     }
     
@@ -181,53 +164,53 @@ class AuthMenuVC: UIViewController {
         })
     }
     
-    fileprivate func checkInputValues() -> (errorCount: Int, email: String, password: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
-        var values: (errorCount: Int, email: String, password: String) = (0, "", "")
-        if let email = emailTextField.text?.trimmedString() { //check if email exists
-            if !(email.isValidEmail) {
-                emailTextField.hasError()
-                values.errorCount += 1
-                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
-            } else {
-                values.email = email
-                emailTextField.hasNoError()
-            }
-        } else {
-            emailTextField.hasError(); values.errorCount += 1
-            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
-        }
-        if let password = passwordTextField.text?.trimmedString(){
-            if password.count < 6 {
-                passwordTextField.hasError(); values.errorCount += 1
-                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
-            } else {
-                values.password = password
-                passwordTextField.hasNoError()
-            }
-        } else {
-            passwordTextField.hasError(); values.errorCount += 1
-            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
-        }
-        if emailSegmentedControl.selectedSegmentIndex == 1 { //if we are registering, also check confirm password field
-            if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
-                if confirmPass.count < 6 {
-                    confirmPasswordTextField.hasError(); values.errorCount += 1
-                } else {
-                    if confirmPass == passwordTextField.text?.trimmedString() {
-                        values.password = confirmPass
-                        confirmPasswordTextField.hasNoError()
-                    } else {
-                        confirmPasswordTextField.hasError()
-                        passwordTextField.hasError()
-                        values.errorCount += 1
-                        Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
-                    }
-                }
-            } else {
-                confirmPasswordTextField.hasError(); values.errorCount += 1
-            }
-        }
-        print("THERE ARE \(values.errorCount) ERRORS")
-        return values
-    }
+//    fileprivate func checkInputValues() -> (errorCount: Int, email: String, password: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
+//        var values: (errorCount: Int, email: String, password: String) = (0, "", "")
+//        if let email = emailTextField.text?.trimmedString() { //check if email exists
+//            if !(email.isValidEmail) {
+//                emailTextField.hasError()
+//                values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
+//            } else {
+//                values.email = email
+//                emailTextField.hasNoError()
+//            }
+//        } else {
+//            emailTextField.hasError(); values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
+//        }
+//        if let password = passwordTextField.text?.trimmedString(){
+//            if password.count < 6 {
+//                passwordTextField.hasError(); values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
+//            } else {
+//                values.password = password
+//                passwordTextField.hasNoError()
+//            }
+//        } else {
+//            passwordTextField.hasError(); values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
+//        }
+//        if emailSegmentedControl.selectedSegmentIndex == 1 { //if we are registering, also check confirm password field
+//            if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
+//                if confirmPass.count < 6 {
+//                    confirmPasswordTextField.hasError(); values.errorCount += 1
+//                } else {
+//                    if confirmPass == passwordTextField.text?.trimmedString() {
+//                        values.password = confirmPass
+//                        confirmPasswordTextField.hasNoError()
+//                    } else {
+//                        confirmPasswordTextField.hasError()
+//                        passwordTextField.hasError()
+//                        values.errorCount += 1
+//                        Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
+//                    }
+//                }
+//            } else {
+//                confirmPasswordTextField.hasError(); values.errorCount += 1
+//            }
+//        }
+//        print("THERE ARE \(values.errorCount) ERRORS")
+//        return values
+//    }
 }

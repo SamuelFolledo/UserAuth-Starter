@@ -15,6 +15,7 @@ class FinishRegistrationVC: UIViewController {
     var userImagePicker: UIImagePickerController?
     var imageAdded = false
     var imageName = ""
+    var user: User!
     
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!
