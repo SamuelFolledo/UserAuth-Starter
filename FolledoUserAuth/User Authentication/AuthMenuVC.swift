@@ -53,12 +53,7 @@ class AuthMenuVC: UIViewController {
     }
     
     private func submitUserEmail() { //submitButton method that handles register and login
-        let nav = self.navigationController //grab an instance of the current navigationController
-        DispatchQueue.main.async { //make sure all UI updates are on the main thread.
-            nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
-            let vc:UIViewController = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kAUTHENTICATIONVC) as UIViewController //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
-            nav?.pushViewController(vc, animated: false)
-        }
+        Service.toAuthenticationVC(fromVC: self, isEmailAuth: true)
 //        performSegue(withIdentifier: kTOAUTHENTICATIONVC, sender: nil)
         
 //        switch emailSegmentedControl.selectedSegmentIndex {
@@ -135,11 +130,12 @@ class AuthMenuVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func textMeButtonTapped(_ sender: Any) {
-        
+        Service.toAuthenticationVC(fromVC: self, isEmailAuth: false)
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        submitUserEmail()
+//        submitUserEmail()
+        Service.toAuthenticationVC(fromVC: self, isEmailAuth: true)
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {

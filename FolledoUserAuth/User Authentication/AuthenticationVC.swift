@@ -24,7 +24,7 @@ class AuthenticationVC: UIViewController {
     
     
 //MARK: Properties
-    
+    var isEmailAuth: Bool!
     
     
     
@@ -36,10 +36,22 @@ class AuthenticationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    
-    
+        if isEmailAuth { //setup email auth
+            self.navigationItem.title = "Authenticate with Email"
+            topLabel.text = "Email"
+            bottomLabel.text = "Password"
+            bottomLabel.isHidden = false
+            bottomTextField.isHidden = false
+            continueButton.setTitle("Create Account/Login", for: .normal)
+        } else { //setup phone Auth
+            self.navigationItem.title =  "Authenticate with Phone"
+            topLabel.text = "Phone Number"
+            bottomLabel.text = "Code"
+            bottomLabel.isHidden = true
+            bottomTextField.isHidden = true
+            continueButton.setTitle("Text Password", for: .normal)
+        }
+    }    
     
 //MARK: Methods
     private func setupViews() {
