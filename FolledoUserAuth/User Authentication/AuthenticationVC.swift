@@ -9,7 +9,9 @@
 import UIKit
 
 class AuthenticationVC: UIViewController {
-
+//MARK: Properties
+    var isEmailAuth: Bool!
+    
 //MARK: IBOulets
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -21,12 +23,6 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var bottomTextField: UnderlinedTextField!
     @IBOutlet weak var bottomErrorLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
-    
-    
-//MARK: Properties
-    var isEmailAuth: Bool!
-    
-    
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -60,8 +56,8 @@ class AuthenticationVC: UIViewController {
         }
     }    
     
-//MARK: Methods
-    private func login() {
+//MARK: Private Methods
+    fileprivate func login() {
         let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
         switch inputValues.errorCount {
         case 0:
@@ -84,7 +80,7 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    private func register() {
+    fileprivate func register() {
         let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
 //        let methodStart = Date()
         switch inputValues.errorCount {
@@ -103,7 +99,7 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
+    fileprivate func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
         let usersReference = firDatabase.child(kUSERS).child(uid)
         usersReference.setValue(values, withCompletionBlock: { (error, ref) in
             if let error = error {
@@ -120,7 +116,7 @@ class AuthenticationVC: UIViewController {
         })
     }
     
-    private func setupViews() {
+    fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
         topErrorLabel.isAuthErrorLabel()

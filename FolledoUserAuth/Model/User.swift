@@ -111,7 +111,15 @@ class User: NSObject {
     
     class func deleteUser(completion: @escaping(_ error: Error?) -> Void) { //delete the current user
         let user = Auth.auth().currentUser
-        user?.delete(completion: { (error) in
+        let ref = firDatabase.child(kUSERS).queryOrdered(byChild: kUSERID).queryEqual(toValue: user!.uid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in //delete from Database
+            if snapshot.exists() { //snapshot has uid and all its user's values
+                firDatabase.child(kUSERS).child(user!.uid).removeValue { (error, ref) in
+                    completion(error)
+                }
+            }
+        }, withCancel: nil)
+        user?.delete(completion: { (error) in //delete from Authentication
             completion(error)
         })
     }
