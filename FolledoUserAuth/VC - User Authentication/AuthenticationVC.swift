@@ -37,11 +37,8 @@ class AuthenticationVC: UIViewController {
             topLabel.text = "Email"
             bottomLabel.text = "Password"
             bottomLabel.isHidden = false
-            topTextField.keyboardType = .emailAddress
-            bottomTextField.isHidden = false
-            bottomTextField.isSecureTextEntry = true
-            bottomTextField.keyboardType = .default
-            bottomTextField.text = "pogi99" //MARK: Remove on production
+            topTextField.isEmailTextField()
+            bottomTextField.isPasswordTextField()
             continueButton.setTitle("Create Account/Login", for: .normal)
         } else { //setup phone Auth
             self.navigationItem.title =  "Phone Authentication"
