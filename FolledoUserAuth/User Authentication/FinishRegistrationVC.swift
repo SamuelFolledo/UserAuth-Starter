@@ -72,12 +72,19 @@ class FinishRegistrationVC: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) { //delete user if they went back
-        User.deleteUser(completion: { (error) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Error Deleting User", message: error.localizedDescription)
-            }
-        })
-        navigationController?.popViewController(animated: true)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            User.deleteUser(completion: { (error) in
+                if let error = error {
+                    Service.presentAlert(on: self, title: "Error Deleting User", message: error.localizedDescription)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        Service.alertWithActions(on: self, actions: [deleteAction, cancelAction], title: "Going Back Will Delete User", message: "User account was registered, but going back will delete the user and will require account recreation. Are you sure you want to delete and lose all data?")        
     }
     
     
