@@ -6,4 +6,11 @@
 //  Copyright © 2019 SamuelFolledo. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIButton {
+    func isAuthButton() {
+        self.layer.cornerRadius = self.frame.height / 10
+        self.clipsToBounds = true
+    }
+}
