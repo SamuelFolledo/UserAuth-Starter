@@ -107,7 +107,7 @@ class User: NSObject {
             withBlock(false)
         }
     }
-    
+
     
     class func deleteUser(completion: @escaping(_ error: Error?) -> Void) { //delete the current user
         let user = Auth.auth().currentUser
