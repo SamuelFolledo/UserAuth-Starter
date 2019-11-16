@@ -1,5 +1,5 @@
 //
-//  ProfileVC.swift
+//  FinishRegistrationVC.swift
 //  FolledoUserAuth
 //
 //  Created by Macbook Pro 15 on 10/14/19.
@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 
-class ProfileVC: UIViewController {
+class FinishRegistrationVC: UIViewController {
     
 //MARK: Properties
     var userImagePicker: UIImagePickerController?

@@ -372,7 +372,7 @@
         <!--Account Name & Photo-->
         <scene sceneID="jlg-yD-Pdo">
             <objects>
-                <viewController storyboardIdentifier="finishRegisterVC" modalPresentationStyle="fullScreen" id="zeC-zd-uQh" customClass="ProfileVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="finishRegistrationVC" modalPresentationStyle="fullScreen" id="zeC-zd-uQh" customClass="FinishRegistrationVC" customModule="FolledoUserAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bUw-Fk-eUv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,7 +399,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="205"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_photo" translatesAutoresizingMaskIntoConstraints="NO" id="zrw-n5-AKF" userLabel="profile ImageView">
-                                                <rect key="frame" x="83.999999999999986" y="0.0" width="204.66666666666663" height="205"/>
+                                                <rect key="frame" x="84" y="0.0" width="205" height="205"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zrw-n5-AKF" secondAttribute="height" id="kLf-Db-nfP"/>
@@ -694,7 +694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8A-Ec-5X4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2091" y="578"/>
+            <point key="canvasLocation" x="2041" y="18"/>
         </scene>
     </scenes>
     <resources>

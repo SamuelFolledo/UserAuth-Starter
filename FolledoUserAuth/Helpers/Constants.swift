@@ -105,7 +105,7 @@ let kLOGINCONTROLLER: String = "loginController"
 let kANIMATIONCONTROLLER: String = "animationController"
 let kMENUCONTROLLER: String = "menuController"
 
-let kFINISHREGISTERVC: String = "finishRegisterVC"
+let kFINISHREGISTRATIONVC: String = "finishRegistrationVC"
 let kAUTHENTICATIONVC: String = "authenticationVC"
 
 //Storyboard Identifiers
