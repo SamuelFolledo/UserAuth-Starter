@@ -156,7 +156,7 @@ class FinishRegistrationVC: UIViewController {
 }
 
 //MARK: Extensions
-extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension FinishRegistrationVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
