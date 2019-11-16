@@ -57,45 +57,28 @@ class AuthenticationVC: UIViewController {
     }    
     
 //MARK: Private Methods
-    fileprivate func login() {
-        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-        switch inputValues.errorCount {
-        case 0:
-            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
-                if let error = error {
-                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
-                    return
-                } else {
-                    guard let currentUser = User.currentUser() else { print("No user"); return }
-                    if currentUser.fullName == "" || currentUser.avatarURL == "" {
-                        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-                    } else {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
+    fileprivate func login(email: String, password: String) {
+        User.loginUserWith(email: email, password: password) { (error) in
+            if let error = error {
+                Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
+                return
+            } else {
+                guard let currentUser = User.currentUser() else { print("No user"); return }
+                self.goToNextController(user: currentUser)
             }
-        default:
-            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-            return
         }
     }
     
-    fileprivate func register() {
-        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
+    fileprivate func register(email: String, password: String) {
 //        let methodStart = Date()
-        switch inputValues.errorCount {
-        case 0: //if 0 errorCounter... Register
-            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error, user) in
-                if let error = error {
-                    Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-                } else { //if no error registering user...
-                    let uid = User.currentId()
-                    let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
-                    self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
-                }
+        User.registerUserWith(email: email, password: password) { (error, user) in
+            if let error = error {
+                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
+            } else { //if no error registering user...
+                let uid = User.currentId()
+                let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: email, kAVATARURL: ""]
+                self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
             }
-        default:
-            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
         }
     }
     
@@ -106,6 +89,7 @@ class AuthenticationVC: UIViewController {
                 Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 return
             } else { //if no error, save user
+                self.saveEmailInDatabase(email: values[kEMAIL] as! String)
                 DispatchQueue.main.async {
                     let user = User(_dictionary: values)
                     saveUserLocally(user: user)
@@ -128,6 +112,22 @@ class AuthenticationVC: UIViewController {
     
     
 //MARK: Helpers
+    fileprivate func saveEmailInDatabase(email:String) {
+        let emailRef = firDatabase.child(kEMAIL)
+        emailRef.updateChildValues([kEMAIL:email])
+    }
+    
+    fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) {
+        let ref = firDatabase.queryOrdered(byChild: kEMAIL).queryEqual(toValue: email)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in //delete from Database
+            if snapshot.exists() { //snapshot has uid and all its user's values
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }, withCancel: nil)
+    }
+    
     fileprivate func goToNextController(user: User) {
         if user.firstName == "" || user.avatarURL == "" {
             let nav = self.navigationController //grab an instance of the current navigationController
@@ -178,25 +178,6 @@ class AuthenticationVC: UIViewController {
             bottomTextField.hasError(); values.errorCount += 1
             Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
         }
-//        if emailSegmentedControl.selectedSegmentIndex == 1 { //if we are registering, also check confirm password field
-//            if let confirmPass = confirmPasswordTextField.text?.trimmedString(){
-//                if confirmPass.count < 6 {
-//                    confirmPasswordTextField.hasError(); values.errorCount += 1
-//                } else {
-//                    if confirmPass == passwordTextField.text?.trimmedString() {
-//                        values.password = confirmPass
-//                        confirmPasswordTextField.hasNoError()
-//                    } else {
-//                        confirmPasswordTextField.hasError()
-//                        passwordTextField.hasError()
-//                        values.errorCount += 1
-//                        Service.presentAlert(on: self, title: "Invalid Password", message: "Passwords did not match")
-//                    }
-//                }
-//            } else {
-//                confirmPasswordTextField.hasError(); values.errorCount += 1
-//            }
-//        }
         print("THERE ARE \(values.errorCount) ERRORS")
         return values
     }
@@ -208,10 +189,18 @@ class AuthenticationVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func continueButtonTapped(_ sender: Any) {
-//        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-        if isEmailAuth {
-            register()
-        } else {
+        if isEmailAuth { //email authentication
+            let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
+            if inputValues.errorCount <= 0 { //if no error
+                checkIfEmailExist(email: inputValues.email, completion: { (emailAlreadyExist) in
+                    if let emailAlreadyExist = emailAlreadyExist {
+                        emailAlreadyExist ? self.login(email: inputValues.email, password: inputValues.password) : self.register(email: inputValues.email, password: inputValues.password) //if emailExist, then login, else register
+                    } else {
+                        print("checkIfEmailExist emailAlreadyExist = nil")
+                    }
+                })
+            } else { print("has \(inputValues.errorCount) textfields error") }
+        } else { //phone authentication
             print("Phone Auth coming soon")
             goToFinishRegistration()
         }
@@ -220,5 +209,4 @@ class AuthenticationVC: UIViewController {
     @IBAction func backButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    
 }
