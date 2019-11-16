@@ -19,9 +19,9 @@ extension UIImageView {
                 let data = data, error == nil,
                 let image = UIImage(data: data)
                 else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
+                DispatchQueue.main.async() {
+                    self.image = image
+                }
             }.resume()
     }
     func downloaded(fromLink link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
@@ -29,8 +29,7 @@ extension UIImageView {
         downloaded(fromURL: url, contentMode: mode)
     }
     func rounded(){
-        let height = self.frame.height
-        self.layer.cornerRadius = height / 2 //half of the imageView to make it round
+        self.layer.cornerRadius = self.frame.height / 2 //half of the imageView to make it round
         self.layer.masksToBounds = true
     }
 }
