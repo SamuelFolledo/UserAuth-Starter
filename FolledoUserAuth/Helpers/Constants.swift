@@ -105,6 +105,9 @@ let kLOGINCONTROLLER: String = "loginController"
 let kANIMATIONCONTROLLER: String = "animationController"
 let kMENUCONTROLLER: String = "menuController"
 
+let kREGISTEREDUSERS: String = "registeredUsers"
+let kPHONENUMBER: String = "phoneNumber"
+
 let kFINISHREGISTRATIONVC: String = "finishRegistrationVC"
 let kAUTHENTICATIONVC: String = "authenticationVC"
 
