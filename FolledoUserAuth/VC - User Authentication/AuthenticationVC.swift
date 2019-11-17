@@ -45,10 +45,8 @@ class AuthenticationVC: UIViewController {
             topLabel.text = "Phone Number"
             bottomLabel.text = "Code"
             bottomLabel.isHidden = true
-            topTextField.keyboardType = .phonePad
-            bottomTextField.isHidden = true
-            bottomTextField.isSecureTextEntry = false
-            bottomTextField.keyboardType = .numberPad
+            topTextField.isPhoneTextField()
+            bottomTextField.isPhoneCodeTextField(isHidden: true)
             continueButton.setTitle("Text Password", for: .normal)
         }
     }    
@@ -86,7 +84,7 @@ class AuthenticationVC: UIViewController {
                 Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 return
             } else { //if no error, save user
-                self.saveEmailInDatabase(email: values[kEMAIL] as! String)
+                self.saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
                 DispatchQueue.main.async {
                     let user = User(_dictionary: values)
                     saveUserLocally(user: user)
@@ -107,17 +105,21 @@ class AuthenticationVC: UIViewController {
         continueButton.isAuthButton()
     }
     
-    
 //MARK: Helpers
     fileprivate func saveEmailInDatabase(email:String) {
-        let emailRef = firDatabase.child(kEMAIL)
-        emailRef.updateChildValues([kEMAIL:email])
+        let emailRef = firDatabase.child(kREGISTEREDUSERS)
+        emailRef.updateChildValues([email:kEMAIL]) { (error, ref) in
+            if let error = error {
+                Service.presentAlert(on: self, title: "Error Uploading Email To Database", message: "\(error). Please try agin")
+            }
+        }
     }
     
-    fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) {
-        let ref = firDatabase.queryOrdered(byChild: kEMAIL).queryEqual(toValue: email)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in //delete from Database
-            if snapshot.exists() { //snapshot has uid and all its user's values
+    fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) { //check email and returns true if email exist in our Database
+        let ref = firDatabase.queryOrdered(byChild: kREGISTEREDUSERS).queryEqual(toValue: email) //ref is like this compared to deleteUser and fetchUser because email is key and value is kEMAIL
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists() {
+                print("snapshot = \(snapshot)")
                 completion(true)
             } else {
                 completion(false)
@@ -189,7 +191,7 @@ class AuthenticationVC: UIViewController {
         if isEmailAuth { //email authentication
             let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
             if inputValues.errorCount <= 0 { //if no error
-                checkIfEmailExist(email: inputValues.email, completion: { (emailAlreadyExist) in
+                checkIfEmailExist(email: inputValues.email, completion: { (emailAlreadyExist) in //check if email exist in our Database, then login, else register
                     if let emailAlreadyExist = emailAlreadyExist {
                         emailAlreadyExist ? self.login(email: inputValues.email, password: inputValues.password) : self.register(email: inputValues.email, password: inputValues.password) //if emailExist, then login, else register
                     } else {

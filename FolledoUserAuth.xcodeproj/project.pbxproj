@@ -14,6 +14,7 @@
 		33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */; };
 		333AB14D237F99D0006118AC /* UIButton+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AB14C237F99D0006118AC /* UIButton+extensions.swift */; };
 		333AB14F237FAF23006118AC /* UnderlinedTextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AB14E237FAF23006118AC /* UnderlinedTextField+extensions.swift */; };
+		333AB153237FE34B006118AC /* UserAuthenticationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AB152237FE34B006118AC /* UserAuthenticationVM.swift */; };
 		333B841D23545B060061FB2C /* FinishRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B841C23545B060061FB2C /* FinishRegistrationVC.swift */; };
 		3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */; };
 		3341F6FB23550311008DD935 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F6FA23550311008DD935 /* User.swift */; };
@@ -67,6 +68,7 @@
 		33364DAD23529E4900259081 /* UIView_Layouts+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView_Layouts+extensions.swift"; sourceTree = "<group>"; };
 		333AB14C237F99D0006118AC /* UIButton+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extensions.swift"; sourceTree = "<group>"; };
 		333AB14E237FAF23006118AC /* UnderlinedTextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnderlinedTextField+extensions.swift"; sourceTree = "<group>"; };
+		333AB152237FE34B006118AC /* UserAuthenticationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationVM.swift; sourceTree = "<group>"; };
 		333B841C23545B060061FB2C /* FinishRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationVC.swift; sourceTree = "<group>"; };
 		3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3341F6FA23550311008DD935 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 				333AB14E237FAF23006118AC /* UnderlinedTextField+extensions.swift */,
 			);
 			path = UnderlinedTextField;
+			sourceTree = "<group>";
+		};
+		333AB151237FE2FC006118AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				333AB152237FE34B006118AC /* UserAuthenticationVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3341F6FE2355742A008DD935 /* Model */ = {
@@ -254,6 +264,7 @@
 				335289DC235255470084E405 /* SceneDelegate.swift */,
 				3341F6FF23557447008DD935 /* Main */,
 				3341F6FE2355742A008DD935 /* Model */,
+				333AB151237FE2FC006118AC /* ViewModel */,
 				33364DA82352836900259081 /* VC - User Authentication */,
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
@@ -554,6 +565,7 @@
 				3348A671237E865B003A9576 /* AuthenticationVC.swift in Sources */,
 				333B841D23545B060061FB2C /* FinishRegistrationVC.swift in Sources */,
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
+				333AB153237FE34B006118AC /* UserAuthenticationVM.swift in Sources */,
 				333AB14D237F99D0006118AC /* UIButton+extensions.swift in Sources */,
 				3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */,
 				33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */,
