@@ -84,7 +84,7 @@ class AuthenticationVC: UIViewController {
                 Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
                 return
             } else { //if no error, save user
-                self.saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
+                saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
                 DispatchQueue.main.async {
                     let user = User(_dictionary: values)
                     saveUserLocally(user: user)
@@ -95,28 +95,10 @@ class AuthenticationVC: UIViewController {
         })
     }
     
-    fileprivate func setupViews() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
-        self.view.addGestureRecognizer(tap)
-        topErrorLabel.isAuthErrorLabel()
-        bottomErrorLabel.isAuthErrorLabel()
-        topLabel.isAuthLabel()
-        bottomLabel.isAuthLabel()
-        continueButton.isAuthButton()
-    }
-    
 //MARK: Helpers
-    fileprivate func saveEmailInDatabase(email:String) {
-        let emailRef = firDatabase.child(kREGISTEREDUSERS)
-        emailRef.updateChildValues([email:kEMAIL]) { (error, ref) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Error Uploading Email To Database", message: "\(error). Please try agin")
-            }
-        }
-    }
-    
     fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) { //check email and returns true if email exist in our Database
-        let ref = firDatabase.queryOrdered(byChild: kREGISTEREDUSERS).queryEqual(toValue: email) //ref is like this compared to deleteUser and fetchUser because email is key and value is kEMAIL
+        let ref = firDatabase.child(kREGISTEREDUSERS).queryOrdered(byChild: kEMAIL).queryEqual(toValue: email) //ref is like this compared to deleteUser and fetchUser because email is key and value is kEMAIL
+//        let ref = firDatabase.queryOrderedByValue()
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists() {
                 print("snapshot = \(snapshot)")
@@ -125,6 +107,17 @@ class AuthenticationVC: UIViewController {
                 completion(false)
             }
         }, withCancel: nil)
+    }
+    
+    
+    fileprivate func setupViews() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
+        self.view.addGestureRecognizer(tap)
+        topErrorLabel.isAuthErrorLabel()
+        bottomErrorLabel.isAuthErrorLabel()
+        topLabel.isAuthLabel()
+        bottomLabel.isAuthLabel()
+        continueButton.isAuthButton()
     }
     
     fileprivate func goToNextController(user: User) {

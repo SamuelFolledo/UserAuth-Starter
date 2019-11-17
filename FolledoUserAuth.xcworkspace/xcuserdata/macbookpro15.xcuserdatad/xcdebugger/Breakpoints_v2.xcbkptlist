@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1AA18DB-2817-4089-9640-FEB68AD0D175"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "checkIfEmailExist(email:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BB1D9E38-9253-4ED4-A1C1-693261B62D90"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "checkIfEmailExist(email:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F50EA7EA-BA01-40DB-B12F-2CC80B8CC20C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -46,8 +14,8 @@
             filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "continueButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -55,49 +23,161 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2147D781-3145-4E47-9D9B-31EAEFB79BF2"
+            uuid = "506960A4-07EB-4F7F-8A9F-28CF109AAA42"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "register(email:password:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "checkIfEmailExist(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AAE9B290-7DD4-4292-A962-C6DE8E668E6E"
+            uuid = "E7F0CE59-D3D0-40BB-BD97-DE8C58C29697"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "registerUserIntoDatabaseWithUID(uid:values:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "checkIfEmailExist(email:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B3227739-8600-454E-B50C-A712823DD908"
+            uuid = "6736D04D-F854-4622-AE93-50E96DC32BFE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FolledoUserAuth/VC - User Authentication/AuthenticationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "registerUserIntoDatabaseWithUID(uid:values:)"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "continueButtonTapped(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6736D04D-F854-4622-AE93-50E96DC32BFE - 29162bed1166ccd8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FolledoUserAuth.AuthenticationVC.continueButtonTapped(Any) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Library/Mobile%20Documents/com~apple~CloudDocs/FolledoUserAuth/FolledoUserAuth/VC%20-%20User%20Authentication/AuthenticationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "576">
+               </Location>
+               <Location
+                  uuid = "6736D04D-F854-4622-AE93-50E96DC32BFE - 49988533d15af920"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Bool&gt;) -&gt; () in FolledoUserAuth.AuthenticationVC.continueButtonTapped(Any) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Library/Mobile%20Documents/com~apple~CloudDocs/FolledoUserAuth/FolledoUserAuth/VC%20-%20User%20Authentication/AuthenticationVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30E06227-F03A-4D35-A222-E4F790DC7591"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/Model/User.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "saveEmailInDatabase(email:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "30E06227-F03A-4D35-A222-E4F790DC7591 - a1908988ef7dde4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FolledoUserAuth.saveEmailInDatabase(email: Swift.String) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Library/Mobile%20Documents/com~apple~CloudDocs/FolledoUserAuth/FolledoUserAuth/Model/User.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "30E06227-F03A-4D35-A222-E4F790DC7591 - d71e0aead8ffae39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in FolledoUserAuth.saveEmailInDatabase(email: Swift.String) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Library/Mobile%20Documents/com~apple~CloudDocs/FolledoUserAuth/FolledoUserAuth/Model/User.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE648BDA-E57A-4BD4-B96B-3B1A919172EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/Model/User.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "saveEmailInDatabase(email:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57031691-C201-47B5-BCA5-7DC00CB30125"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/Model/User.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "saveEmailInDatabase(email:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
