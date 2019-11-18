@@ -173,6 +173,17 @@ class AuthenticationVC: UIViewController {
         return values
     }
     
+    func getLengthOfSubmission(initialTime: Date) { //present an alert controller that displays the time spent to finish execution since initial time
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            let methodFinish = Date()
+            let executionTime = methodFinish.timeIntervalSince(initialTime) //to get the executionTime
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            Service.alertWithActions(on: self, actions: [okAction], title: "Success!", message: "Successfully logged in \(executionTime) milliseconds")
+        })
+    }
+    
     @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
         self.view.endEditing(false)
     }
