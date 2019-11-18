@@ -111,10 +111,13 @@ class User: NSObject {
     
     class func deleteUser(completion: @escaping(_ error: Error?) -> Void) { //delete the current user
         let user = Auth.auth().currentUser
-        let ref = firDatabase.child(kUSERS).queryOrdered(byChild: kUSERID).queryEqual(toValue: user!.uid)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in //delete from Database
+        let userRef = firDatabase.child(kUSERS).queryOrdered(byChild: kUSERID).queryEqual(toValue: user!.uid).queryLimited(toFirst: 1)
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in //delete from Database
             if snapshot.exists() { //snapshot has uid and all its user's values
                 firDatabase.child(kUSERS).child(user!.uid).removeValue { (error, ref) in
+                    completion(error)
+                }
+                firDatabase.child(kREGISTEREDUSERS).child(user!.email!.emailEncryptedForFirebase()).removeValue { (error, ref) in //remove email reference in kREGISTEREDUSERS as well
                     completion(error)
                 }
             }
