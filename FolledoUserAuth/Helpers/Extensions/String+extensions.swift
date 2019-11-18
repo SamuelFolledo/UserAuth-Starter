@@ -37,7 +37,7 @@ extension String {
                 with replacementString: String,
                 caseInsensitive: Bool = true) -> String {
         let options: String.CompareOptions
-        if caseInsensitive {
+        if caseInsensitive { //search backwards, or search backwards and case sensitive
             options = [.backwards, .caseInsensitive]
         } else {
             options = [.backwards]
@@ -45,9 +45,9 @@ extension String {
         if let range = self.range(of: searchString,
                 options: options,
                 range: nil,
-                locale: nil) {
+                locale: nil) { //get the range of index of the characters in the searchString
 
-            return self.replacingCharacters(in: range, with: replacementString)
+            return self.replacingCharacters(in: range, with: replacementString) //replace searchString's range with the replacementString argument
         }
         return self
     }
