@@ -13,19 +13,11 @@ class AuthMenuVC: UIViewController {
 
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var phoneView: UIView!
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var codeTextField: UITextField!
-    @IBOutlet weak var textMeButton: UIButton!
-    @IBOutlet weak var emailSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var submitEmailButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var anonymousButton: UIButton!
-    @IBOutlet weak var confirmPassView: UIView!
+    @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
     
 //MARK: Properties
     
@@ -45,79 +37,18 @@ class AuthMenuVC: UIViewController {
     
 //MARK: Methods
     func setUp() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
-        self.view.addGestureRecognizer(tap)
-        emailSegmentedControl.addTarget(self, action: #selector(handleSegmentedControlValueChanged(_:)), for: .valueChanged)
-        confirmPassView.isHidden = true
-        codeTextField.isEnabled = false
-    }
         
-//    private func login() {
-//        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-//        switch inputValues.errorCount {
-//        case 0:
-//            User.loginUserWith(email: inputValues.email, password: inputValues.password) { (error) in
-//                if let error = error {
-//                    Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
-//                    return
-//                } else {
-//                    guard let currentUser = User.currentUser() else { print("No user"); return }
-//                    if currentUser.fullName == "" || currentUser.avatarURL == "" {
-//                        self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-//                    } else {
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-//                }
-//            }
-//        default:
-//            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-//            return
-//        }
-//    }
-    
-//    private func register() {
-//        let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-////        let methodStart = Date()
-//        switch inputValues.errorCount {
-//        case 0: //if 0 errorCounter... Register
-//            User.registerUserWith(email: inputValues.email, password: inputValues.password) { (error, user) in
-//                if let error = error {
-//                    Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-//                } else { //if no error registering user...
-//                    let uid = User.currentId()
-//                    let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: inputValues.email, kAVATARURL: ""]
-//                    self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
-//                    self.performSegue(withIdentifier: kTONAMEVC, sender: nil)
-//                }
-//            }
-//        default:
-//            Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-//        }
-//    }
-    
-//    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
-//        let usersReference = firDatabase.child(kUSERS).child(uid)
-//        usersReference.setValue(values, withCompletionBlock: { (error, ref) in
-//            if let error = error {
-//                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-//                return
-//            } else { //if no error, save user
-//                DispatchQueue.main.async {
-//                    let user = User(_dictionary: values)
-//                    saveUserLocally(user: user)
-//                    saveUserInBackground(user: user)
-//                }
-//            }
-//        })
-//    }
-    
+    }
     
 //MARK: IBActions
-    @IBAction func textMeButtonTapped(_ sender: Any) {
+    @IBAction func emailButtonTapped(_ sender: Any) {
+        Service.toAuthenticationVC(fromVC: self, isEmailAuth: false)
+    }
+    @IBAction func phoneButtonTapped(_ sender: Any) {
         Service.toAuthenticationVC(fromVC: self, isEmailAuth: false)
     }
     
-    @IBAction func submitButtonTapped(_ sender: Any) {
+    @IBAction func googleButtonTapped(_ sender: Any) {
         Service.toAuthenticationVC(fromVC: self, isEmailAuth: true)
     }
     

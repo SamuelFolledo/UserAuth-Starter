@@ -46,6 +46,9 @@
                                                         <state key="normal" title="Continue Anonymously">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="anonymousButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="r3n-aH-KNA"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QS-zc-9dA">
                                                         <rect key="frame" x="0.0" y="58.333333333333371" width="331.33333333333331" height="42.666666666666657"/>
@@ -54,6 +57,9 @@
                                                         <state key="normal" title="Continue with Facebook">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="facebookButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="8Q1-HP-eBh"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-GN-1C5">
                                                         <rect key="frame" x="0.0" y="117.00000000000001" width="331.33333333333331" height="42.666666666666671"/>
@@ -62,6 +68,9 @@
                                                         <state key="normal" title="Continue with Google">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="googleButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="sIi-H0-GZ1"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mti-2u-sMW">
                                                         <rect key="frame" x="0.0" y="175.66666666666669" width="331.33333333333331" height="42.333333333333343"/>
@@ -69,6 +78,9 @@
                                                         <state key="normal" title="Continue with Phone">
                                                             <color key="titleColor" red="0.0095581691710000007" green="0.0" blue="0.57261335849999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="phoneButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="HVu-73-NYs"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTx-eQ-kDn">
                                                         <rect key="frame" x="0.0" y="234.00000000000006" width="331.33333333333331" height="42.666666666666686"/>
@@ -76,6 +88,9 @@
                                                         <state key="normal" title="Continue with Email">
                                                             <color key="titleColor" red="0.0095581691710000007" green="0.0" blue="0.57261335849999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="emailButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="Tuw-AX-afe"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -130,7 +145,12 @@
                     <navigationItem key="navigationItem" title="User Authentication" id="gqe-0h-awX"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
+                        <outlet property="anonymousButton" destination="SQr-fY-dYT" id="jVy-7i-siF"/>
+                        <outlet property="emailButton" destination="VTx-eQ-kDn" id="q8f-Zc-0Gr"/>
+                        <outlet property="facebookButton" destination="6QS-zc-9dA" id="Mep-go-6yB"/>
+                        <outlet property="googleButton" destination="EA8-GN-1C5" id="IJJ-iP-ZtS"/>
                         <outlet property="logoImageView" destination="coN-M8-Y1G" id="9GV-ct-erH"/>
+                        <outlet property="phoneButton" destination="mti-2u-sMW" id="i6q-Jy-Y3c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKt-LV-Kx4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
