@@ -231,12 +231,8 @@ func getImageURL(imageView: UIImageView, compeltion: @escaping(_ imageURL: Strin
     }
 }
 
-func saveEmailInDatabase(email:String) {
-    let emailRef = firDatabase.child(kREGISTEREDUSERS).child(kEMAIL)
-    emailRef.setValue([kEMAIL:email] as NSDictionary) { (error, ref) in
-        if let error = error {
-            print("Error saving user's email \(error.localizedDescription)")
-            return
-        }
-    }
+func saveEmailInDatabase(email:String) { //saves email address as the key, converting the email's last @ to _-_
+    let convertedEmail = email.emailEncryptedForFirebase()
+    let emailRef = firDatabase.child(kREGISTEREDUSERS).child(convertedEmail)
+    emailRef.updateChildValues([kEMAIL:email])
 }
