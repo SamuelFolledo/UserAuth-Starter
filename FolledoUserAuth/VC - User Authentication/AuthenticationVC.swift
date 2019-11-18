@@ -97,9 +97,8 @@ class AuthenticationVC: UIViewController {
     
 //MARK: Helpers
     fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) { //check emails from kREGISTEREDUSERS and returns true if email exist in our Database
-        let ref = firDatabase.queryEqual(toValue: email.emailEncryptedForFirebase(), childKey: kREGISTEREDUSERS)
-        let emailRef = firDatabase.queryOrdered(byChild: kREGISTEREDUSERS).queryEqual(toValue: email.emailEncryptedForFirebase())
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        let emailRef = firDatabase.child(kREGISTEREDUSERS).queryOrdered(byChild: kEMAIL).queryEqual(toValue: email)
+        emailRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists() {
                 print("snapshot = \(snapshot)")
                 completion(true)
