@@ -366,9 +366,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xVb-nH-3OS" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SFLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-l0-f2i">
-                                <rect key="frame" x="83" y="122" width="248" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SFLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-l0-f2i">
+                                <rect key="frame" x="120" y="10" width="174" height="174"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uoN-l0-f2i" secondAttribute="height" id="guN-8e-pLU"/>
+                                </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="urs-MN-vm5" userLabel="auth Stack View">
                                 <rect key="frame" x="41.333333333333343" y="368" width="331.33333333333326" height="268"/>
@@ -448,9 +450,12 @@
                             <constraint firstItem="0XU-gD-YwU" firstAttribute="height" secondItem="Hs9-m4-RnH" secondAttribute="height" multiplier="0.07" id="9AR-bO-odn"/>
                             <constraint firstItem="xVb-nH-3OS" firstAttribute="height" secondItem="Hs9-m4-RnH" secondAttribute="height" id="T0g-hE-bi0"/>
                             <constraint firstItem="urs-MN-vm5" firstAttribute="width" secondItem="Hs9-m4-RnH" secondAttribute="width" multiplier="0.8" id="UCV-1G-r1m"/>
+                            <constraint firstItem="uoN-l0-f2i" firstAttribute="centerX" secondItem="Hs9-m4-RnH" secondAttribute="centerX" id="WP2-48-Yel"/>
                             <constraint firstItem="xVb-nH-3OS" firstAttribute="centerY" secondItem="Hs9-m4-RnH" secondAttribute="centerY" id="ZlO-lh-Lep"/>
                             <constraint firstItem="Hs9-m4-RnH" firstAttribute="bottom" secondItem="urs-MN-vm5" secondAttribute="bottom" constant="100" id="eyd-dA-GpN"/>
                             <constraint firstItem="xVb-nH-3OS" firstAttribute="width" secondItem="Hs9-m4-RnH" secondAttribute="width" id="hgu-sQ-TLU"/>
+                            <constraint firstItem="uoN-l0-f2i" firstAttribute="height" secondItem="Hs9-m4-RnH" secondAttribute="height" multiplier="1:4" constant="-10" id="hlb-An-8rY"/>
+                            <constraint firstItem="uoN-l0-f2i" firstAttribute="top" secondItem="Hs9-m4-RnH" secondAttribute="top" constant="10" id="sNZ-xo-Dtk"/>
                             <constraint firstItem="urs-MN-vm5" firstAttribute="centerX" secondItem="Hs9-m4-RnH" secondAttribute="centerX" id="wf1-6o-Af5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hs9-m4-RnH"/>

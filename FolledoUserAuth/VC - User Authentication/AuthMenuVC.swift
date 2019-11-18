@@ -33,7 +33,11 @@ class AuthMenuVC: UIViewController {
     
 //MARK: Methods
     func setUp() {
-        
+        anonymousButton.isAuthButton()
+        facebookButton.isAuthButton()
+        googleButton.isAuthButton()
+        phoneButton.isAuthButton()
+        emailButton.isAuthButton()
     }
     
 //MARK: IBActions
