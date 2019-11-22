@@ -10,7 +10,7 @@ import UIKit
 
 class AuthenticationVC: UIViewController {
 //MARK: Properties
-    var userAuthVM: UserAuthenticationViewModel!
+    var userAuthViewModel: UserAuthenticationViewModel!
     
 //MARK: IBOulets
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -41,14 +41,14 @@ class AuthenticationVC: UIViewController {
     fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
-        navigationItem.title = userAuthVM.navigationTitle
-        userAuthVM.setupTopLabel(label: topLabel)
-        userAuthVM.setupBottomLabel(label: bottomLabel)
-        userAuthVM.setupErrorLabel(label: topErrorLabel)
-        userAuthVM.setupErrorLabel(label: bottomErrorLabel)
+        navigationItem.title = userAuthViewModel.navigationTitle
+        userAuthViewModel.setupTopLabel(label: topLabel)
+        userAuthViewModel.setupBottomLabel(label: bottomLabel)
+        userAuthViewModel.setupErrorLabel(label: topErrorLabel)
+        userAuthViewModel.setupErrorLabel(label: bottomErrorLabel)
         
-        userAuthVM.setupTextFields(top: topTextField, bottom: bottomTextField)
-        userAuthVM.setupContinueButton(button: continueButton)
+        userAuthViewModel.setupTextFields(top: topTextField, bottom: bottomTextField)
+        userAuthViewModel.setupContinueButton(button: continueButton)
     }
     
     fileprivate func goToNextController(user: User) {
@@ -125,7 +125,7 @@ class AuthenticationVC: UIViewController {
     @IBAction func continueButtonTapped(_ sender: Any) {
         let inputValues: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = checkInputValues()
         if inputValues.errorCount < 1 {
-            userAuthVM.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
+            userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Error", message: error)
                 } else {

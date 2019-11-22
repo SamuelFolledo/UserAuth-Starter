@@ -15,7 +15,7 @@ class Service {
         DispatchQueue.main.async { //make sure all UI updates are on the main thread.
             nav.view.layer.add(CATransition().segueFromRight(), forKey: nil)
             let vc:AuthenticationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kAUTHENTICATIONVC) as! AuthenticationVC //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
-            vc.userAuthVM = UserAuthenticationViewModel(isEmailAuthentication: isEmailAuth)
+            vc.userAuthViewModel = UserAuthenticationViewModel(isEmailAuthentication: isEmailAuth)
             nav.pushViewController(vc, animated: false)
         }
     }
