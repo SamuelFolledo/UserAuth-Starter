@@ -143,7 +143,6 @@
                         <viewLayoutGuide key="safeArea" id="3g4-Rm-AKJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="User Authentication" id="gqe-0h-awX"/>
-                    <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="anonymousButton" destination="SQr-fY-dYT" id="jVy-7i-siF"/>
                         <outlet property="emailButton" destination="VTx-eQ-kDn" id="q8f-Zc-0Gr"/>

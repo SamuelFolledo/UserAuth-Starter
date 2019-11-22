@@ -10,7 +10,8 @@ import UIKit
 
 class AuthenticationVC: UIViewController {
 //MARK: Properties
-    var isEmailAuth: Bool!
+//    var isEmailAuth: Bool!
+    var userAuthVM: UserAuthenticationViewModel!
     
 //MARK: IBOulets
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -32,23 +33,6 @@ class AuthenticationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isEmailAuth { //setup email auth
-            self.navigationItem.title = "Email Authentication"
-            topLabel.text = "Email"
-            bottomLabel.text = "Password"
-            bottomLabel.isHidden = false
-            topTextField.isEmailTextField()
-            bottomTextField.isPasswordTextField()
-            continueButton.setTitle("Create Account/Login", for: .normal)
-        } else { //setup phone Auth
-            self.navigationItem.title =  "Phone Authentication"
-            topLabel.text = "Phone Number"
-            bottomLabel.text = "Code"
-            bottomLabel.isHidden = true
-            topTextField.isPhoneTextField()
-            bottomTextField.isPhoneCodeTextField(isHidden: true)
-            continueButton.setTitle("Text Password", for: .normal)
-        }
     }    
     
 //MARK: Private Methods
@@ -112,11 +96,14 @@ class AuthenticationVC: UIViewController {
     fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
-        topErrorLabel.isAuthErrorLabel()
-        bottomErrorLabel.isAuthErrorLabel()
-        topLabel.isAuthLabel()
-        bottomLabel.isAuthLabel()
-        continueButton.isAuthButton()
+        navigationItem.title = userAuthVM.navigationTitle
+        userAuthVM.setupTopLabel(label: topLabel)
+        userAuthVM.setupBottomLabel(label: bottomLabel)
+        userAuthVM.setupErrorLabel(label: topErrorLabel)
+        userAuthVM.setupErrorLabel(label: bottomErrorLabel)
+        
+        userAuthVM.setupTextFields(top: topTextField, bottom: bottomTextField)
+        userAuthVM.setupContinueButton(button: continueButton)
     }
     
     fileprivate func goToNextController(user: User) {
@@ -137,7 +124,7 @@ class AuthenticationVC: UIViewController {
         let nav = self.navigationController //grab an instance of the current navigationController
         DispatchQueue.main.async { //make sure all UI updates are on the main thread.
             nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
-            let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+            let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC
             nav?.pushViewController(vc, animated: false)
         }
     }
@@ -191,7 +178,7 @@ class AuthenticationVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func continueButtonTapped(_ sender: Any) {
-        if isEmailAuth { //email authentication
+        if userAuthVM.isEmailAuthentication { //email authentication
             let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
             if inputValues.errorCount <= 0 { //if no error
                 checkIfEmailExist(email: inputValues.email, completion: { (emailAlreadyExist) in //check if email exist in our Database, then login, else register
