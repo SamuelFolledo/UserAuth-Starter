@@ -68,7 +68,7 @@ public final class UserAuthenticationViewModel {
         }
     }
     
-    func setupContinueButton(button: UIButton) {
+    public func setupContinueButton(button: UIButton) {
         button.isAuthButton()
         button.setTitle(self.continueButtonTitle, for: .normal)
     }
