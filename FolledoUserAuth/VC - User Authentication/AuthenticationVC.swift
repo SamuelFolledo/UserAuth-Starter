@@ -10,7 +10,6 @@ import UIKit
 
 class AuthenticationVC: UIViewController {
 //MARK: Properties
-//    var isEmailAuth: Bool!
     var userAuthVM: UserAuthenticationViewModel!
     
 //MARK: IBOulets
@@ -36,63 +35,9 @@ class AuthenticationVC: UIViewController {
     }    
     
 //MARK: Private Methods
-    fileprivate func login(email: String, password: String) {
-        User.loginUserWith(email: email, password: password) { (error) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
-                return
-            } else {
-                guard let currentUser = User.currentUser() else { print("No user"); return }
-                self.goToNextController(user: currentUser)
-            }
-        }
-    }
     
-    fileprivate func register(email: String, password: String) {
-//        let methodStart = Date()
-        User.registerUserWith(email: email, password: password) { (error, user) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-            } else { //if no error registering user...
-                let uid = User.currentId()
-                let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: email, kAVATARURL: ""]
-                self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues)
-            }
-        }
-    }
-    
-    fileprivate func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) { //method that gets uid and a dictionary of values you want to give to users
-        let usersReference = firDatabase.child(kUSERS).child(uid)
-        usersReference.setValue(values, withCompletionBlock: { (error, ref) in
-            if let error = error {
-                Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)
-                return
-            } else { //if no error, save user
-                saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
-                DispatchQueue.main.async {
-                    let user = User(_dictionary: values)
-                    saveUserLocally(user: user)
-                    saveUserInBackground(user: user)
-                    self.goToNextController(user: user)
-                }
-            }
-        })
-    }
     
 //MARK: Helpers
-    fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) { //check emails from kREGISTEREDUSERS and returns true if email exist in our Database
-        let emailRef = firDatabase.child(kREGISTEREDUSERS).queryOrdered(byChild: kEMAIL).queryEqual(toValue: email)
-        emailRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists() {
-                print("snapshot = \(snapshot)")
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }, withCancel: nil)
-    }
-    
-    
     fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
         self.view.addGestureRecognizer(tap)
@@ -129,15 +74,15 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    fileprivate func checkInputValues() -> (errorCount: Int, email: String, password: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
-        var values: (errorCount: Int, email: String, password: String) = (0, "", "")
+    fileprivate func checkInputValues() -> (errorCount: Int, topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
+        var values: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = (0, "", "")
         if let email = topTextField.text?.trimmedString() { //check if email exists
             if !(email.isValidEmail) {
                 topTextField.hasError()
                 values.errorCount += 1
                 Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
             } else {
-                values.email = email
+                values.topFieldValue = email
                 topTextField.hasNoError()
             }
         } else {
@@ -149,7 +94,7 @@ class AuthenticationVC: UIViewController {
                 bottomTextField.hasError(); values.errorCount += 1
                 Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
             } else {
-                values.password = password
+                values.bottomFieldValue = password
                 bottomTextField.hasNoError()
             }
         } else {
@@ -178,20 +123,18 @@ class AuthenticationVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func continueButtonTapped(_ sender: Any) {
-        if userAuthVM.isEmailAuthentication { //email authentication
-            let inputValues: (errorCount: Int, email: String, password: String) = checkInputValues()
-            if inputValues.errorCount <= 0 { //if no error
-                checkIfEmailExist(email: inputValues.email, completion: { (emailAlreadyExist) in //check if email exist in our Database, then login, else register
-                    if let emailAlreadyExist = emailAlreadyExist {
-                        emailAlreadyExist ? self.login(email: inputValues.email, password: inputValues.password) : self.register(email: inputValues.email, password: inputValues.password) //if emailExist, then login, else register
-                    } else {
-                        print("checkIfEmailExist emailAlreadyExist = nil")
-                    }
-                })
-            } else { print("has \(inputValues.errorCount) textfields error") }
-        } else { //phone authentication
-            print("Phone Auth coming soon")
-            goToFinishRegistration()
+        let inputValues: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = checkInputValues()
+        if inputValues.errorCount < 1 {
+            userAuthVM.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
+                if let error = error {
+                    Service.presentAlert(on: self, title: "Error", message: error)
+                } else {
+                    print("User is \(userDictionaryFrom(user: user!))")
+                    self.goToNextController(user: user!)
+                }
+            }
+        } else { //handle error on the fields
+            Service.presentAlert(on: self, title: "Error", message: "Error on the fields")
         }
     }
     
