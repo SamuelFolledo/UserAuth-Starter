@@ -6,16 +6,15 @@
 //  Copyright © 2019 SamuelFolledo. All rights reserved.
 //
 
-
 import UIKit
 
 class Service {
     static func toAuthenticationVC(fromVC: UIViewController, isEmailAuth:Bool) {
         guard let nav = fromVC.navigationController else { return } //grab an instance of the current navigationController
         DispatchQueue.main.async { //make sure all UI updates are on the main thread.
-            nav.view.layer.add(CATransition().segueFromRight(), forKey: nil)
+            nav.view.layer.add(CATransition().segueFromRight(), forKey: nil) //show from right to left CATransition
             let vc:AuthenticationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kAUTHENTICATIONVC) as! AuthenticationVC //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
-            vc.userAuthViewModel = UserAuthenticationViewModel(isEmailAuthentication: isEmailAuth)
+            vc.userAuthViewModel = UserAuthenticationViewModel(isEmailAuthentication: isEmailAuth) //assign the view model
             nav.pushViewController(vc, animated: false)
         }
     }
@@ -23,7 +22,7 @@ class Service {
     func popBack(on: UIViewController, nb: Int) { //method that pops View controller to a certain amount nb
         if let viewControllers: [UIViewController] = on.navigationController?.viewControllers {
             guard viewControllers.count < nb else {
-                on.navigationController?.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
+            on.navigationController?.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
                 return
             }
         }
