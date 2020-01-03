@@ -64,12 +64,7 @@ class User: NSObject {
             }
             completion(nil,nil)
 //            completion(nil, firUser?.user)
-//            firUser?.user.
-            
-//            let userDictionary = ((firUser. as! NSDictionary).allValues as NSArray).firstObject! as! [String: Any]
-//            let user = User(_dictionary: userDictionary)
         }
-//        Auth.auth().creat
     }
     
     class func loginUserWith(email: String, password: String, withBlock: @escaping (_ error: Error?) -> Void) {
@@ -93,7 +88,6 @@ class User: NSObject {
         }
     }
     
-    
 //MARK: Logout
     class func logOutCurrentUser(withBlock: (_ success: Bool) -> Void) {
         print("Logging outttt...")
@@ -107,7 +101,6 @@ class User: NSObject {
             withBlock(false)
         }
     }
-
     
     class func deleteUser(completion: @escaping(_ error: Error?) -> Void) { //delete the current user
         let user = Auth.auth().currentUser
@@ -179,13 +172,11 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: User?) -> Void
     }, withCancel: nil)
 }
 
-
 func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary
     return NSDictionary(
         objects: [user.userID, user.username, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL],
         forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kAVATARURL as NSCopying])
 }
-
 
 func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ success: Bool) -> Void) { //withBlock makes it run in the background //method that saves our current user's values offline and online
     if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
