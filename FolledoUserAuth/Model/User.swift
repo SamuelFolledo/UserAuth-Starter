@@ -21,13 +21,14 @@ class User: NSObject {
     var avatarURL: String
     var phoneNumber: Int
 
-    init(_userID: String, _username: String, _firstName: String, _lastName: String, _email: String, _avatarURL: String = "") {
+    init(_userID: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: Int = 0, _avatarURL: String = "") {
         userID = _userID
         username = _username
         firstName = _firstName
         lastName = _lastName
         fullName = "\(_firstName) \(_lastName)"
         email = _email
+        phoneNumber = _phoneNumber
         avatarURL = _avatarURL
     }
     
