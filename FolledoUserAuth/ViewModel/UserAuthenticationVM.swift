@@ -120,7 +120,7 @@ public final class UserAuthenticationViewModel {
         })
     }
     
-    //MARK: Helpers
+//MARK: Helpers
     fileprivate func checkIfEmailExist(email:String, completion: @escaping (_ emailExist: Bool?) -> Void) { //check emails from kREGISTEREDUSERS and returns true if email exist in our Database
         let emailRef = firDatabase.child(kREGISTEREDUSERS).queryOrdered(byChild: kEMAIL).queryEqual(toValue: email)
         emailRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -183,6 +183,9 @@ public final class UserAuthenticationViewModel {
     
 //MARK: Phone Auth
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
+        
+        
+        
         print("Phone Auth is unfinish")
         completion("Phone Auth is unfinish", nil)
     }

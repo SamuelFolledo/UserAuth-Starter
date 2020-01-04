@@ -36,7 +36,6 @@ class AuthenticationVC: UIViewController {
     
 //MARK: Private Methods
     
-    
 //MARK: Helpers
     fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
@@ -46,7 +45,6 @@ class AuthenticationVC: UIViewController {
         userAuthViewModel.setupBottomLabel(label: bottomLabel)
         userAuthViewModel.setupErrorLabel(label: topErrorLabel)
         userAuthViewModel.setupErrorLabel(label: bottomErrorLabel)
-        
         userAuthViewModel.setupTextFields(top: topTextField, bottom: bottomTextField)
         userAuthViewModel.setupContinueButton(button: continueButton)
     }
@@ -105,26 +103,14 @@ class AuthenticationVC: UIViewController {
         return values
     }
     
-    func getLengthOfSubmission(initialTime: Date) { //present an alert controller that displays the time spent to finish execution since initial time
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            let methodFinish = Date()
-            let executionTime = methodFinish.timeIntervalSince(initialTime) //to get the executionTime
-            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-            Service.alertWithActions(on: self, actions: [okAction], title: "Success!", message: "Successfully logged in \(executionTime) milliseconds")
-        })
-    }
-    
     @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
         self.view.endEditing(false)
     }
     
-    
 //MARK: IBActions
     @IBAction func continueButtonTapped(_ sender: Any) {
         let inputValues: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = checkInputValues()
-        if inputValues.errorCount < 1 {
+        if inputValues.errorCount < 1 { //if no error
             userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Error", message: error)
