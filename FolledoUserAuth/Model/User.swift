@@ -50,15 +50,6 @@ class User: NSObject {
         print("User \(self.fullName) is being deinitialize.")
     }
     
-//MARK: Private Methods
-    private func assignFullName() {
-        if firstName != "" && lastName != "" {
-            fullName = "\(firstName) \(lastName)"
-        } else {
-            fullName = ""
-        }
-    }
-    
 //MARK: Class Functions
     class func currentId() -> String {
         return Auth.auth().currentUser!.uid
