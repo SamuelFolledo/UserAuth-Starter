@@ -59,6 +59,7 @@ class User: NSObject {
         return nil //if we dont have user in our UserDefaults, then return nil
     }
     
+//MARK: Email Authentication
     class func registerUserWith(email: String, password: String, completion: @escaping (_ error: Error?, _ user: User?) -> Void) { //do u think I should return the user here on completion?
         Auth.auth().createUser(withEmail: email, password: password) { (firUser, error) in
             if let error = error {
