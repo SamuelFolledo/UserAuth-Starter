@@ -19,14 +19,14 @@ class User: NSObject {
     var fullName: String
     var email: String
     var avatarURL: String
-    var phoneNumber: Int
+    var phoneNumber: Int = 0
 
     init(_userID: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: Int = 0, _avatarURL: String = "") {
         userID = _userID
         username = _username
         firstName = _firstName
         lastName = _lastName
-        fullName = "\(_firstName) \(_lastName)"
+        assignFullName()
         email = _email
         phoneNumber = _phoneNumber
         avatarURL = _avatarURL
@@ -37,8 +37,12 @@ class User: NSObject {
         self.username = _dictionary[kUSERNAME] as! String
         self.firstName = _dictionary[kFIRSTNAME] as! String
         self.lastName = _dictionary[kLASTNAME] as! String
-        self.fullName = _dictionary[kFULLNAME] as! String
+//        self.fullName = _dictionary[kFULLNAME] as! String
+        assignFullName()
         self.email = _dictionary[kEMAIL] as! String
+        if let phoneNumber = _dictionary[kPHONENUMBER] as? Int {
+            self.phoneNumber = phoneNumber
+        }
         self.avatarURL = _dictionary[kAVATARURL] as! String
     }
     
