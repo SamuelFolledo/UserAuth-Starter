@@ -19,6 +19,7 @@ class User: NSObject {
     var fullName: String
     var email: String
     var avatarURL: String
+    var phoneNumber: Int
 
     init(_userID: String, _username: String, _firstName: String, _lastName: String, _email: String, _avatarURL: String = "") {
         userID = _userID
