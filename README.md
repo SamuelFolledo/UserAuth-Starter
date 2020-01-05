@@ -16,6 +16,13 @@
 4. Enable Authentication and Real Time Database
 5. Test
 
+
+### Note:
+Don't forget to:
+- to paste Google-Sevice-Info.plist's REVERSE_CLIENT_ID's value in the project -> Info -> URL Types -> +
+
+
+
 ## Login View
 <img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="310" height="550`"> 
 
