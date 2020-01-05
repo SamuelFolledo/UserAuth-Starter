@@ -17,9 +17,10 @@
 5. Test
 
 
-### Note:
+### Note for Phone Authentication:
 Don't forget to:
 - to paste Google-Sevice-Info.plist's REVERSE_CLIENT_ID's value in the project -> Info -> URL Types -> +
+- APNs Certificates are required to be uploaded in your Firebase project's Project Settings -> Cloud Messaging -> iOS app configuration __which needs to be updated annually__
 
 
 
