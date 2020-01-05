@@ -109,8 +109,8 @@ class AuthenticationVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func continueButtonTapped(_ sender: Any) {
-        let inputValues: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = checkInputValues()
-        if inputValues.errorCount < 1 { //if no error
+        let inputValues: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = userAuthViewModel.checkInputValues(topTF: topTextField, bottomTF: bottomTextField)
+        if inputValues.errors.count < 1 { //if no error
             userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Error", message: error)
