@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) { //required if you have Scene Delegate
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) { //required for Phone Authentication if you have Scene Delegate
       for urlContext in URLContexts {
           let url = urlContext.url
           Auth.auth().canHandle(url)
