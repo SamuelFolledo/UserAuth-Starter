@@ -186,8 +186,6 @@ public final class UserAuthenticationViewModel {
             if !(email.isValidEmail) {
                 values.topTF.hasError()
                 values.errors.append("Email format is not valid")
-//                values.errorCount += 1
-//                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
             } else {
                 values.topFieldValue = email
                 values.topTF.hasNoError()
@@ -195,15 +193,11 @@ public final class UserAuthenticationViewModel {
         } else {
             values.topTF.hasError()
             values.errors.append("Email is empty")
-//            values.errorCount += 1
-//            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
         }
         if let password = values.bottomTF.text?.trimmedString(){
             if password.count < 6 {
                 values.bottomTF.hasError()
                 values.errors.append("Password must be at least 6 characters")
-//                values.errorCount += 1
-//                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
             } else {
                 values.bottomFieldValue = password
                 values.bottomTF.hasNoError()
@@ -211,8 +205,6 @@ public final class UserAuthenticationViewModel {
         } else {
             values.bottomTF.hasError()
             values.errors.append("Password is empty")
-//            values.errorCount += 1
-//            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
         }
         print("THERE ARE \(values.errors.count) ERRORS")
         return values
