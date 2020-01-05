@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 public final class UserAuthenticationViewModel {
     public let isEmailAuthentication: Bool
@@ -17,6 +18,7 @@ public final class UserAuthenticationViewModel {
     public let bottomLabelText: String
     public var bottomErrorLabelText: String
     public var continueButtonTitle: String
+    public var hasPhoneCode: Bool = false
     
     public init(isEmailAuthentication: Bool) {
         self.isEmailAuthentication = isEmailAuthentication
@@ -82,14 +84,32 @@ public final class UserAuthenticationViewModel {
                     completion(nil, user)
                 }
             }
-        } else {
-            continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
-                if let error = error {
-                    completion(error, nil)
-                } else {
+        } else { //phone authentication
+            //            let phoneCode: String = UserDefaults.standard.string(forKey: kVERIFICATIONCODE)!
+            //            UserDefaults.standard.removeObject(forKey: kVERIFICATIONCODE)
+            //            UserDefaults.standard.synchronize()
+            //            hasPhoneCode = false
+            //            continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
+            //                if let error = error {
+            //                    completion(error, nil)
+            ////                    values.bottomTF.hasError()
+            ////                    values.errors.append(error)
+            //                } else {
+            if !self.hasPhoneCode { //text code
+                self.textPhoneCode(phoneNumber: topFieldValue)
+                self.hasPhoneCode = true
+                self.continueButtonTitle = "Continue with Phone"
+                completion(nil,nil)
+            } else { //register or login phone
+                self.continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
+                    if let error = error {
+                        completion(error, nil)
+                    }
                     completion(nil, user)
                 }
             }
+            //                }
+            //            }
         }
     }
     
@@ -182,25 +202,25 @@ public final class UserAuthenticationViewModel {
     
     func checkInputValues(topTF: UnderlinedTextField, bottomTF: UnderlinedTextField) -> (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount //Note: work on PROPERLY HANDLING ERRORS in the future
         var values: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = (topTF: topTF, bottomTF: bottomTF, errors: [], topFieldValue: "", bottomFieldValue: "")
-        guard let topText = topTF.text?.trimmedString(), topText != "" else { //unwrap top's value
+        guard let topText: String = topTF.text?.trimmedString(), topText != "" else { //unwrap top's value
             values.topTF.hasError()
             values.errors.append("Field is empty")
             return values
         }
         if isEmailAuthentication { //email authentication
-            if !(topText.isValidEmail) {
+            if !(topText.isValidEmail) { //if email is not valid...
                 values.topTF.hasError()
                 values.errors.append("Email format is not valid")
             } else {
                 values.topFieldValue = topText
                 values.topTF.hasNoError()
             }
-            guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else {
+            guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else { //if password is empty...
                 values.bottomTF.hasError()
                 values.errors.append("Field is empty")
                 return values
             }
-            if bottomText.count < 6 {
+            if bottomText.count < 6 { //if password is invalid...
                 values.bottomTF.hasError()
                 values.errors.append("Password must be at least 6 characters")
             } else {
@@ -208,13 +228,50 @@ public final class UserAuthenticationViewModel {
                 values.bottomTF.hasNoError()
             }
         } else { //phone authentication
-            
+            if topText.prefix(1) != "+" { //if first character is not "+"
+                topTF.hasError()
+                values.errors.append("Phone number must start with + and country code")
+            } else {
+                values.topFieldValue = topText
+            }
+            if values.errors.count == 0 { //if no error, text a code or authenticate
+                if !hasPhoneCode { //text for code
+//                    textPhoneCode(phoneNumber: topText)
+//                    hasPhoneCode = true
+//                    continueButtonTitle = "Continue with Phone"
+                } else { //check bottom text
+                    guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else { //if password is empty...
+                        values.bottomTF.hasError()
+                        values.errors.append("Field is empty")
+                        return values
+                    }
+                    values.bottomFieldValue = bottomText
+                }
+            }
         }
         print("THERE ARE \(values.errors.count) ERRORS")
         return values
     }
     
 //MARK: Phone Auth
+    private func textPhoneCode(phoneNumber: String) { //method that sends a text a code to a phone number
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+            if let error = error {
+                return
+            }
+            print("\(kVERIFICATIONCODE) = \(verificationID!)")
+            //if no error verifying phoneNumber inputted, first show code textfield
+//            self.phoneNumber = self.phoneNumberTextField.text!
+//            self.phoneNumberTextField.text = "" //RE ep.20 3mins remove text
+//            self.phoneNumberTextField.placeholder = self.phoneNumber! //RE ep.20 3mins
+//            self.phoneNumberTextField.isEnabled = false //RE ep.20 4mins because we dont want the user to play with the phone number textfield anymore, that is why we put it as placeholder
+//            self.codeTextField.isHidden = false //RE ep.20 4mins show code tf
+//            self.requestButton.setTitle("Register", for: .normal) //RE ep.20 5mins
+//            UserDefaults.standard.set(verificationID, forKey: kVERIFICATIONCODE) //set our verificationID we got from verifyPhoneNumber's completion handler to our kVERIFICATIONCODE
+//            UserDefaults.standard.synchronize() //sync it
+        }
+    }
+    
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
         
         
