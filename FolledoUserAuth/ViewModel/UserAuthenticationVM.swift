@@ -182,29 +182,33 @@ public final class UserAuthenticationViewModel {
     
     func checkInputValues(topTF: UnderlinedTextField, bottomTF: UnderlinedTextField) -> (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount //Note: work on PROPERLY HANDLING ERRORS in the future
         var values: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = (topTF: topTF, bottomTF: bottomTF, errors: [], topFieldValue: "", bottomFieldValue: "")
-        if let email = values.topTF.text?.trimmedString() { //check if email exists
-            if !(email.isValidEmail) {
+        guard let topText = topTF.text?.trimmedString(), topText != "" else {
+            values.topTF.hasError()
+            values.errors.append("Field is empty")
+            return values
+        }
+        guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else {
+            values.bottomTF.hasError()
+            values.errors.append("Field is empty")
+            return values
+        }
+        if isEmailAuthentication { //email authentication
+            if !(topText.isValidEmail) {
                 values.topTF.hasError()
                 values.errors.append("Email format is not valid")
             } else {
-                values.topFieldValue = email
+                values.topFieldValue = topText
                 values.topTF.hasNoError()
             }
-        } else {
-            values.topTF.hasError()
-            values.errors.append("Email is empty")
-        }
-        if let password = values.bottomTF.text?.trimmedString(){
-            if password.count < 6 {
+            if bottomText.count < 6 {
                 values.bottomTF.hasError()
                 values.errors.append("Password must be at least 6 characters")
             } else {
-                values.bottomFieldValue = password
+                values.bottomFieldValue = bottomText
                 values.bottomTF.hasNoError()
             }
-        } else {
-            values.bottomTF.hasError()
-            values.errors.append("Password is empty")
+        } else { //phone authentication
+            
         }
         print("THERE ARE \(values.errors.count) ERRORS")
         return values
