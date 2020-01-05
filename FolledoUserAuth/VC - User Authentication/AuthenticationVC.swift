@@ -86,7 +86,7 @@ class AuthenticationVC: UIViewController {
                 }
             }
         } else { //handle error on the fields
-            let errorMessage = inputValues.errors.joined(separator: ", ")
+            let errorMessage: String = inputValues.errors.joined(separator: ", ") //all errors with comma in between
             Service.presentAlert(on: self, title: "Fields Error", message: errorMessage)
         }
     }

@@ -3,4 +3,102 @@
    uuid = "CB592323-BD52-4BB9-8DDB-923353C43656"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F7DA841-A89C-46BF-B2F7-CB70903061B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "continueButtonTapped(topFieldValue:bottomFieldValue:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "453E0A4C-21E0-4B79-806F-4A5E2355F72E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "textPhoneCode(phoneNumber:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "453E0A4C-21E0-4B79-806F-4A5E2355F72E - 130295887ad9e315"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FolledoUserAuth.UserAuthenticationViewModel.(textPhoneCode in _79F12A0D04F1E5A1277CD3E2CC704D6C)(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Desktop/FolledoUserAuth/FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "453E0A4C-21E0-4B79-806F-4A5E2355F72E - 12a53b1530e44bde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FolledoUserAuth.UserAuthenticationViewModel.(textPhoneCode in _79F12A0D04F1E5A1277CD3E2CC704D6C)(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "FolledoUserAuth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookpro15/Desktop/FolledoUserAuth/FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9537E013-E8CA-449B-A637-4B131EC86055"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "textPhoneCode(phoneNumber:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "196D0DEC-2225-436D-AC60-656BD1DB3617"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "textPhoneCode(phoneNumber:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
