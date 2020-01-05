@@ -100,6 +100,7 @@
 		335289F8235255490084E405 /* FolledoUserAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FolledoUserAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		335289FC235255490084E405 /* FolledoUserAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolledoUserAuthUITests.swift; sourceTree = "<group>"; };
 		335289FE235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33C9642B23C1E19C00141B0A /* FolledoUserAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FolledoUserAuth.entitlements; sourceTree = "<group>"; };
 		68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.release.xcconfig"; sourceTree = "<group>"; };
 		6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		84C9B8E1F71240CB1BBBBFA9 /* Pods-FolledoUserAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuthTests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuthTests/Pods-FolledoUserAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +261,7 @@
 		335289D9235255470084E405 /* FolledoUserAuth */ = {
 			isa = PBXGroup;
 			children = (
+				33C9642B23C1E19C00141B0A /* FolledoUserAuth.entitlements */,
 				335289DA235255470084E405 /* AppDelegate.swift */,
 				335289DC235255470084E405 /* SceneDelegate.swift */,
 				3341F6FF23557447008DD935 /* Main */,
@@ -755,6 +757,7 @@
 			baseConfigurationReference = 1394EF31BD137FD9EBCB7B50 /* Pods-FolledoUserAuth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FolledoUserAuth/FolledoUserAuth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9NY68F4K3P;
 				INFOPLIST_FILE = FolledoUserAuth/Info.plist;
@@ -774,6 +777,7 @@
 			baseConfigurationReference = 68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FolledoUserAuth/FolledoUserAuth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9NY68F4K3P;
 				INFOPLIST_FILE = FolledoUserAuth/Info.plist;
