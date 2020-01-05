@@ -180,6 +180,43 @@ public final class UserAuthenticationViewModel {
         })
     }
     
+    func checkInputValues(topTF: UnderlinedTextField, bottomTF: UnderlinedTextField) -> (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount //Note: work on PROPERLY HANDLING ERRORS in the future
+        var values: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = (topTF: topTF, bottomTF: bottomTF, errors: [], topFieldValue: "", bottomFieldValue: "")
+        if let email = values.topTF.text?.trimmedString() { //check if email exists
+            if !(email.isValidEmail) {
+                values.topTF.hasError()
+                values.errors.append("Email format is not valid")
+//                values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
+            } else {
+                values.topFieldValue = email
+                values.topTF.hasNoError()
+            }
+        } else {
+            values.topTF.hasError()
+            values.errors.append("Email is empty")
+//            values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
+        }
+        if let password = values.bottomTF.text?.trimmedString(){
+            if password.count < 6 {
+                values.bottomTF.hasError()
+                values.errors.append("Password must be at least 6 characters")
+//                values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
+            } else {
+                values.bottomFieldValue = password
+                values.bottomTF.hasNoError()
+            }
+        } else {
+            values.bottomTF.hasError()
+            values.errors.append("Password is empty")
+//            values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
+        }
+        print("THERE ARE \(values.errors.count) ERRORS")
+        return values
+    }
     
 //MARK: Phone Auth
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
