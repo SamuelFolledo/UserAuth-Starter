@@ -76,17 +76,18 @@ class AuthenticationVC: UIViewController {
         let inputValues: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = userAuthViewModel.checkInputValues(topTF: topTextField, bottomTF: bottomTextField)
         topTextField = inputValues.topTF
         bottomTextField = inputValues.bottomTF
-        if inputValues.errors.count < 1 { //if no error
+        if inputValues.errors.count == 0 { //if no error
             userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
                 if let error = error {
-                    Service.presentAlert(on: self, title: "Error", message: error)
+                    Service.presentAlert(on: self, title: "Authentication Error", message: error)
                 } else {
                     print("User is \(userDictionaryFrom(user: user!))")
                     self.goToNextController(user: user!)
                 }
             }
         } else { //handle error on the fields
-            Service.presentAlert(on: self, title: "Error", message: "Error on the fields")
+            let errorMessage = inputValues.errors.joined(separator: ", ")
+            Service.presentAlert(on: self, title: "Fields Error", message: errorMessage)
         }
     }
     
