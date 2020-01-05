@@ -72,36 +72,36 @@ class AuthenticationVC: UIViewController {
         }
     }
     
-    fileprivate func checkInputValues() -> (errorCount: Int, topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount
-        var values: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = (0, "", "")
-        if let email = topTextField.text?.trimmedString() { //check if email exists
-            if !(email.isValidEmail) {
-                topTextField.hasError()
-                values.errorCount += 1
-                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
-            } else {
-                values.topFieldValue = email
-                topTextField.hasNoError()
-            }
-        } else {
-            topTextField.hasError(); values.errorCount += 1
-            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
-        }
-        if let password = bottomTextField.text?.trimmedString(){
-            if password.count < 6 {
-                bottomTextField.hasError(); values.errorCount += 1
-                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
-            } else {
-                values.bottomFieldValue = password
-                bottomTextField.hasNoError()
-            }
-        } else {
-            bottomTextField.hasError(); values.errorCount += 1
-            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
-        }
-        print("THERE ARE \(values.errorCount) ERRORS")
-        return values
-    }
+//    fileprivate func checkInputValues() -> (errorCount: Int, topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount //Note: work on PROPERLY HANDLING ERRORS in the future
+//        var values: (errorCount: Int, topFieldValue: String, bottomFieldValue: String) = (0, "", "")
+//        if let email = topTextField.text?.trimmedString() { //check if email exists
+//            if !(email.isValidEmail) {
+//                topTextField.hasError()
+//                values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid")
+//            } else {
+//                values.topFieldValue = email
+//                topTextField.hasNoError()
+//            }
+//        } else {
+//            topTextField.hasError(); values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Email", message: "Email is empty")
+//        }
+//        if let password = bottomTextField.text?.trimmedString(){
+//            if password.count < 6 {
+//                bottomTextField.hasError(); values.errorCount += 1
+//                Service.presentAlert(on: self, title: "Invalid Password", message: "Password must be at least 6 characters")
+//            } else {
+//                values.bottomFieldValue = password
+//                bottomTextField.hasNoError()
+//            }
+//        } else {
+//            bottomTextField.hasError(); values.errorCount += 1
+//            Service.presentAlert(on: self, title: "Invalid Password", message: "Password is empty")
+//        }
+//        print("THERE ARE \(values.errorCount) ERRORS")
+//        return values
+//    }
     
     @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
         self.view.endEditing(false)
