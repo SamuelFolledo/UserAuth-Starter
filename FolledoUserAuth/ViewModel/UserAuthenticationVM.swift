@@ -97,7 +97,7 @@ public final class UserAuthenticationViewModel {
         checkIfEmailExist(email: email, completion: { (emailAlreadyExist) in //check if email exist in our Database, then login, else register
             if let emailAlreadyExist = emailAlreadyExist {
                 if emailAlreadyExist { //LOGIN
-                    self.login(email: email, password: password) { (error, user) in
+                    self.loginWithEmail(email: email, password: password) { (error, user) in
                         if let error = error {
                             completion(error, nil)
                         } else {
@@ -105,7 +105,7 @@ public final class UserAuthenticationViewModel {
                         }
                     }
                 } else { //Register because email does not exist
-                    self.register(email: email, password: password) { (error, user) in
+                    self.registerWithEmail(email: email, password: password) { (error, user) in
                         if let error = error {
                             completion(error, nil)
                         } else {
@@ -133,7 +133,7 @@ public final class UserAuthenticationViewModel {
         }, withCancel: nil)
     }
     
-    fileprivate func login(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
+    fileprivate func loginWithEmail(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
         User.loginUserWith(email: email, password: password) { (error) in
             if let error = error {
                 completion(error.localizedDescription, nil)
@@ -144,7 +144,7 @@ public final class UserAuthenticationViewModel {
         }
     }
     
-    fileprivate func register(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
+    fileprivate func registerWithEmail(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
         //        let methodStart = Date()
         User.registerUserWith(email: email, password: password) { (error, user) in
             if let error = error {
