@@ -267,8 +267,8 @@ public final class UserAuthenticationViewModel {
 //            self.phoneNumberTextField.isEnabled = false //RE ep.20 4mins because we dont want the user to play with the phone number textfield anymore, that is why we put it as placeholder
 //            self.codeTextField.isHidden = false //RE ep.20 4mins show code tf
 //            self.requestButton.setTitle("Register", for: .normal) //RE ep.20 5mins
-//            UserDefaults.standard.set(verificationID, forKey: kVERIFICATIONCODE) //set our verificationID we got from verifyPhoneNumber's completion handler to our kVERIFICATIONCODE
-//            UserDefaults.standard.synchronize() //sync it
+            UserDefaults.standard.set(verificationID, forKey: kVERIFICATIONCODE) //set our verificationID we got from verifyPhoneNumber's completion handler to our kVERIFICATIONCODE
+            UserDefaults.standard.synchronize() //sync it
         }
     }
     
