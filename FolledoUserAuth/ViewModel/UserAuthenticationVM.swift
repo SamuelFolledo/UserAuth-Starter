@@ -257,6 +257,7 @@ public final class UserAuthenticationViewModel {
     private func textPhoneCode(phoneNumber: String) { //method that sends a text a code to a phone number
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
+                print(error)
                 return
             }
             print("\(kVERIFICATIONCODE) = \(verificationID!)")
