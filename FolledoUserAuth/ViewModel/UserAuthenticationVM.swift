@@ -100,13 +100,15 @@ public final class UserAuthenticationViewModel {
                 self.hasPhoneCode = true
                 self.continueButtonTitle = "Continue with Phone"
                 completion(nil,nil)
-            } else { //register or login phone
+            } else if hasPhoneCode && bottomFieldValue != "" { //if we have phone code and it is not empty, register or login phone
                 self.continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
                     if let error = error {
                         completion(error, nil)
                     }
                     completion(nil, user)
                 }
+            } else {
+                completion("Weird phone authentication error error", nil)
             }
             //                }
             //            }
@@ -207,7 +209,7 @@ public final class UserAuthenticationViewModel {
             values.errors.append("Field is empty")
             return values
         }
-        if isEmailAuthentication { //email authentication
+        if isEmailAuthentication { //AUTHENTICATION = EMAIL
             if !(topText.isValidEmail) { //if email is not valid...
                 values.topTF.hasError()
                 values.errors.append("Email format is not valid")
@@ -227,7 +229,7 @@ public final class UserAuthenticationViewModel {
                 values.bottomFieldValue = bottomText
                 values.bottomTF.hasNoError()
             }
-        } else { //phone authentication
+        } else { //AUTHENTICATION = PHONE
             if topText.prefix(1) != "+" { //if first character is not "+"
                 topTF.hasError()
                 values.errors.append("Phone number must start with + and country code")
@@ -236,9 +238,7 @@ public final class UserAuthenticationViewModel {
             }
             if values.errors.count == 0 { //if no error, text a code or authenticate
                 if !hasPhoneCode { //text for code
-//                    textPhoneCode(phoneNumber: topText)
-//                    hasPhoneCode = true
-//                    continueButtonTitle = "Continue with Phone"
+                    print("Texting code...")
                 } else { //check bottom text
                     guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else { //if password is empty...
                         values.bottomTF.hasError()
@@ -275,9 +275,16 @@ public final class UserAuthenticationViewModel {
     
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
         
-        
-        
-        print("Phone Auth is unfinish")
-        completion("Phone Auth is unfinish", nil)
+        User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in
+            if let error = error {
+                completion(error.localizedDescription, nil)
+            }
+            if shouldLogin { //login and go to home screen
+                print("Logging in \(User.currentUser())")
+            } else { //finish registering
+                print("User never finished registering")
+            }
+        }
+        completion(nil, User.currentUser())
     }
 }
