@@ -258,10 +258,12 @@ extension User {
     class func registerUserWith(phoneNumber: String, verificationCode: String, completion: @escaping (_ error: Error?, _ shouldLogin: Bool) -> Void) {
         let verificationID = UserDefaults.standard.value(forKey: kVERIFICATIONCODE) //kVERIFICATIONCODE = "firebase_verification" //Once our user inputs phone number and request a code, firebase will send the modification code which is not the password code. This code is sent by Firebase in the background to identify if the application is actually running on the device that is requesting the code.
         let credentials = PhoneAuthProvider.provider().credential(withVerificationID: verificationID as! String, verificationCode: verificationCode)
+        print("Phone = \(phoneNumber) == \(verificationCode)")
         Auth.auth().signIn(with: credentials) { (userResult, error) in //Asynchronously signs in to Firebase with the given 3rd-party credentials (e.g. a Facebook login Access Token, a Google ID Token/Access Token pair, etc.) and returns additional identity provider data.
             if let error = error { //if there's error put false on completion's shouldLogin parameter
                 completion(error, false)
             }
+            print("userResult = \(userResult)")
             fetchUserWith(userId: (userResult?.user.uid)!, completion: { (user) in //check if there is user then logged in else register
                 if user != nil && user?.firstName != "" { //if user is nil and user has a first name, provides extra protection
                     saveUserLocally(user: user!) //save user in our UserDefaults. We dont need to save in background because we are already getting/fetching the user
