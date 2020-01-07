@@ -90,7 +90,7 @@ public final class UserAuthenticationViewModel {
                 self.hasPhoneCode = true
                 self.continueButtonTitle = "Continue with Phone"
                 completion(nil,nil)
-            } else if hasPhoneCode && bottomFieldValue != "" { //if we have phone code and it is not empty, register or login phone
+            } else if self.hasPhoneCode && bottomFieldValue != "" { //if we have phone code and it is not empty, register or login phone
                 self.continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
                     if let error = error {
                         completion(error, nil)
@@ -230,7 +230,7 @@ public final class UserAuthenticationViewModel {
                 if !hasPhoneCode { //text for code
                     print("Texting code...")
                 } else { //check bottom text
-                    guard let bottomText = topTF.text?.trimmedString(), bottomText != "" else { //if password is empty...
+                    guard let bottomText = bottomTF.text?.trimmedString(), bottomText != "" else { //if password is empty...
                         values.bottomTF.hasError()
                         values.errors.append("Field is empty")
                         return values
@@ -264,7 +264,6 @@ public final class UserAuthenticationViewModel {
     }
     
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
-        
         User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in
             if let error = error {
                 completion(error.localizedDescription, nil)
