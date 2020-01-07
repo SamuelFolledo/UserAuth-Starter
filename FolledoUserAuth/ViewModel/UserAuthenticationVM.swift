@@ -85,16 +85,6 @@ public final class UserAuthenticationViewModel {
                 }
             }
         } else { //phone authentication
-            //            let phoneCode: String = UserDefaults.standard.string(forKey: kVERIFICATIONCODE)!
-            //            UserDefaults.standard.removeObject(forKey: kVERIFICATIONCODE)
-            //            UserDefaults.standard.synchronize()
-            //            hasPhoneCode = false
-            //            continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
-            //                if let error = error {
-            //                    completion(error, nil)
-            ////                    values.bottomTF.hasError()
-            ////                    values.errors.append(error)
-            //                } else {
             if !self.hasPhoneCode { //text code
                 self.textPhoneCode(phoneNumber: topFieldValue)
                 self.hasPhoneCode = true
