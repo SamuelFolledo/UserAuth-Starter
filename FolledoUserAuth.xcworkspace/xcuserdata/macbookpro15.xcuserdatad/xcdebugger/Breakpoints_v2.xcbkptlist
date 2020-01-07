@@ -14,8 +14,8 @@
             filePath = "FolledoUserAuth/ViewModel/UserAuthenticationVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "textPhoneCode(phoneNumber:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -264,6 +264,7 @@ extension User {
                 completion(error, false)
             }
             print("userResult = \(userResult)")
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             fetchUserWith(userId: (userResult?.user.uid)!, completion: { (user) in //check if there is user then logged in else register
                 if user != nil && user?.firstName != "" { //if user is nil and user has a first name, provides extra protection
                     saveUserLocally(user: user!) //save user in our UserDefaults. We dont need to save in background because we are already getting/fetching the user
@@ -273,12 +274,13 @@ extension User {
                     guard let phoneNumber = userResult?.user.phoneNumber else { return }
                     print(phoneNumber)
                     let user = User(_userID: uid, _phoneNumber: phoneNumber)
-//                    let fUser = User(_objectId: (userResult?.user.uid)!, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _firstName: "", _lastName: "", _phoneNumber: (userResult?.user.phoneNumber)!) //RE ep.18 6mins so we create a user
+                    //                    let fUser = User(_objectId: (userResult?.user.uid)!, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _firstName: "", _lastName: "", _phoneNumber: (userResult?.user.phoneNumber)!) //RE ep.18 6mins so we create a user
                     saveUserLocally(user: user) //now we have the newly registered user, save it locally and in background
                     saveUserInBackground(user: user)
                     completion(error, false) //pass error which is nil, and shouldLogin = false because we need to finish registering the user. Need a new VC for that
                 }
             })
+            //            }
         }
     }
 }
