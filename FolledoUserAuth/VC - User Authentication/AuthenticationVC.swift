@@ -82,13 +82,12 @@ class AuthenticationVC: UIViewController {
                     Service.presentAlert(on: self, title: "Authentication Error", message: error)
                 } else {
                     if !self.userAuthViewModel.isEmailAuthentication && self.userAuthViewModel.hasPhoneCode == true { //if we are in phone auth and we have not received a phone code, then do not continue as user is still nil
-                        print("not yet")
                         self.userAuthViewModel.setupContinueButton(button: self.continueButton)
                         self.bottomLabel.isHidden = false
                         self.bottomTextField.isHidden = false
                     } else {
-//                        print("User is \(userDictionaryFrom(user: user!))")
-                        self.goToNextController(user: user!)
+                        guard let user: User = user as? User else { return }
+                        self.goToNextController(user: user)
                     }
                 }
             }
