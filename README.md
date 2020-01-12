@@ -31,3 +31,5 @@ Don't forget to:
 
 ## Register View
 <img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/register.png" width="310" height="550`"> 
+
+License under the [MIT License](LICENSE)
