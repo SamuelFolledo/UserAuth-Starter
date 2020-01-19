@@ -16,14 +16,24 @@ public let kVERIFICATIONCODE = "firebase_verification" //for phone auth
 //ids and keys for one signal
 public let kONESIGNALAPPID: String = "586d3ef3-6411-41d0-ab81-2a797a16a50b"
 public let kONESIGNALID: String = "OneSignalId"
-public let kUSERID: String = "userID"
+public let kUSERID: String = "userId"
 public let kUSERNAME: String = "username"
 public let kFIRSTNAME: String = "firstName"
 public let kLASTNAME: String = "lastName"
 public let kFULLNAME: String = "fullName"
 public let kEMAIL: String = "email"
-public let kAVATARURL: String = "avatarURL"
+public let kIMAGEURL: String = "imageUrl"
 public let kCURRENTUSER: String = "currentUser" //for userDefaults
+public let kUSERIMAGE: String = "userImage"
+public let kAUTHTYPE: String = "authenticationType"
+public let kPHONEAUTH: String = "phoneAuth"
+public let kEMAILAUTH: String = "emailAuth"
+public let kFACEBOOKAUTH: String = "facebookAuth"
+public let kGMAILAUTH: String = "gmailAuth"
+public let kANONYMOUSAUTH: String = "anonymousAuth"
+public let kAPPLEAUTH: String = "appleAuth"
+
+//Other properties for user
 public let kUSERS: String = "user" //for firebase
 public let kMESSAGES: String = "message"
 public let kPUSHID: String = "pushId"
@@ -31,39 +41,6 @@ public let kPUSHID: String = "pushId"
 //MARK: Other Constants
 public let kCREATEDAT: String = "createdAt"
 public let kUPDATEDAT: String = "updatedAt"
-public let kGAMESESSIONS: String = "gameSessions"
-public let kUSERTOGAMESESSIONS: String = "user-gameSessions"
-public let kPLAYER1ID: String = "player1Id"
-public let kPLAYER2ID: String = "player2Id"
-public let kPLAYER1NAME: String = "player1Name"
-public let kPLAYER2NAME: String = "player2Name"
-public let kPLAYER1EMAIL: String = "player1Email"
-public let kPLAYER2EMAIL: String = "player2Email"
-public let kPLAYER1AVATARURL: String = "player1AvatarUrl"
-public let kPLAYER2AVATARURL: String = "player2AvatarUrl"
-public let kPLAYER1IMAGE: String = "player1Image"
-public let kPLAYER2IMAGE: String = "player2Image"
-public let kPLAYER1HP: String = "player1Hp"
-public let kPLAYER2HP: String = "player2Hp"
-public let kP1MOVE: String = "p1Move"
-public let kP2MOVE: String = "p2Move"
-
-public let kWINNERUID: String = "winnerUid"
-public let kCURRENTGAME: String = "currentGame"
-public let kGAMEATTACK: String = "gameAttack"
-public let kGAMEMOVE: String = "gameMove"
-public let kMOVES: String = "moves"
-public let kTURNCOUNT: String = "turnCount"
-public let kROUNDNUMBER: String = "roundNumber"
-public let kROUNDS: String = "rounds"
-public let kGAMEID: String = "gameId"
-public let kTIMESTAMP: String = "timeStamp"
-public let kGAMEHISTORY: String = "gameHistory"
-//public let kTURNCOUNTER: String = "turnCounter"
-
-public let kOPPONENTNAME: String = "opponentName"
-public let kOPPONENTAVATARTURL : String = "opponentAvatarUrl"
-public let kHPLEFT: String = "hpLeft"
 
 //storyboard VC Identifiers
 public let kHOMEVIEWCONTROLLER: String = "homeVC"
@@ -116,3 +93,8 @@ public let kAUTHENTICATIONVC: String = "authenticationVC"
 public let kTOAUTHENTICATIONVC: String = "toAuthenticationVC"
 public let kTONAMEVC: String = "toNameVC"
 public let kTOAUTHMENUVC: String = "toAuthMenuVC"
+
+//images
+public let kBLANKIMAGE: UIImage = UIImage(named: "blankImage")!
+public let kCORRECTIMAGE: UIImage = UIImage(named: "correct")!
+public let kWRONGIMAGE: UIImage = UIImage(named: "wrong")!
