@@ -11,7 +11,6 @@ import FirebaseAuth
 
 public final class UserAuthenticationViewModel {
     public let isEmailAuthentication: Bool
-    
     public let navigationTitle: String
     public let topLabelText: String
     public var topErrorLabelText: String
@@ -100,8 +99,6 @@ public final class UserAuthenticationViewModel {
             } else {
                 completion("Weird phone authentication error error", nil)
             }
-            //                }
-            //            }
         }
     }
     
@@ -157,39 +154,13 @@ public final class UserAuthenticationViewModel {
     }
     
     fileprivate func registerWithEmail(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
-        //        let methodStart = Date()
         User.registerUserWith(email: email, password: password) { (error, user) in
             if let error = error {
-                completion(error.localizedDescription, nil)
+                completion(error, nil)
             } else { //if no error registering user...
-                let uid = User.currentId()
-                let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: email, kIMAGEURL: "", kAUTHTYPES: [AuthType.email]]
-                self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues) { (error, user) in
-                    if let error = error {
-                        completion(error, nil)
-                    } else {
-                        completion(nil, user)
-                    }
-                }
+                completion(nil, user)
             }
         }
-    }
-    
-    fileprivate func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any], completion: @escaping (_ error: String?, _ user: User?) -> Void) { //method that gets uid and a dictionary of values you want to give to users
-        let usersReference = firDatabase.child(kUSERS).child(uid)
-        usersReference.setValue(values, withCompletionBlock: { (error, ref) in
-            if let error = error {
-                completion(error.localizedDescription, nil)
-            } else { //if no error, save user
-                saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
-                DispatchQueue.main.async {
-                    let user = User(_dictionary: values)
-                    saveUserLocally(user: user)
-                    saveUserInBackground(user: user)
-                    completion(nil, user)
-                }
-            }
-        })
     }
     
     func checkInputValues(topTF: UnderlinedTextField, bottomTF: UnderlinedTextField) -> (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) { //method that check for errors on input values from textfields, put a red border or clear border and return input values with errorCount //Note: work on PROPERLY HANDLING ERRORS in the future
@@ -264,12 +235,12 @@ public final class UserAuthenticationViewModel {
     }
     
     private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
-        User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in
+        User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in //
             if let error = error {
-                completion(error.localizedDescription, nil)
+                completion(error, nil)
             }
             if shouldLogin { //login and go to home screen
-                print("Logging in \(User.currentUser())")
+                print("Logging in \(User.currentUser()?.userId)")
             } else { //finish registering
                 print("User never finished registering")
             }
