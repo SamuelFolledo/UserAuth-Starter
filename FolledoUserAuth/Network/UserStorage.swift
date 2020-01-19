@@ -31,7 +31,7 @@ func getImageURL(id: String, image: UIImage, completion: @escaping(_ imageURL: S
     })
 }
 
-//Get User Image, not used since this task is in UIImageView+extensions.swift
+//get an profile image from User's imageUrl
 func getUserImage(user: User, completion: @escaping (_ error: String?, _ image: UIImage?) -> Void) { //gets user's image from user's imageUrl
     guard let url = URL(string: user.imageUrl) else {
         completion("No image url found", nil)

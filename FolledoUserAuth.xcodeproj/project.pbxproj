@@ -41,6 +41,8 @@
 		335289F2235255490084E405 /* FolledoUserAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289F1235255490084E405 /* FolledoUserAuthTests.swift */; };
 		335289FD235255490084E405 /* FolledoUserAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335289FC235255490084E405 /* FolledoUserAuthUITests.swift */; };
 		33C4E84B23D3DF2B00833F18 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84A23D3DF2B00833F18 /* AuthType.swift */; };
+		33C4E84E23D51B4300833F18 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84D23D51B4300833F18 /* UserDatabase.swift */; };
+		33C4E85023D51B4A00833F18 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84F23D51B4A00833F18 /* UserStorage.swift */; };
 		592EE74C6E4756610E33349D /* Pods_FolledoUserAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +104,8 @@
 		335289FC235255490084E405 /* FolledoUserAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolledoUserAuthUITests.swift; sourceTree = "<group>"; };
 		335289FE235255490084E405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C4E84A23D3DF2B00833F18 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
+		33C4E84D23D51B4300833F18 /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		33C4E84F23D51B4A00833F18 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		33C9642B23C1E19C00141B0A /* FolledoUserAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FolledoUserAuth.entitlements; sourceTree = "<group>"; };
 		68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.release.xcconfig"; sourceTree = "<group>"; };
 		6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				3341F6FE2355742A008DD935 /* Model */,
 				333AB151237FE2FC006118AC /* ViewModel */,
 				33364DA82352836900259081 /* VC - User Authentication */,
+				33C4E84C23D51B2400833F18 /* Network */,
 				335289E3235255490084E405 /* Assets.xcassets */,
 				335289E5235255490084E405 /* LaunchScreen.storyboard */,
 				335289E8235255490084E405 /* Info.plist */,
@@ -297,6 +302,15 @@
 				335289FE235255490084E405 /* Info.plist */,
 			);
 			path = FolledoUserAuthUITests;
+			sourceTree = "<group>";
+		};
+		33C4E84C23D51B2400833F18 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				33C4E84D23D51B4300833F18 /* UserDatabase.swift */,
+				33C4E84F23D51B4A00833F18 /* UserStorage.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		6B19BC0FE26FD6DF538EA972 /* Pods */ = {
@@ -574,6 +588,7 @@
 				333AB14D237F99D0006118AC /* UIButton+extensions.swift in Sources */,
 				3348A66F237E7652003A9576 /* UnderlinedTextField.swift in Sources */,
 				33364DAE23529E4900259081 /* UIView_Layouts+extensions.swift in Sources */,
+				33C4E85023D51B4A00833F18 /* UserStorage.swift in Sources */,
 				3349B9D2235261270045CFF8 /* String+extensions.swift in Sources */,
 				335289DB235255470084E405 /* AppDelegate.swift in Sources */,
 				3349B9CB23525DC70045CFF8 /* Service.swift in Sources */,
@@ -582,6 +597,7 @@
 				3348A673237E9A8F003A9576 /* CATransition+extensions.swift in Sources */,
 				333AB14F237FAF23006118AC /* UnderlinedTextField+extensions.swift in Sources */,
 				33C4E84B23D3DF2B00833F18 /* AuthType.swift in Sources */,
+				33C4E84E23D51B4300833F18 /* UserDatabase.swift in Sources */,
 				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
 				3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */,
 				3341F701235575D3008DD935 /* AccountTableVC.swift in Sources */,
