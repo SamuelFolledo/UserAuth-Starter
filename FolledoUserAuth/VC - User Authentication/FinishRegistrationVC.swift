@@ -49,10 +49,11 @@ class FinishRegistrationVC: UIViewController {
     @IBAction func submitButtonTapped(_ sender: Any) {
         let inputValues: (errorCount: Int, firstName: String, lastName: String, username: String) = checkInputValues()
         switch inputValues.errorCount {
-        case 0:
-            getImageURL(imageView: userImageView) { (imageURL, error) in
+        case 0: //if inputValues has no error
+            getImageURL(id: User.currentId(), image: userImageView.image!) { (imageURL, error) in
                 if let error = error {
                     Service.presentAlert(on: self, title: "Error Uploading Image", message: error)
+                    return
                 } else {
                     let userValues: [String: Any] = [kFIRSTNAME: inputValues.firstName, kLASTNAME: inputValues.lastName, kUSERNAME: inputValues.username, kIMAGEURL: imageURL!]
                     User.updateCurrentUser(values: userValues) { (error) in
