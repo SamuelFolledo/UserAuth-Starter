@@ -213,17 +213,20 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: User?) -> Void
     ref.observeSingleEvent(of: .value, with: { (snapshot) in
 //        print("SNAPSHOT FROM FETCH USER IS \(snapshot)")
         if snapshot.exists() {
-            let userDictionary = ((snapshot.value as! NSDictionary).allValues as NSArray).firstObject! as! [String: Any]
+            let userDictionary = ((snapshot.value as! NSDictionary).allValues as NSArray).firstObject! as! [String: Any] //if snapshot exist, convert it to a dictionary, then to a user we can return
             let user = User(_dictionary: userDictionary)
             completion(user)
         } else { completion(nil) }
     }, withCancel: nil)
 }
 
-func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary
+func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary, convert dates into strings
+    let createdAt = Service.dateFormatter().string(from: user.createdAt) //convert dates to strings first
+    let updatedAt = Service.dateFormatter().string(from: user.updatedAt)
+    let authTypes: [String] = authTypesToString(types: user.authTypes)
     return NSDictionary(
-        objects: [user.userId, user.username, user.firstName, user.lastName, user.fullName, user.email, user.imageUrl, user.createdAt, user.updatedAt, user.authTypes],
-        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kIMAGEURL as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kAUTHTYPES as NSCopying])
+        objects: [user.userId, user.username, user.firstName, user.lastName, user.fullName, user.email, user.phoneNumber, user.imageUrl, createdAt, updatedAt, authTypes],
+        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kPHONENUMBER as NSCopying, kIMAGEURL as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kAUTHTYPES as NSCopying])
 }
 
 func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ success: Bool) -> Void) { //withBlock makes it run in the background //method that saves our current user's values offline and online
