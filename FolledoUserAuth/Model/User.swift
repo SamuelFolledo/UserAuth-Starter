@@ -12,28 +12,39 @@ import Firebase
 import FirebaseAuth
 
 class User: NSObject {
-    var userID: String
+    let userId: String
     var username: String
     var firstName: String
     var lastName: String
     var fullName: String
     var email: String
-    var avatarURL: String
+    var imageUrl: String {
+        didSet {
+            print("Put image here")
+        }
+    }
     var phoneNumber: String
+    var profileImage: UIImage = kBLANKIMAGE
+    let createdAt: Date
+    var updatedAt: Date
+    var authTypes: [AuthType]
 
-    init(_userID: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: String = "", _avatarURL: String = "") {
-        userID = _userID
+    init(_userId: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: String = "", _imageUrl: String = "", _authTypes: [AuthType] = [.unknown], _createdAt: Date, _updatedAt: Date) {
+        userId = _userId
         username = _username
         firstName = _firstName
         lastName = _lastName
         fullName = assignFullName(fName: _firstName, lName: _lastName)
         email = _email
         phoneNumber = _phoneNumber
-        avatarURL = _avatarURL
+        imageUrl = _imageUrl
+        createdAt = _createdAt
+        updatedAt = _updatedAt
+        authTypes = _authTypes
     }
     
     init(_dictionary: [String: Any]) {
-        self.userID = _dictionary[kUSERID] as! String
+        self.userId = _dictionary[kUSERID] as! String
         self.username = _dictionary[kUSERNAME] as! String
         self.firstName = _dictionary[kFIRSTNAME] as! String
         self.lastName = _dictionary[kLASTNAME] as! String
@@ -49,7 +60,30 @@ class User: NSObject {
         } else {
             self.phoneNumber = ""
         }
-        self.avatarURL = _dictionary[kAVATARURL] as! String
+        self.imageUrl = _dictionary[kIMAGEURL] as! String
+        if let createdAt = _dictionary[kCREATEDAT] { //if we have this date, then apply it to the user, else create new current instance of Date()
+            self.createdAt = Service.dateFormatter().date(from: createdAt as! String)!
+        } else {
+            self.createdAt = Date()
+        }
+        if let updatedAt = _dictionary[kUPDATEDAT] { //if we have this date, then apply it to the user, else create new current instance of Date()
+            self.updatedAt = Service.dateFormatter().date(from: updatedAt as! String)!
+        } else {
+            self.updatedAt = Date()
+        }
+        if let authTypes = _dictionary[kAUTHTYPES] as? [AuthType] {
+            print("Auth types as [AuthType]")
+            self.authTypes = authTypes
+        } else if let authTypes = _dictionary[kAUTHTYPES] as? [String] {
+            print("Auth types as [String]")
+            var resultTypes: [AuthType] = []
+            for authType in authTypes {
+                resultTypes.append(AuthType(type: authType))
+            }
+            self.authTypes = resultTypes
+        } else {
+            self.authTypes = []
+        }
     }
     
     deinit {
@@ -149,8 +183,8 @@ class User: NSObject {
         if let email = values[kEMAIL] {
             user.email = email as! String
         }
-        if let avatarURL = values[kAVATARURL] {
-            user.avatarURL = avatarURL as! String
+        if let imageUrl = values[kIMAGEURL] {
+            user.imageUrl = imageUrl as! String
         }
         saveUserLocally(user: user)
         saveUserInBackground(user: user)
@@ -160,7 +194,7 @@ class User: NSObject {
 
 //+++++++++++++++++++++++++   MARK: Saving user   ++++++++++++++++++++++++++++++++++
 func saveUserInBackground(user: User) {
-    let ref = firDatabase.child(kUSERS).child(user.userID)
+    let ref = firDatabase.child(kUSERS).child(user.userId)
     ref.setValue(userDictionaryFrom(user: user))
     print("Finished saving user \(user.fullName) in Firebase")
     
@@ -188,8 +222,8 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: User?) -> Void
 
 func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary
     return NSDictionary(
-        objects: [user.userID, user.username, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL],
-        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kAVATARURL as NSCopying])
+        objects: [user.userId, user.username, user.firstName, user.lastName, user.fullName, user.email, user.imageUrl, user.createdAt, user.updatedAt, user.authTypes],
+        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kIMAGEURL as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kAUTHTYPES as NSCopying])
 }
 
 func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ success: Bool) -> Void) { //withBlock makes it run in the background //method that saves our current user's values offline and online
@@ -197,7 +231,7 @@ func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ succes
         guard let currentUser = User.currentUser() else { return }
         let userObject = userDictionaryFrom(user: currentUser).mutableCopy() as! NSMutableDictionary
         userObject.setValuesForKeys(withValues)
-        let ref = firDatabase.child(kUSERS).child(currentUser.userID)
+        let ref = firDatabase.child(kUSERS).child(currentUser.userId)
         ref.updateChildValues(withValues) { (error, ref) in
             if error != nil {
                 withBlock(false)
@@ -270,7 +304,8 @@ extension User {
                 } else { //register the user
                     guard let uid: String = userResult?.user.uid else { return }
                     guard let phoneNumber = userResult?.user.phoneNumber else { return }
-                    let user = User(_userID: uid, _phoneNumber: phoneNumber)
+                    let user = User(_userId: uid, _username: "", _firstName: "", _lastName: "", _email: "", _phoneNumber: phoneNumber, _imageUrl: "", _authTypes: [.phone], _createdAt: Date(), _updatedAt: Date())
+//                    let user = User(_userID: uid, _phoneNumber: phoneNumber)
                     saveUserLocally(user: user) //now we have the newly registered user, save it locally and in background
                     saveUserInBackground(user: user)
                     completion(error, false) //shouldLogin = false because we need to finish registering the user
@@ -278,4 +313,28 @@ extension User {
             })
         }
     }
+}
+
+func getUserImage(user: User, completion: @escaping (_ error: String?, _ image: UIImage?) -> Void) {
+    guard let url = URL(string: user.imageUrl) else {
+        print("no image URL found")
+        completion("No image url found", nil)
+        return
+    }
+    URLSession.shared.dataTask(with: url) { (data, response, error) in
+    guard
+        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+        //let mimeType = response?.mimeType, mimeType.hasPrefix("image"), //error here
+        let data = data, error == nil,
+        let image = UIImage(data: data)
+        else {
+            print("no image found")
+            completion("No image found", nil)
+            return
+        }
+        completion(nil, image) //remember to use Dispatch
+//        DispatchQueue.main.async() {
+//            self.image = image
+//        }
+    }.resume()
 }
