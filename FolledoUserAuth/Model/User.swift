@@ -105,13 +105,22 @@ class User: NSObject {
     }
     
 //MARK: Email Authentication
-    class func registerUserWith(email: String, password: String, completion: @escaping (_ error: Error?, _ user: User?) -> Void) { //do u think I should return the user here on completion?
+    class func registerUserWith(email: String, password: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) { //do u think I should return the user here on completion?
         Auth.auth().createUser(withEmail: email, password: password) { (firUser, error) in
             if let error = error {
-                completion(error,nil)
+                completion(error.localizedDescription,nil)
             }
-            completion(nil,nil)
-//            completion(nil, firUser?.user)
+            guard let user = firUser?.user else {
+                print("User not found after attempt to register")
+                completion(("User not found after attempt to register"), nil)
+                return }
+            let currentUser = User(_userId: user.uid, _username: "", _firstName: "", _lastName: "", _email: email, _phoneNumber: "", _imageUrl: "", _authTypes: [AuthType.email], _createdAt: Date(), _updatedAt: Date())
+            registerUserEmailIntoDatabase(user: currentUser) { (error, user) in
+                if let error = error {
+                    completion(error.localizedDescription, nil)
+                }
+                completion(nil, user!)
+            }
         }
     }
     
