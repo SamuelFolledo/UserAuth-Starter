@@ -48,7 +48,6 @@ class User: NSObject {
         self.username = _dictionary[kUSERNAME] as! String
         self.firstName = _dictionary[kFIRSTNAME] as! String
         self.lastName = _dictionary[kLASTNAME] as! String
-//        self.fullName = _dictionary[kFULLNAME] as! String
         if let fullName = _dictionary[kFULLNAME] as? String {
             self.fullName = fullName
         } else {
@@ -198,5 +197,31 @@ class User: NSObject {
         saveUserLocally(user: user)
         saveUserInBackground(user: user)
         completion(nil)
+    }
+}
+
+//MARK: Helper Methods for User
+func userDictionaryFrom(user: User) -> NSDictionary { //take a user and return an NSDictionary, convert dates into strings
+    let createdAt = Service.dateFormatter().string(from: user.createdAt) //convert dates to strings first
+    let updatedAt = Service.dateFormatter().string(from: user.updatedAt)
+    let authTypes: [String] = authTypesToString(types: user.authTypes)
+    return NSDictionary(
+        objects: [user.userId, user.username, user.firstName, user.lastName, user.fullName, user.email, user.phoneNumber, user.imageUrl, createdAt, updatedAt, authTypes],
+        forKeys: [kUSERID as NSCopying, kUSERNAME as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kEMAIL as NSCopying, kPHONENUMBER as NSCopying, kIMAGEURL as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kAUTHTYPES as NSCopying])
+}
+
+func isUserLoggedIn() -> Bool { //checks if we have user logged in
+    if User.currentUser() != nil {
+        return true
+    } else {
+        return false
+    }
+}
+
+func assignFullName(fName: String, lName: String) -> String { //returns full name if first name and last name is not empty
+    if fName.trimmedString() != "" && lName.trimmedString() != "" {
+        return "\(fName) \(lName)"
+    } else {
+        return ""
     }
 }
