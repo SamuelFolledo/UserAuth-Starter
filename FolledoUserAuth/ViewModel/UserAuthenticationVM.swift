@@ -97,7 +97,7 @@ public final class UserAuthenticationViewModel {
                     completion(nil, user)
                 }
             } else {
-                completion("Weird phone authentication error error", nil)
+                completion("Field is empty", nil)
             }
         }
     }
@@ -234,7 +234,7 @@ public final class UserAuthenticationViewModel {
         }
     }
     
-    private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
+    private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) { //method once the user has inputted phone number and verification code
         User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in //
             if let error = error {
                 completion(error, nil)
