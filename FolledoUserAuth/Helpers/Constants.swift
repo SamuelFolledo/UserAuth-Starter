@@ -34,9 +34,10 @@ public let kANONYMOUSAUTH: String = "anonymousAuth"
 public let kAPPLEAUTH: String = "appleAuth"
 
 //Other properties for user
-public let kUSERS: String = "user" //for firebase
+public let kUSER: String = "user"
 public let kMESSAGES: String = "message"
 public let kPUSHID: String = "pushId"
+public let kPROFILEIMAGE: String = "profileImage"
 
 //MARK: Other Constants
 public let kCREATEDAT: String = "createdAt"
