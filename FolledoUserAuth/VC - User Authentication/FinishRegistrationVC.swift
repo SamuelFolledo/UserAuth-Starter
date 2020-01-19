@@ -54,7 +54,7 @@ class FinishRegistrationVC: UIViewController {
                 if let error = error {
                     Service.presentAlert(on: self, title: "Error Uploading Image", message: error)
                 } else {
-                    let userValues: [String: Any] = [kFIRSTNAME: inputValues.firstName, kLASTNAME: inputValues.lastName, kUSERNAME: inputValues.username, kAVATARURL: imageURL!]
+                    let userValues: [String: Any] = [kFIRSTNAME: inputValues.firstName, kLASTNAME: inputValues.lastName, kUSERNAME: inputValues.username, kIMAGEURL: imageURL!]
                     User.updateCurrentUser(values: userValues) { (error) in
                         if let error = error {
                             Service.presentAlert(on: self, title: "Error Updating User", message: error)
