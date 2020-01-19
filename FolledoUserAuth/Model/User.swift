@@ -350,3 +350,37 @@ func getUserImage(user: User, completion: @escaping (_ error: String?, _ image: 
 //        }
     }.resume()
 }
+
+func registerUserEmailIntoDatabase(user: User, completion: @escaping (_ error: Error?, _ user: User?) -> Void) { //similar to registerUserIntoDatabaseWithUID, but this accepts a user instead of uid and values
+    let usersReference = firDatabase.child(kUSERS).child(user.userId)
+    usersReference.setValue(userDictionaryFrom(user: user), withCompletionBlock: { (error, ref) in
+        if let error = error {
+            completion(error, nil)
+        } else { //if no error, save user
+            saveEmailInDatabase(email:user.email) //MARK: save to another table
+//            DispatchQueue.main.async {
+//                let user = User(_dictionary: values)
+                saveUserLocally(user: user)
+                saveUserInBackground(user: user)
+                completion(nil, user)
+//            }
+        }
+    })
+}
+
+func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any], completion: @escaping (_ error: String?, _ user: User?) -> Void) { //method that gets uid and a dictionary of values you want to give to users
+    let usersReference = firDatabase.child(kUSERS).child(uid)
+    usersReference.setValue(values, withCompletionBlock: { (error, ref) in
+        if let error = error {
+            completion(error.localizedDescription, nil)
+        } else { //if no error, save user
+            saveEmailInDatabase(email:values[kEMAIL] as! String) //MARK: save to another table
+            DispatchQueue.main.async {
+                let user = User(_dictionary: values)
+                saveUserLocally(user: user)
+                saveUserInBackground(user: user)
+                completion(nil, user)
+            }
+        }
+    })
+}
