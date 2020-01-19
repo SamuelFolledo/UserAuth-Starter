@@ -50,7 +50,7 @@ class AuthenticationVC: UIViewController {
     }
     
     fileprivate func goToNextController(user: User) {
-        if user.firstName == "" || user.avatarURL == "" {
+        if user.firstName == "" || user.imageUrl == "" {
             let nav = self.navigationController //grab an instance of the current navigationController
             DispatchQueue.main.async { //make sure all UI updates are on the main thread.
                 nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
