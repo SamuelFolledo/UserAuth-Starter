@@ -28,6 +28,11 @@ class AccountTableVC: UITableViewController {
         tableView.tableFooterView = UIView() //remove the additional line separator underneath our products
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
 //MARK: Methods
     func insertRowMode3(row: Int, cell: CellData, completion: @escaping ()-> Void) { //cell animation
         let indexPath = IndexPath(row: row, section: 0)
@@ -42,7 +47,7 @@ class AccountTableVC: UITableViewController {
     
 //MARK: Helpers
     func createDataCell() {
-        let url = URL(string: User.currentUser()!.avatarURL)
+        let url = URL(string: User.currentUser()!.imageUrl)
         if let data = try? Data(contentsOf: url!) {
             if let image = UIImage(data: data) {
                 DispatchQueue.main.async {
