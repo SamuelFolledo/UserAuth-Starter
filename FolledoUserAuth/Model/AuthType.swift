@@ -10,7 +10,7 @@ import Foundation
 
 enum AuthType: String {
     case email, phone, facebook, gmail, anonymous, apple, unknown
-    var type: String {
+    var asText: String {
         switch self {
         case .email:
             return "email"
@@ -51,3 +51,13 @@ enum AuthType: String {
         }
     }
 }
+
+func authTypesToString(types: [AuthType]) -> [String] {
+    types.count == 0 ? print("auth types is empty") : print("auth types NOT empty") //types counter
+    var resultTypes: [String] = []
+    for authType in types {
+        resultTypes.append(authType.asText)
+    }
+    return resultTypes
+}
+
