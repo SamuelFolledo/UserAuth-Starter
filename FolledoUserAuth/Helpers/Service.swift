@@ -78,5 +78,12 @@ class Service {
         
         return result
     }
-    
+
+//dateFormatter()
+    private let dateFormat = "yyyyMMddHHmmss" //RE ep.12 3mins made it private so it will remain constant and wont be changed at all outside of this file
+    static func dateFormatter() -> DateFormatter { //RE ep.12 1min DateFormatter = A formatter that converts between dates and their textual representations.
+        let dateFormatter = DateFormatter() //RE ep.12 2mins
+        dateFormatter.dateFormat = Service().dateFormat //RE ep.12 3mins
+        return dateFormatter //RE ep.12 4mins
+    }
 }
