@@ -163,7 +163,7 @@ public final class UserAuthenticationViewModel {
                 completion(error.localizedDescription, nil)
             } else { //if no error registering user...
                 let uid = User.currentId()
-                let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: email, kAVATARURL: ""]
+                let userValues:[String: Any] = [kUSERID: uid, kUSERNAME: "", kFIRSTNAME: "", kLASTNAME: "", kFULLNAME: "", kEMAIL: email, kIMAGEURL: "", kAUTHTYPES: [AuthType.email]]
                 self.registerUserIntoDatabaseWithUID(uid: uid, values: userValues) { (error, user) in
                     if let error = error {
                         completion(error, nil)
