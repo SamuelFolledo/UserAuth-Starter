@@ -49,16 +49,16 @@ class AuthenticationVC: UIViewController {
         userAuthViewModel.setupContinueButton(button: continueButton)
     }
     
-    fileprivate func goToNextController(user: User) {
+    fileprivate func goToNextController(user: User) { //this method decides if user will be put to finish registrationVC or back to the app
         if user.firstName == "" || user.imageUrl == "" {
             let nav = self.navigationController //grab an instance of the current navigationController
             DispatchQueue.main.async { //make sure all UI updates are on the main thread.
                 nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
-                let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC //.instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+                let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC //this must be downcast to utilize it
                 vc.user = user
                 nav?.pushViewController(vc, animated: false)
             }
-        } else {
+        } else { //if user has name and imageUrl then continue
             self.dismiss(animated: true, completion: nil)
         }
     }
