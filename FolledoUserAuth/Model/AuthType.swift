@@ -7,3 +7,47 @@
 //
 
 import Foundation
+
+enum AuthType: String {
+    case email, phone, facebook, gmail, anonymous, apple, unknown
+    var type: String {
+        switch self {
+        case .email:
+            return "email"
+        case .phone:
+            return "phone"
+        case .facebook:
+            return "facebook"
+        case .gmail:
+            return "gmail"
+        case .anonymous:
+            return "anonymous"
+        case .apple:
+            return "apple"
+        case .unknown:
+            return "unknown"
+        }
+    }
+    
+    init(type: String) {
+        switch type {
+        case "email":
+            self = AuthType.email
+        case "phone":
+            self = AuthType.phone
+        case "facebook":
+            self = AuthType.facebook
+        case "gmail":
+            self = AuthType.gmail
+        case "anonymous":
+            self = AuthType.anonymous
+        case "apple":
+            self = AuthType.apple
+        case "unknown":
+            self = AuthType.unknown
+        default:
+            print("Unknown auth type")
+            self = AuthType.unknown
+        }
+    }
+}
