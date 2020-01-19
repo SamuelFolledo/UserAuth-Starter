@@ -77,25 +77,27 @@ class AuthenticationVC: UIViewController {
         topTextField = inputValues.topTF
         bottomTextField = inputValues.bottomTF
         if inputValues.errors.count == 0 { //if no error
-            userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in
+            userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in //get our user, or error
                 if let error = error {
                     Service.presentAlert(on: self, title: "Authentication Error", message: error)
-                } else {
-                    if !self.userAuthViewModel.isEmailAuthentication && self.userAuthViewModel.hasPhoneCode == true { //if we are in phone auth and we have not received a phone code, then do not continue as user is still nil
-                        print("Sending code...")
-                        self.userAuthViewModel.setupContinueButton(button: self.continueButton)
-                        self.bottomLabel.isHidden = false
-                        self.bottomTextField.isHidden = false
-                    } else { //
-                        print("Go to next controller")
-                        guard let user: User = user else { return }
-                        self.goToNextController(user: user)
-                    }
+                    return
+                }
+                if let user = user { //if have user from email or phone auth
+                    print("Go to next controller with \(user.fullName)")
+                    self.goToNextController(user: user)
+                    return
+                } else { //will run only on phone auth after sending a code, it will return a nil error and a nil user
+                    print("Sending code...")
+                    self.userAuthViewModel.setupContinueButton(button: self.continueButton)
+                    self.bottomLabel.isHidden = false
+                    self.bottomTextField.isHidden = false
+                    return
                 }
             }
         } else { //handle error on the fields
             let errorMessage: String = inputValues.errors.joined(separator: ", ") //all errors with comma in between
             Service.presentAlert(on: self, title: "Fields Error", message: errorMessage)
+            return
         }
     }
     
