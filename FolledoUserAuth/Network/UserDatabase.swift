@@ -23,7 +23,7 @@ func saveUserLocally(user: User) { //save user to UserDefaults
 }
 
 func saveEmailInDatabase(email:String) { //saves an extra copy of email address as the key, converting the email's last @ to _-_
-    let convertedEmail = email.emailEncryptedForFirebase()
+    let convertedEmail = email.emailEncryptedForFirebase() //for key
     let emailRef = firDatabase.child(kREGISTEREDUSERS).child(convertedEmail)
     emailRef.updateChildValues([kEMAIL:email])
 }
