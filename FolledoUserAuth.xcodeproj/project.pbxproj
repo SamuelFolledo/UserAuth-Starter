@@ -43,6 +43,7 @@
 		33C4E84B23D3DF2B00833F18 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84A23D3DF2B00833F18 /* AuthType.swift */; };
 		33C4E84E23D51B4300833F18 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84D23D51B4300833F18 /* UserDatabase.swift */; };
 		33C4E85023D51B4A00833F18 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E84F23D51B4A00833F18 /* UserStorage.swift */; };
+		33C4E85223D5273200833F18 /* UserFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C4E85123D5273200833F18 /* UserFacebook.swift */; };
 		592EE74C6E4756610E33349D /* Pods_FolledoUserAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198A163B984F06EA7DC90C0C /* Pods_FolledoUserAuthTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		33C4E84A23D3DF2B00833F18 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		33C4E84D23D51B4300833F18 /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
 		33C4E84F23D51B4A00833F18 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		33C4E85123D5273200833F18 /* UserFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFacebook.swift; sourceTree = "<group>"; };
 		33C9642B23C1E19C00141B0A /* FolledoUserAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FolledoUserAuth.entitlements; sourceTree = "<group>"; };
 		68A79FA63ACA77AF5BDD392D /* Pods-FolledoUserAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth.release.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth.release.xcconfig"; sourceTree = "<group>"; };
 		6E7C96FD165F76B5D9676063 /* Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; path = "Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				33C4E84D23D51B4300833F18 /* UserDatabase.swift */,
 				33C4E84F23D51B4A00833F18 /* UserStorage.swift */,
+				33C4E85123D5273200833F18 /* UserFacebook.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				335289D4235255470084E405 /* Frameworks */,
 				335289D5235255470084E405 /* Resources */,
 				A5463EA6BECC635FB979EEBD /* [CP] Embed Pods Frameworks */,
+				8F5729E04A33CF57D2C5A124 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -386,6 +390,7 @@
 				335289F5235255490084E405 /* Frameworks */,
 				335289F6235255490084E405 /* Resources */,
 				EE7D77C98ADFC9167AEBB7E5 /* [CP] Embed Pods Frameworks */,
+				0B0862B5B2F78A9F1D3CFAC1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +477,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B0862B5B2F78A9F1D3CFAC1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth-FolledoUserAuthUITests/Pods-FolledoUserAuth-FolledoUserAuthUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		627D5B1C2E6F009190D9D75D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,6 +514,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F5729E04A33CF57D2C5A124 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolledoUserAuth/Pods-FolledoUserAuth-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9C547983266537A3DA2774E2 /* [CP] Check Pods Manifest.lock */ = {
@@ -597,6 +636,7 @@
 				3348A673237E9A8F003A9576 /* CATransition+extensions.swift in Sources */,
 				333AB14F237FAF23006118AC /* UnderlinedTextField+extensions.swift in Sources */,
 				33C4E84B23D3DF2B00833F18 /* AuthType.swift in Sources */,
+				33C4E85223D5273200833F18 /* UserFacebook.swift in Sources */,
 				33C4E84E23D51B4300833F18 /* UserDatabase.swift in Sources */,
 				335289DD235255470084E405 /* SceneDelegate.swift in Sources */,
 				3349B9C923525DBF0045CFF8 /* Constants.swift in Sources */,

@@ -6,15 +6,18 @@ target 'FolledoUserAuth' do
   use_frameworks!
 
   # Pods for FolledoUserAuth
-
   pod 'Firebase/Database'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
 
+  # Pods for Firebase Facebook Authentication
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
-
+  # Pods for Firebase Google Authentication
+  pod 'GoogleSignIn'
 
   target 'FolledoUserAuthTests' do
     inherit! :search_paths
