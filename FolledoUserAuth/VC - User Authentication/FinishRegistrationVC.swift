@@ -42,6 +42,9 @@ class FinishRegistrationVC: UIViewController {
         userImageView.rounded()
         userImagePicker = UIImagePickerController()
         userImagePicker?.delegate = self
+        if user.imageUrl != "" && user.profileImage != kDEFAULTPROFILEIMAGE {
+            userImageView.image = user.profileImage
+        }
         submitButton.isAuthButton()
     }
     
