@@ -121,8 +121,7 @@ extension AuthMenuVC: LoginButtonDelegate {
     }
     
     fileprivate func fetchFacebookUserWithUserDetails(userDetails: [String: AnyObject]) { //fetch user's details from facebook and create that user class and go to next controller
-        //spinner
-        let spinner: UIActivityIndicatorView = UIActivityIndicatorView() as UIActivityIndicatorView
+        let spinner: UIActivityIndicatorView = UIActivityIndicatorView() as UIActivityIndicatorView //spinner
         spinner.style = .large
         spinner.center = view.center
         self.view.addSubview(spinner)
@@ -159,71 +158,6 @@ extension AuthMenuVC: LoginButtonDelegate {
                 }
             }
         }
-//        spinner.stopAnimating()
-//        self.dismiss(animated: true, completion: nil)
-
-    
-            //unwrap the user's profile picture
-//            if let profilePictureObj: [String: AnyObject] = userDetails["picture"] as? [String: AnyObject]  {
-//                guard let data: [String: AnyObject] = profilePictureObj["data"] as? [String: AnyObject] else { return }
-//                guard let profilePicUrlString = data["url"]?.absoluteString else { return }
-//                guard let profilePicUrl = URL(string: profilePicUrlString!) else{ return }
-//                do { //catch any errors
-//                    let imageData = try Data(contentsOf: profilePicUrl) //create imageData from the pic's url
-//                    DispatchQueue.main.async {
-//                        let userProfileImage = UIImage(data: imageData) //turn imageData to a UIImage
-//                    }
-//                } catch let error {
-//                    Service.presentAlert(on: self, title: "Error fetching image", message: error.localizedDescription)
-//                    return
-//                }
-//
-//
-//
-//                //what to do with profile pic
-//                let imageName = NSUUID().uuidString
-//                let imageReference = Storage.storage().reference().child("profile_images").child("00FB\(imageName).png") //create the reference
-//                guard let uploadData = loginLogoImageView.image!.jpegData(compressionQuality: 0.8) else { return }
-//                imageReference.putData(uploadData, metadata: nil, completion: { (metadata, error) in //put the data to the imageReference
-//                    if let error = error {
-//                        Service.presentAlert(on: self, title: "Image to databse error", message: error.localizedDescription)
-//                    } else { //if no error putting data to the database...
-//
-//                        let userName:String = userDetails["name"] as! String
-//                        let email:String = userDetails["email"] as! String
-//
-//                        let values: [String: AnyObject] = ["name": userName, "email": email, "profileImageUrl": profilePicUrlString, "userUid": id] as [String: AnyObject]
-//
-//
-//                        self.registerUserIntoDatabaseWithUID(uid: id, values: values) //register with Facebook
-//
-//
-//
-//                        //dataTask
-//                        //                        URLSession.shared.dataTask(with: profilePicUrl, completionHandler: { (data, response, error) in
-//                        //                            if let error = error {
-//                        //                                Service.presentAlert(on: self, title: "Error", message: error.localizedDescription)
-//                        //                            }
-//                        //                            guard let fbCurrentUserTokenString = FBSDKAccessToken.current()?.tokenString else { return }
-//                        //                            let credential = FacebookAuthProvider.credential(withAccessToken: fbCurrentUserTokenString) //our facebook token //After a user successfully signs in, in your implementation of didCompleteWithResult:error:, get an access token for the signed-in user and exchange it for a Firebase credential:
-//                        //                            Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in //Finally, authenticate with Firebase using the Firebase credential:
-//                        //                                if let error = error {
-//                        //                                    Service.presentAlert(on: self, title: "Facebook Signin Error", message: error.localizedDescription)
-//                        //                                }
-//                        //                            //user is signed in
-//                        //
-//                        //                            })
-//                        //
-//                        //                        })
-//                    }
-//                }) //end of putData, already error checked
-//            } else { //cant unwrap profilePictureObj
-//                Service.presentAlert(on: self, title: "Facebook Error", message: "Failed to Get Profile Picture")
-//            }
-//        } else { //cant get userDetails["id"]
-//            Service.presentAlert(on: self, title: "Facebook Error", message: "Failed to get User's Identification")
-//            return
-//        }
         spinner.stopAnimating()
     }
 }
