@@ -28,6 +28,7 @@ pod update FacebookLogin
     - [Facebook Signin pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
     - [Facebook Signin pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
         - __Note__ that Facebook updates very often, so keep checking for future updates
+        - You will need to create your app in __[Facebook For Developers](https://developers.facebook.com/)__
     - [Google Signin](https://www.youtube.com/watch?v=BjsJNpgsl5c)
 
 
