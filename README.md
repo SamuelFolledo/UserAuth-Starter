@@ -24,6 +24,11 @@ pod update FacebookCore
 pod update FBSDKLoginKit
 pod update FacebookLogin
 ```
+- Used these as reference
+    - [Facebook Signin pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
+    - [Facebook Signin pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
+        - __Note__ that Facebook updates very often, so keep checking for future updates
+    - [Google Signin](https://www.youtube.com/watch?v=BjsJNpgsl5c)
 
 
 ### Note for Phone Authentication:
