@@ -30,6 +30,7 @@ pod update FacebookLogin
         - __Note__ that Facebook updates very often, so keep checking for future updates
         - You will need to create your app in __[Facebook For Developers](https://developers.facebook.com/)__
         - You will also need to remove my 2 Facebook code blocks in Info.plist file and put yours instead.
+        - [Fetching the Facebook User Data](https://riptutorial.com/ios/example/10188/fetching-the-facebook-user-data)
     - [Google Signin](https://www.youtube.com/watch?v=BjsJNpgsl5c)
 
 
