@@ -29,6 +29,7 @@ pod update FacebookLogin
     - [Facebook Signin pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
         - __Note__ that Facebook updates very often, so keep checking for future updates
         - You will need to create your app in __[Facebook For Developers](https://developers.facebook.com/)__
+        - In developers.facebook.com, you will also need to go to your project's Settings and see the __Client OAuth Settings__ and paste _OAuth redirect URI from Firebase's project -> Authentication -> Sign-in method -> Facebook_ (e.g.https://folledouserauth.firebaseapp.com/__/auth/handler) into Valid OAuth Redirect URIs
         - You will also need to remove my 2 Facebook code blocks in Info.plist file and put yours instead.
         - [Fetching the Facebook User Data](https://riptutorial.com/ios/example/10188/fetching-the-facebook-user-data)
     - [Google Signin](https://www.youtube.com/watch?v=BjsJNpgsl5c)
