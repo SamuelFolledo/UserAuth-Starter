@@ -31,6 +31,11 @@ class AuthMenuVC: UIViewController {
         setUp()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LoginManager().logOut() //logout the button
+    }
+    
 //MARK: Methods
     func setUp() {
         anonymousButton.isAuthButton()
@@ -126,37 +131,14 @@ extension AuthMenuVC: LoginButtonDelegate {
         spinner.center = view.center
         self.view.addSubview(spinner)
         spinner.startAnimating()
-//        let id = userDetails["id"] as? String,
-        guard let firstName = userDetails["first_name"] as? String, let lastName = userDetails["last_name"] as? String, let email = userDetails["email"] as? String else { //get user details
-            print("Failed to get user's facebook details")
-            return
-        }
         guard let accessToken = AccessToken.current?.tokenString else { print("Failed to get current Facebook token"); return }
-        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken) //get credential
-        getFacebookProfilePic(userDetails: userDetails) { (profilePic, error) in //get profile picture from facebook
+        getFacebookUser(userDetails: userDetails, accessToken: accessToken) { (user, error) in
             if let error = error {
-                Service.presentAlert(on: self, title: "Error Getting Profile Pic", message: error)
+                LoginManager().logOut() //Do not log user in
+                Service.presentAlert(on: self, title: "Facebook Error", message: error)
                 return
             }
-            Auth.auth().signIn(with: credential) { (userResult, error) in
-                if let error = error { //sign our user in
-                    Service.presentAlert(on: self, title: "Facebook Auth Error", message: error.localizedDescription)
-                    return
-                }
-                guard let userResult = userResult else { return }
-                getImageURL(id: userResult.user.uid, image: profilePic!) { (imageUrl, error) in
-                    if let error = error {
-                        Service.presentAlert(on: self, title: "Image Not Stored", message: error)
-                        return
-                    }
-                    let user: User = User(_userId: userResult.user.uid, _username: "", _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: "", _imageUrl: imageUrl!, _authTypes: [.facebook], _createdAt: Date(), _updatedAt: Date())
-                    user.profileImage = profilePic!
-                    saveUserLocally(user: user)
-                    saveUserInBackground(user: user)
-                    saveEmailInDatabase(email: email)
-                    goToNextController(vc: self, user: user)
-                }
-            }
+            goToNextController(vc: self, user: user!)
         }
         spinner.stopAnimating()
     }
