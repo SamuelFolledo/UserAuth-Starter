@@ -221,14 +221,6 @@ public final class UserAuthenticationViewModel {
                 print(error)
                 return
             }
-            print("\(kVERIFICATIONCODE) = \(verificationID!)")
-            //if no error verifying phoneNumber inputted, first show code textfield
-//            self.phoneNumber = self.phoneNumberTextField.text!
-//            self.phoneNumberTextField.text = "" //RE ep.20 3mins remove text
-//            self.phoneNumberTextField.placeholder = self.phoneNumber! //RE ep.20 3mins
-//            self.phoneNumberTextField.isEnabled = false //RE ep.20 4mins because we dont want the user to play with the phone number textfield anymore, that is why we put it as placeholder
-//            self.codeTextField.isHidden = false //RE ep.20 4mins show code tf
-//            self.requestButton.setTitle("Register", for: .normal) //RE ep.20 5mins
             UserDefaults.standard.set(verificationID, forKey: kVERIFICATIONCODE) //set our verificationID we got from verifyPhoneNumber's completion handler to our kVERIFICATIONCODE
             UserDefaults.standard.synchronize() //sync it
         }
@@ -240,7 +232,7 @@ public final class UserAuthenticationViewModel {
                 completion(error, nil)
             }
             if shouldLogin { //login and go to home screen
-                print("Logging in \(User.currentUser()?.userId)")
+                print("User finished registering")
             } else { //finish registering
                 print("User never finished registering")
             }
