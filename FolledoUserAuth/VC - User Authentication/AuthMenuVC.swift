@@ -28,9 +28,6 @@ class AuthMenuVC: UIViewController {
         setUp()
     }
     
-    
-    
-    
 //MARK: Methods
     func setUp() {
         anonymousButton.isAuthButton()
