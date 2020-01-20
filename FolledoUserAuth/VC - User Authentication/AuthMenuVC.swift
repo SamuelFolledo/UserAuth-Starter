@@ -127,52 +127,55 @@ extension AuthMenuVC: LoginButtonDelegate {
         spinner.center = view.center
         self.view.addSubview(spinner)
         spinner.startAnimating()
-        guard let id = userDetails["id"] as? String, let firstName = userDetails["first_name"] as? String, let lastName = userDetails["last_name"] as? String, let email = userDetails["email"] as? String else { //get user details
+//        let id = userDetails["id"] as? String,
+        guard let firstName = userDetails["first_name"] as? String, let lastName = userDetails["last_name"] as? String, let email = userDetails["email"] as? String else { //get user details
             print("Failed to get user's facebook details")
             return
         }
         guard let accessToken = AccessToken.current?.tokenString else { print("Failed to get current Facebook token"); return }
-        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
-        Auth.auth().signIn(with: credential) { (userResult, error) in
+        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken) //get credential
+        getFacebookProfilePic(userDetails: userDetails) { (profilePic, error) in //get profile picture from facebook
             if let error = error {
-                Service.presentAlert(on: self, title: "Facebook Auth Error", message: error.localizedDescription)
+                Service.presentAlert(on: self, title: "Error Getting Profile Pic", message: error)
                 return
             }
-            guard let userResult = userResult else { return }
-//            print("USER RESULTS ARE = \(userResult.additionalUserInfo)")
-            let user: User = User(_userId: userResult.user.uid, _username: "", _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: "", _imageUrl: "", _authTypes: [.facebook], _createdAt: Date(), _updatedAt: Date())
-            saveUserLocally(user: user)
-            saveUserInBackground(user: user)
-            saveEmailInDatabase(email: email)
-            self.dismiss(animated: true, completion: nil)
+            Auth.auth().signIn(with: credential) { (userResult, error) in
+                if let error = error { //sign our user in
+                    Service.presentAlert(on: self, title: "Facebook Auth Error", message: error.localizedDescription)
+                    return
+                }
+                guard let userResult = userResult else { return }
+                getImageURL(id: userResult.user.uid, image: profilePic!) { (imageUrl, error) in
+                    if let error = error {
+                        Service.presentAlert(on: self, title: "Image Not Stored", message: error)
+                        return
+                    }
+                    let user: User = User(_userId: userResult.user.uid, _username: "", _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: "", _imageUrl: imageUrl!, _authTypes: [.facebook], _createdAt: Date(), _updatedAt: Date())
+                    user.profileImage = profilePic!
+                    saveUserLocally(user: user)
+                    saveUserInBackground(user: user)
+                    saveEmailInDatabase(email: email)
+                    goToNextController(vc: self, user: user)
+                }
+            }
         }
-        
-//        }
-//        if let id = userDetails["id"] as? String {
-//                        let firstName = userDetails["first_name"] as? String
-//                        let lastName = userDetails["last_name"] as? String
-//                        let userName = userDetails["name"] as? String
-    
+//        spinner.stopAnimating()
+//        self.dismiss(animated: true, completion: nil)
+
     
             //unwrap the user's profile picture
 //            if let profilePictureObj: [String: AnyObject] = userDetails["picture"] as? [String: AnyObject]  {
 //                guard let data: [String: AnyObject] = profilePictureObj["data"] as? [String: AnyObject] else { return }
 //                guard let profilePicUrlString = data["url"]?.absoluteString else { return }
 //                guard let profilePicUrl = URL(string: profilePicUrlString!) else{ return }
-//
-//
 //                do { //catch any errors
 //                    let imageData = try Data(contentsOf: profilePicUrl) //create imageData from the pic's url
-//                    //                    print("User's details are... \(userName, profilePicUrlString)")
-//
-//                    //if no error present the image
 //                    DispatchQueue.main.async {
 //                        let userProfileImage = UIImage(data: imageData) //turn imageData to a UIImage
-//                        //                            self.loginLogoImageView.image = userProfileImage
-//                        //                            self.loginLogoImageView.contentMode = .scaleAspectFit
 //                    }
 //                } catch let error {
 //                    Service.presentAlert(on: self, title: "Error fetching image", message: error.localizedDescription)
+//                    return
 //                }
 //
 //
