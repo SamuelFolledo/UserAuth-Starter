@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cqh-4h-8kD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cqh-4h-8kD">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                                             <action selector="anonymousButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="r3n-aH-KNA"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QS-zc-9dA">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QS-zc-9dA" customClass="FBSDKLoginButton">
                                                         <rect key="frame" x="0.0" y="58.333333333333371" width="331.33333333333331" height="42.666666666666657"/>
                                                         <color key="backgroundColor" red="0.0095581691710000007" green="0.0" blue="0.57261335849999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -146,7 +146,7 @@
                     <connections>
                         <outlet property="anonymousButton" destination="SQr-fY-dYT" id="jVy-7i-siF"/>
                         <outlet property="emailButton" destination="VTx-eQ-kDn" id="q8f-Zc-0Gr"/>
-                        <outlet property="facebookButton" destination="6QS-zc-9dA" id="Mep-go-6yB"/>
+                        <outlet property="facebookButton" destination="6QS-zc-9dA" id="sMN-RR-POD"/>
                         <outlet property="googleButton" destination="EA8-GN-1C5" id="IJJ-iP-ZtS"/>
                         <outlet property="logoImageView" destination="coN-M8-Y1G" id="9GV-ct-erH"/>
                         <outlet property="phoneButton" destination="mti-2u-sMW" id="i6q-Jy-Y3c"/>
