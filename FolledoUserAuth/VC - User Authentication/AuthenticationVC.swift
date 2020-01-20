@@ -49,31 +49,8 @@ class AuthenticationVC: UIViewController {
         userAuthViewModel.setupContinueButton(button: continueButton)
     }
     
-//    fileprivate func goToNextController(user: User) { //this method decides if user will be put to finish registrationVC or back to the app
-//        if user.firstName == "" || user.imageUrl == "" {
-//            let nav = self.navigationController //grab an instance of the current navigationController
-//            DispatchQueue.main.async { //make sure all UI updates are on the main thread.
-//                nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
-//                let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC //this must be downcast to utilize it
-//                vc.user = user
-//                nav?.pushViewController(vc, animated: false)
-//            }
-//        } else { //if user has name and imageUrl then continue
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//    }
-    
-//    fileprivate func goToFinishRegistration() {
-//        let nav = self.navigationController //grab an instance of the current navigationController
-//        DispatchQueue.main.async { //make sure all UI updates are on the main thread.
-//            nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
-//            let vc:FinishRegistrationVC = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: kFINISHREGISTRATIONVC) as! FinishRegistrationVC
-//            nav?.pushViewController(vc, animated: false)
-//        }
-//    }
-    
     fileprivate func continueTapped() {
-        let inputValues: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = userAuthViewModel.checkInputValues(topTF: topTextField, bottomTF: bottomTextField)
+        let inputValues: (topTF: UnderlinedTextField, bottomTF: UnderlinedTextField, errors: [String], topFieldValue: String, bottomFieldValue: String) = userAuthViewModel.checkInputValues(topTF: topTextField, bottomTF: bottomTextField) //analyze text fields inputs
         topTextField = inputValues.topTF
         bottomTextField = inputValues.bottomTF
         if inputValues.errors.count == 0 { //if no error
@@ -81,13 +58,11 @@ class AuthenticationVC: UIViewController {
                 if let error = error {
                     Service.presentAlert(on: self, title: "Authentication Error", message: error)
                     return
-                }
-                if let user = user { //if have user from email or phone auth
+                } else if let user = user { //if have user from email or phone auth
                     print("Go to next controller with \(user.fullName)")
                     goToNextController(vc: self, user: user)
-//                    self.goToNextController(user: user)
                     return
-                } else { //will run only on phone auth after sending a code, it will return a nil error and a nil user
+                } else { //error nil and user nil; after texting phone auth code
                     print("Sending code...")
                     self.userAuthViewModel.setupContinueButton(button: self.continueButton)
                     self.bottomLabel.isHidden = false
