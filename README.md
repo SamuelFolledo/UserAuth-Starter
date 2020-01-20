@@ -16,6 +16,15 @@
 4. Enable Authentication and Real Time Database
 5. Test
 
+## Update pods
+- To be safe, run the following commands to ensure all pods are up to date
+```
+pod update FBSDKCoreKit
+pod update FacebookCore
+pod update FBSDKLoginKit
+pod update FacebookLogin
+```
+
 
 ### Note for Phone Authentication:
 Don't forget to:
