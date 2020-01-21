@@ -32,8 +32,8 @@ func getImageURL(id: String, image: UIImage, completion: @escaping(_ imageURL: S
 }
 
 //get an profile image from User's imageUrl
-func getUserImage(user: User, completion: @escaping (_ error: String?, _ image: UIImage?) -> Void) { //gets user's image from user's imageUrl
-    guard let url = URL(string: user.imageUrl) else {
+func getUserImage(imageUrl: String, completion: @escaping (_ error: String?, _ image: UIImage?) -> Void) { //gets user's image from user's imageUrl
+    guard let url = URL(string: imageUrl) else {
         completion("No image url found", nil)
         return
     }
