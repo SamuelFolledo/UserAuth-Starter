@@ -61,17 +61,38 @@
                                                             <action selector="facebookButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="8Q1-HP-eBh"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-GN-1C5">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIs-ZR-EL4" userLabel="googleButton View">
                                                         <rect key="frame" x="0.0" y="117.00000000000001" width="331.33333333333331" height="42.666666666666671"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                        <state key="normal" title="Continue with Google">
-                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="googleButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="sIi-H0-GZ1"/>
-                                                        </connections>
-                                                    </button>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-GN-1C5">
+                                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <state key="normal" title="Continue with Google">
+                                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="googleButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="sIi-H0-GZ1"/>
+                                                                </connections>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="googleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FYe-Rg-jqW">
+                                                                <rect key="frame" x="10" y="6.333333333333373" width="30" height="29.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="FYe-Rg-jqW" secondAttribute="height" id="imd-Hk-cjE"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="FYe-Rg-jqW" firstAttribute="leading" secondItem="EA8-GN-1C5" secondAttribute="leading" constant="10" id="KxF-Dq-hOE"/>
+                                                            <constraint firstItem="EA8-GN-1C5" firstAttribute="centerY" secondItem="tIs-ZR-EL4" secondAttribute="centerY" id="SG3-4X-IyE"/>
+                                                            <constraint firstItem="EA8-GN-1C5" firstAttribute="centerX" secondItem="tIs-ZR-EL4" secondAttribute="centerX" id="YxP-Bn-ock"/>
+                                                            <constraint firstItem="EA8-GN-1C5" firstAttribute="height" secondItem="tIs-ZR-EL4" secondAttribute="height" id="gOp-1R-ZXN"/>
+                                                            <constraint firstItem="FYe-Rg-jqW" firstAttribute="centerY" secondItem="EA8-GN-1C5" secondAttribute="centerY" id="iTg-J1-72I"/>
+                                                            <constraint firstItem="EA8-GN-1C5" firstAttribute="width" secondItem="tIs-ZR-EL4" secondAttribute="width" id="ibB-9q-MgR"/>
+                                                            <constraint firstItem="FYe-Rg-jqW" firstAttribute="height" secondItem="EA8-GN-1C5" secondAttribute="height" multiplier="0.7" id="llE-ft-NeB"/>
+                                                        </constraints>
+                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mti-2u-sMW">
                                                         <rect key="frame" x="0.0" y="175.66666666666669" width="331.33333333333331" height="42.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -97,10 +118,10 @@
                                                     <constraint firstItem="SQr-fY-dYT" firstAttribute="width" secondItem="VTx-eQ-kDn" secondAttribute="width" id="4e8-wY-hvW"/>
                                                     <constraint firstItem="6QS-zc-9dA" firstAttribute="height" secondItem="VTx-eQ-kDn" secondAttribute="height" id="AGP-Lw-5E3"/>
                                                     <constraint firstItem="VTx-eQ-kDn" firstAttribute="width" secondItem="yHa-Cj-74M" secondAttribute="width" id="Ftg-YW-Kg0"/>
-                                                    <constraint firstItem="EA8-GN-1C5" firstAttribute="height" secondItem="VTx-eQ-kDn" secondAttribute="height" id="IbK-II-wW4"/>
                                                     <constraint firstItem="SQr-fY-dYT" firstAttribute="height" secondItem="VTx-eQ-kDn" secondAttribute="height" id="KCA-fg-pNN"/>
+                                                    <constraint firstItem="tIs-ZR-EL4" firstAttribute="width" secondItem="VTx-eQ-kDn" secondAttribute="width" id="KTE-EA-TGb"/>
                                                     <constraint firstItem="mti-2u-sMW" firstAttribute="height" secondItem="VTx-eQ-kDn" secondAttribute="height" id="Mep-X0-msW"/>
-                                                    <constraint firstItem="EA8-GN-1C5" firstAttribute="width" secondItem="VTx-eQ-kDn" secondAttribute="width" id="ggF-Xz-2A0"/>
+                                                    <constraint firstItem="tIs-ZR-EL4" firstAttribute="height" secondItem="VTx-eQ-kDn" secondAttribute="height" id="eRB-yj-5Ra"/>
                                                     <constraint firstItem="6QS-zc-9dA" firstAttribute="width" secondItem="VTx-eQ-kDn" secondAttribute="width" id="jjO-zy-loJ"/>
                                                     <constraint firstItem="mti-2u-sMW" firstAttribute="width" secondItem="VTx-eQ-kDn" secondAttribute="width" id="q2J-EJ-xkC"/>
                                                 </constraints>
@@ -147,7 +168,7 @@
                         <outlet property="anonymousButton" destination="SQr-fY-dYT" id="jVy-7i-siF"/>
                         <outlet property="emailButton" destination="VTx-eQ-kDn" id="q8f-Zc-0Gr"/>
                         <outlet property="facebookButton" destination="6QS-zc-9dA" id="sMN-RR-POD"/>
-                        <outlet property="googleButton" destination="EA8-GN-1C5" id="IJJ-iP-ZtS"/>
+                        <outlet property="googleButton" destination="EA8-GN-1C5" id="fxc-SX-p9M"/>
                         <outlet property="logoImageView" destination="coN-M8-Y1G" id="9GV-ct-erH"/>
                         <outlet property="phoneButton" destination="mti-2u-sMW" id="i6q-Jy-Y3c"/>
                         <segue destination="Qmz-IY-LMC" kind="show" id="pvY-MZ-MDj"/>
@@ -488,6 +509,7 @@
     </scenes>
     <resources>
         <image name="SFLogo" width="971" height="979"/>
+        <image name="googleLogo" width="300" height="300"/>
         <image name="profile_photo" width="512" height="512"/>
     </resources>
 </document>
