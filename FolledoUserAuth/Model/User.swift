@@ -122,24 +122,31 @@ class User: NSObject {
         }
     }
     
-    class func loginUserWith(email: String, password: String, withBlock: @escaping (_ error: Error?) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { (firUser, error) in
+    class func loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (userDetails, error) in
             if let error = error {
-                withBlock(error)
+                completion(error)
                 return
             }
-            guard let currentUser = firUser else { return }
-            print("user is = \(currentUser.user)")
-            print("user data is = \(currentUser.user.providerData)")
-            print("firuser is = \(currentUser)")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { //it is important to have some DELAY
-                let uid: String = firUser!.user.uid
-                fetchUserWith(userId: uid, completion: { (user) in
-                    guard let user = user else { print("no user"); return }
-                    saveUserLocally(user: user) //since fetchUserWith already calls saveUserInBackground
-                    withBlock(error)
-                })
-            })
+            guard let userDetails = userDetails else { return }
+            if userDetails.additionalUserInfo!.isNewUser { //if new user
+                let user: User = User(_userId: userDetails.user.uid, _username: "", _firstName: "", _lastName: "", _email: email, _phoneNumber: "", _imageUrl: "", _authTypes: [.email], _createdAt: Date(), _updatedAt: Date())
+                saveUserLocally(user: user)
+                saveUserInBackground(user: user)
+                saveEmailInDatabase(email: user.email)
+                completion(nil)
+            } else { //if not user's first time...
+                fetchUserWith(userId: userDetails.user.uid) { (user) in
+                    if let user = user {
+                        user.updatedAt = Date()
+                        saveUserLocally(user: user)
+                        saveUserInBackground(user: user)
+                        completion(nil)
+                    } else {
+                        print("No user fetched from \(String(describing: userDetails.user.email))")
+                    }
+                }
+            }
         }
     }
     
