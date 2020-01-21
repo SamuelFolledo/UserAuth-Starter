@@ -73,7 +73,6 @@ extension User {
         let createdAt: Date = userDetails[kCREATEDAT] as? Date ?? Date()
         let updatedAt: Date = userDetails[kUPDATEDAT] as? Date ?? Date()
         var authTypes: [AuthType] = userDetails[kAUTHTYPES] as? [AuthType] ?? []
-        
         Auth.auth().signIn(with: credential) { (userResult, error) in //signin user
             if let error = error {
                 completion(nil, error.localizedDescription)
@@ -86,13 +85,28 @@ extension User {
                 completion(nil, "No user provider id found")
                 return
             }
-            authTypes = getAuthTypesFrom(providerId: providerId)
+            authTypes = getAuthTypesFrom(providerId: providerId) //update authTypes after signin wiht providerId
             let user: User = User(_userId: userResult.user.uid, _username: userName, _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: phoneNumber, _imageUrl: imageUrl, _authTypes: authTypes, _createdAt: createdAt, _updatedAt: updatedAt)
             
             if userResult.additionalUserInfo!.isNewUser { //if new user, REGISTER and SAVE
-                saveUserLocally(user: user)
-                saveUserInBackground(user: user)
-                completion(user, nil)
+                if imageUrl != "" && profileImage == kDEFAULTPROFILEIMAGE { //if profileImage is default and we have an imageUrl, then get the image from the url
+                    getUserImage(imageUrl: imageUrl) { (error, profileImage) in
+                        if let error = error {
+                            completion(nil, error)
+                        } else if let profileImage = profileImage {
+                            user.profileImage = profileImage
+                            saveUserLocally(user: user)
+                            saveUserInBackground(user: user)
+                            completion(user, nil)
+                        } else {
+                            print("No error or image found from URL(\(imageUrl))")
+                        }
+                    }
+                } else {
+                    saveUserLocally(user: user)
+                    saveUserInBackground(user: user)
+                    completion(user, nil)
+                }
             } else { //if not new user LOGIN and UPDATE
                 fetchUserWith(userId: user.userId) { (user) in
                     guard let user = user else {
@@ -101,7 +115,7 @@ extension User {
                     }
                     user.updatedAt = Date() //update user's updatedAt
                     if user.imageUrl != "" { //if user has image
-                        getUserImage(user: user) { (error, image) in
+                        getUserImage(imageUrl: user.imageUrl) { (error, image) in
                             if let error = error {
                                 completion(nil, error)
                             }
