@@ -74,30 +74,34 @@ public final class UserAuthenticationViewModel {
         button.setTitle(self.continueButtonTitle, for: .normal)
     }
     
-    func continueButtonTapped(topFieldValue: String, bottomFieldValue: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) {
+    func continueButtonTapped(topFieldValue: String, bottomFieldValue: String, completion: @escaping (_ user: User?, _ error: String?) -> Void) {
         if isEmailAuthentication {
             continueWithEmail(email: topFieldValue, password: bottomFieldValue) { (error, user) in
                 if let error = error {
-                    completion(error, nil)
+                    completion(nil, error)
                 } else {
-                    completion(nil, user)
+                    completion(user, nil)
                 }
             }
         } else { //phone authentication
-            if !self.hasPhoneCode { //text code
-                self.textPhoneCode(phoneNumber: topFieldValue)
-                self.hasPhoneCode = true
-                self.continueButtonTitle = "Continue with Phone"
-                completion(nil,nil)
-            } else if self.hasPhoneCode && bottomFieldValue != "" { //if we have phone code and it is not empty, register or login phone
-                self.continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (error, user) in
+            if !self.hasPhoneCode { //text code if no phone code yet
+                self.textPhoneCode(phoneNumber: topFieldValue) { (error) in
                     if let error = error {
-                        completion(error, nil)
+                        completion(nil, error)
                     }
-                    completion(nil, user)
+                    self.hasPhoneCode = true
+                    self.continueButtonTitle = "Continue with Phone"
+                    completion(nil, nil)
+                }
+            } else if self.hasPhoneCode && bottomFieldValue != "" { //if we have phone code and it is not empty, register or login phone
+                self.continueWithPhone(phone: topFieldValue, code: bottomFieldValue) { (user, error) in
+                    if let error = error {
+                        completion(nil, error)
+                    }
+                    completion(user, nil)
                 }
             } else {
-                completion("Field is empty", nil)
+                completion(nil, "Field is empty")
             }
         }
     }
@@ -215,28 +219,29 @@ public final class UserAuthenticationViewModel {
     }
     
 //MARK: Phone Auth
-    private func textPhoneCode(phoneNumber: String) { //method that sends a text a code to a phone number
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+    private func textPhoneCode(phoneNumber: String, completion: @escaping ( _ error: String?) -> Void) { //method that sends a text a code to a phone number
+        let phoneAuth = PhoneAuthProvider.provider()
+        phoneAuth.verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationId, error) in
             if let error = error {
-                print(error)
-                return
+                completion(error.localizedDescription)
             }
-            UserDefaults.standard.set(verificationID, forKey: kVERIFICATIONCODE) //set our verificationID we got from verifyPhoneNumber's completion handler to our kVERIFICATIONCODE
-            UserDefaults.standard.synchronize() //sync it
+            UserDefaults.standard.set(verificationId!, forKey: kVERIFICATIONCODE)
+            UserDefaults.standard.synchronize()
+            completion(nil)
         }
     }
     
-    private func continueWithPhone(phone: String, code: String, completion: @escaping (_ error: String?, _ user: User?) -> Void) { //method once the user has inputted phone number and verification code
-        User.registerUserWith(phoneNumber: phone, verificationCode: code) { (error, shouldLogin) in //
+    private func continueWithPhone(phone: String, code: String, completion: @escaping (_ user: User?, _ error: String?) -> Void) { //method once the user has inputted phone number and verification code
+        let verificationID = UserDefaults.standard.value(forKey: kVERIFICATIONCODE) //when user inputs phone number and request a code, firebase will send the modification code which is not the password code. This code is sent by Firebase in the background to identify if the application is actually running on the device that is requesting the code.
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID as! String, verificationCode: code) //get our credential
+        User.authenticateUser(credential: credential, userDetails: [kPHONENUMBER: phone]) { (user, error) in //authenticate and get user
             if let error = error {
-                completion(error, nil)
+                completion(nil, error)
+                return
             }
-            if shouldLogin { //login and go to home screen
-                print("User finished registering")
-            } else { //finish registering
-                print("User never finished registering")
-            }
+            UserDefaults.standard.removeObject(forKey: kVERIFICATIONCODE)
+            UserDefaults.standard.synchronize() //remove code
+            completion(user, nil)
         }
-        completion(nil, User.currentUser())
     }
 }
