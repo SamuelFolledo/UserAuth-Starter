@@ -56,6 +56,9 @@ class AuthMenuVC: UIViewController {
     
     @IBAction func googleButtonTapped(_ sender: Any) {
 //        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Google is still under production. Check back at a later time")
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {
