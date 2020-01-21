@@ -8,7 +8,6 @@
 
 
 import Foundation
-import Firebase
 import FirebaseAuth
 
 class User: NSObject {
@@ -24,7 +23,7 @@ class User: NSObject {
         }
     }
     var phoneNumber: String
-    var profileImage: UIImage = kBLANKIMAGE
+    var profileImage: UIImage = kDEFAULTPROFILEIMAGE
     let createdAt: Date
     var updatedAt: Date
     var authTypes: [AuthType]
