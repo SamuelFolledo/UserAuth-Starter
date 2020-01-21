@@ -53,7 +53,6 @@ enum AuthType: String {
 }
 
 func authTypesToString(types: [AuthType]) -> [String] {
-    types.count == 0 ? print("auth types is empty") : print("auth types NOT empty") //types counter
     var resultTypes: [String] = []
     for authType in types {
         resultTypes.append(authType.asText)
@@ -77,6 +76,6 @@ func getAuthTypesFrom(providerId: String) -> [AuthType] { //used at User.authent
     default:
         authTypes.append(.unknown)
     }
-    print("GET AUTHTYPES = \(providerId) = \(authTypes)")
+    print("GET AUTHTYPES FROM ID \(providerId) = \(authTypes)")
     return authTypes
 }
