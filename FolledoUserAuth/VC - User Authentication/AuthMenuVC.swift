@@ -158,6 +158,7 @@ extension AuthMenuVC: LoginButtonDelegate {
     }
 }
 
+//MARK: Google Signin Delegate Methods
 extension AuthMenuVC: GIDSignInDelegate {
     func signInWillDispatch(_ signIn: GIDSignIn!, error: Error!) {
         print("GOOGLE SIGNINWILLDISPATCH?")
@@ -179,13 +180,23 @@ extension AuthMenuVC: GIDSignInDelegate {
         if let error = error {
             print(error.localizedDescription)
         } else {
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
+//            let userId = user.userID // For client-side use only!
+//            let idToken = user.authentication.idToken // Safe to send to the server
+//            let fullName = user.profile.name
             let firstName = user.profile.givenName
             let lastName = user.profile.familyName
             let email = user.profile.email
-            print("SUCCESSFULLY SIGNED IN \(user.profile.name) - \(lastName) with email = \(email!)")
+            let userDetails = [kFIRSTNAME: firstName!, kLASTNAME: lastName!, kEMAIL: email!]
+            print("SUCCESSFULLY SIGNED IN WITH GMAIL \(String(describing: firstName)) - \(String(describing: lastName)) with email = \(email!)")
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            User.authenticateUser(credential: credential, userDetails: userDetails) { (user, error) in //authenticate user with credentials and get user
+                if let error = error {
+                    Service.presentAlert(on: self, title: "Google Error", message: error)
+                    return
+                }
+                goToNextController(vc: self, user: user!)
+            }
         }
     }
 }
