@@ -7,23 +7,23 @@
 //
 
 import UIKit
-import FirebaseStorage
 import FacebookCore
 import FacebookLogin
 import FirebaseAuth
 import GoogleSignIn
+import AuthenticationServices //for Apple Signin
 
 class AuthMenuVC: UIViewController {
+//MARK: Properties
+    fileprivate var currentNonce: String? //for Apple Auth = random ID token as string
     
 //MARK: IBOulets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var facebookButton: FBLoginButton!
-    @IBOutlet weak var anonymousButton: UIButton!
+    @IBOutlet weak var appleButton: ASAuthorizationAppleIDButton!
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var emailButton: UIButton!
-    
-//MARK: Properties
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class AuthMenuVC: UIViewController {
     
 //MARK: Methods
     func setUp() {
-        anonymousButton.isAuthButton()
+        setupAppleButton()
         setupFacebookButton()
         setupGoogleButton()
         phoneButton.isAuthButton()
@@ -202,7 +202,6 @@ extension AuthMenuVC: GIDSignInDelegate {
             let lastName = user.profile.familyName
             let email = user.profile.email
             let userDetails = [kFIRSTNAME: firstName!, kLASTNAME: lastName!, kEMAIL: email!]
-            print("SUCCESSFULLY SIGNED IN WITH GMAIL \(String(describing: firstName)) - \(String(describing: lastName)) with email = \(email!)")
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             User.authenticateUser(credential: credential, userDetails: userDetails) { (user, error) in //authenticate user with credentials and get user
@@ -213,5 +212,52 @@ extension AuthMenuVC: GIDSignInDelegate {
                 goToNextController(vc: self, user: user!)
             }
         }
+    }
+}
+
+//MARK: Apple Signin Delegate methods
+extension AuthMenuVC: ASAuthorizationControllerDelegate { //delegate if the vc that pops up fails or successful
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) { //successful Apple Auth
+        switch authorization.credential {
+        case let appleCredential as ASAuthorizationAppleIDCredential: //if this was Apple User object...
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            guard let appleIDToken = appleCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+//            let id = appleCredential.user as? String ?? ""
+            let firstName: String = appleCredential.fullName?.givenName ?? ""
+            let lastName: String = appleCredential.fullName?.familyName ?? ""
+            let email: String = appleCredential.email ?? ""
+            let userDetails: [String: Any] = [kFIRSTNAME: firstName, kLASTNAME: lastName, kEMAIL: email]
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce) // Initialize a Firebase credential.
+            User.authenticateUser(credential: credential, userDetails: userDetails) { (user, error) in
+                if let error = error {
+                    Service.presentAlert(on: self, title: "Apple Authentication Error", message: error)
+                    return
+                }
+                
+                goToNextController(vc: self, user: user!)
+            }
+        default:
+            print("Apple Auto login")
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) { //error Apple Auth
+        Service.presentAlert(on: self, title: "Apple Authentication Error", message: error.localizedDescription)
+    }
+}
+
+extension AuthMenuVC: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor { //this says what window are we presenting in e.g. iPad etc.
+        return view.window!
     }
 }

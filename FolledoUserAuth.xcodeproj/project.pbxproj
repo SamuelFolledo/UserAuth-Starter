@@ -16,6 +16,7 @@
 		333AB14F237FAF23006118AC /* UnderlinedTextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AB14E237FAF23006118AC /* UnderlinedTextField+extensions.swift */; };
 		333AB153237FE34B006118AC /* UserAuthenticationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333AB152237FE34B006118AC /* UserAuthenticationVM.swift */; };
 		333B841D23545B060061FB2C /* FinishRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B841C23545B060061FB2C /* FinishRegistrationVC.swift */; };
+		333E717B23D6ED7700DA7934 /* UserApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E717A23D6ED7700DA7934 /* UserApple.swift */; };
 		3341F6F92354F0D7008DD935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */; };
 		3341F6FB23550311008DD935 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F6FA23550311008DD935 /* User.swift */; };
 		3341F6FD23554434008DD935 /* UITextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341F6FC23554434008DD935 /* UITextField+extensions.swift */; };
@@ -74,6 +75,7 @@
 		333AB14E237FAF23006118AC /* UnderlinedTextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnderlinedTextField+extensions.swift"; sourceTree = "<group>"; };
 		333AB152237FE34B006118AC /* UserAuthenticationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationVM.swift; sourceTree = "<group>"; };
 		333B841C23545B060061FB2C /* FinishRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationVC.swift; sourceTree = "<group>"; };
+		333E717A23D6ED7700DA7934 /* UserApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApple.swift; sourceTree = "<group>"; };
 		3341F6F82354F0D7008DD935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3341F6FA23550311008DD935 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3341F6FC23554434008DD935 /* UITextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extensions.swift"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				33C4E84D23D51B4300833F18 /* UserDatabase.swift */,
 				33C4E84F23D51B4A00833F18 /* UserStorage.swift */,
 				33C4E85123D5273200833F18 /* UserFacebook.swift */,
+				333E717A23D6ED7700DA7934 /* UserApple.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				3341F6FB23550311008DD935 /* User.swift in Sources */,
 				3341F6FD23554434008DD935 /* UITextField+extensions.swift in Sources */,
 				3348A671237E865B003A9576 /* AuthenticationVC.swift in Sources */,
+				333E717B23D6ED7700DA7934 /* UserApple.swift in Sources */,
 				333B841D23545B060061FB2C /* FinishRegistrationVC.swift in Sources */,
 				335289DF235255470084E405 /* ViewController.swift in Sources */,
 				333AB153237FE34B006118AC /* UserAuthenticationVM.swift in Sources */,
