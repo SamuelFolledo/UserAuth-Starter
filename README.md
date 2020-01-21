@@ -19,20 +19,20 @@
 ## Update pods
 - To be safe, run the following commands to ensure all pods are up to date
 ```
-pod update FBSDKCoreKit
-pod update FacebookCore
-pod update FBSDKLoginKit
-pod update FacebookLogin
+pod update
 ```
+- __[Facebook For Developers](https://developers.facebook.com/)__
+- __[Google Sign-In for iOS](https://developers.google.com/identity/sign-in/ios)__
 - Used these as reference
-    - [Facebook Signin pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
-    - [Facebook Signin pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
+    - [Facebook Signin Video pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
+    - [Facebook Signin Video pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
         - __Note__ that Facebook updates very often, so keep checking for future updates
         - You will need to create your app in __[Facebook For Developers](https://developers.facebook.com/)__
         - In developers.facebook.com, you will also need to go to your project's Settings and see the __Client OAuth Settings__ and paste _OAuth redirect URI from Firebase's project -> Authentication -> Sign-in method -> Facebook_ (e.g.https://folledouserauth.firebaseapp.com/__/auth/handler) into Valid OAuth Redirect URIs
         - You will also need to remove my 2 Facebook code blocks in Info.plist file and put yours instead.
         - [Fetching the Facebook User Data](https://riptutorial.com/ios/example/10188/fetching-the-facebook-user-data)
-    - [Google Signin](https://www.youtube.com/watch?v=BjsJNpgsl5c)
+        
+    - [Google Signin Video](https://www.youtube.com/watch?v=BjsJNpgsl5c)
 
 
 ### Note for Phone Authentication:
