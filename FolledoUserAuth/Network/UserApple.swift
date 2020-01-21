@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CryptoKit //for hasing data for Apple Auth
 
 //MARK: Apple Signin Helper
 // Got from Firebase's Apple Signin Instructions: https://firebase.google.com/docs/auth/ios/apple?authuser=0
@@ -41,4 +42,12 @@ func randomNonceString(length: Int = 32) -> String { //generates a random string
   }
 
   return result
+}
+
+@available(iOS 13, *)
+func sha256(_ input: String) -> String { //for hashing input using CryptoKit's SHA256
+    let inputData = Data(input.utf8)
+    let hashedData = SHA256.hash(data: inputData)
+    let hashString = hashedData.compactMap { String(format: "%02x", $0) }.joined()
+    return hashString
 }
