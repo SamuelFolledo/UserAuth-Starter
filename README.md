@@ -23,6 +23,9 @@ pod update
 ```
 - __[Facebook For Developers](https://developers.facebook.com/)__
 - __[Google Sign-In for iOS](https://developers.google.com/identity/sign-in/ios)__
+    - [Firebase's Google Signin Instructions](https://firebase.google.com/docs/auth/ios/google-signin)
+    - Sometimes turning a UIButton in storyboard to a GIDSignInButton does not work, so open the storyboard file as a Source Code and customize it there 
+    
 - Used these as reference
     - [Facebook Signin Video pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
     - [Facebook Signin Video pt 2](https://www.youtube.com/watch?v=8-WXdfjFvbw)
