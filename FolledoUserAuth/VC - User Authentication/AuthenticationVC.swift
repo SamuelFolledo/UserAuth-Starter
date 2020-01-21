@@ -30,12 +30,26 @@ class AuthenticationVC: UIViewController {
         setupViews()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardObervers()
+    }
     
 //MARK: Private Methods
+    fileprivate func setupKeyboardNotifications() { //setup notifications when keyboard shows or hide
+        NotificationCenter.default.addObserver(self, selector: #selector(AuthenticationVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AuthenticationVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
+    fileprivate func removeKeyboardObervers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
 //MARK: Helpers
     fileprivate func setupViews() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
@@ -54,7 +68,7 @@ class AuthenticationVC: UIViewController {
         topTextField = inputValues.topTF
         bottomTextField = inputValues.bottomTF
         if inputValues.errors.count == 0 { //if no error
-            userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (error, user) in //get our user, or error
+            userAuthViewModel.continueButtonTapped(topFieldValue: inputValues.topFieldValue, bottomFieldValue: inputValues.bottomFieldValue) { (user, error) in //get our user, or error
                 if let error = error {
                     Service.presentAlert(on: self, title: "Authentication Error", message: error)
                     return
@@ -79,6 +93,23 @@ class AuthenticationVC: UIViewController {
     
     @objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
         self.view.endEditing(false)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) { //makes the view go up by keyboard's height
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height / 1.25
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) { //put the view back to 0
+        //if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if view.frame.origin.y != 0 {
+            //view.frame.origin.y += keyboardSize.height
+            view.frame.origin.y = 0
+        }
+        //}
     }
     
 //MARK: IBActions
