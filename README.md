@@ -28,7 +28,12 @@ pod update
     - Sometimes turning a UIButton in storyboard to a GIDSignInButton does not work, so open the storyboard file as a Source Code and customize it there 
 - [Sign in With Apple]() - only works for members with [Apple Developer Program](https://developer.apple.com/programs/)
     - [Firebase's Instructions for Sign in With Apple](https://firebase.google.com/docs/auth/ios/apple?authuser=0)
-    - [Apple Signin video reference](https://www.youtube.com/watch?v=MY5xLrsnUVo)
+    - [Apple Signin video reference](https://www.youtube.com/watch?v=vuygdr0EcGM)
+        1. Enable Apple Signin in Firebase
+        2. Add __Sign In With Apple__ capability in you Xcode project's Signing & Capabilities
+        3. In Apple Developer, signin and look for your projecct. Enable Signin With Apple in [Identifiers list](https://developer.apple.com/account/resources/identifiers/list)
+        4. 
+    - [Apple Signin video reference - SwiftUI and FireStore](https://www.youtube.com/watch?v=MY5xLrsnUVo)
     
 - Used these as reference
     - [Facebook Signin Video pt 1](https://www.youtube.com/watch?v=7DdgvI8z6OU)
