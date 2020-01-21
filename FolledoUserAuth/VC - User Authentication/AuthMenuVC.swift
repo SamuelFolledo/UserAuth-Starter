@@ -157,3 +157,35 @@ extension AuthMenuVC: LoginButtonDelegate {
         spinner.stopAnimating()
     }
 }
+
+extension AuthMenuVC: GIDSignInDelegate {
+    func signInWillDispatch(_ signIn: GIDSignIn!, error: Error!) {
+        print("GOOGLE SIGNINWILLDISPATCH?")
+        // myActivityIndicator.stopAnimating()
+    }
+    
+    func signIn(_ signIn: GIDSignIn!,
+                presentViewController viewController: UIViewController!) { //presents the google signin screen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func signIn(_ signIn: GIDSignIn!,
+                dismissViewController viewController: UIViewController!) { //when user dismisses the google signin screen
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let firstName = user.profile.givenName
+            let lastName = user.profile.familyName
+            let email = user.profile.email
+            print("SUCCESSFULLY SIGNED IN \(user.profile.name) - \(lastName) with email = \(email!)")
+        }
+    }
+}
