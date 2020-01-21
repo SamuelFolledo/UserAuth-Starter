@@ -61,6 +61,59 @@ func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ succes
 
 //MARK: Phone Authentication
 extension User {
+    class func authenticateUser(credential: AuthCredential, userDetails: [String: Any], completion: @escaping (_ user: User?, _ error: String?) -> Void) { //authenticate user given 3rd-party credentials (e.g. a Facebook login Access Token, a Google ID Token/Access Token pair, Phone, etc.) and return a user or error
+    //1) get user properties from userDetails, else empty or default
+        let firstName: String = userDetails[kFIRSTNAME] as? String ?? ""
+        let lastName: String = userDetails[kLASTNAME] as? String ?? ""
+        let userName: String = userDetails[kFIRSTNAME] as? String ?? ""
+        let email: String = userDetails[kLASTNAME] as? String ?? ""
+        let phoneNumber: String = userDetails[kLASTNAME] as? String ?? ""
+        let imageUrl: String = userDetails[kFIRSTNAME] as? String ?? ""
+        let profileImage: UIImage = userDetails[kPROFILEIMAGE] as? UIImage ?? kDEFAULTPROFILEIMAGE
+        let createdAt: Date = userDetails[kCREATEDAT] as? Date ?? Date()
+        let updatedAt: Date = userDetails[kUPDATEDAT] as? Date ?? Date()
+        let authTypes: [AuthType] = userDetails[kAUTHTYPES] as? [AuthType] ?? []
+        
+        Auth.auth().signIn(with: credential) { (userResult, error) in
+            if let error = error {
+                completion(nil, error.localizedDescription)
+            }
+            guard let userResult = userResult else {
+                completion(nil, "No user results found")
+                return
+            }
+            let user: User = User(_userId: userResult.user.uid, _username: userName, _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: phoneNumber, _imageUrl: imageUrl, _authTypes: authTypes, _createdAt: createdAt, _updatedAt: updatedAt)
+            print("PROVIDER = \(userResult.additionalUserInfo?.providerID)")
+            if userResult.additionalUserInfo!.isNewUser { //if new user, REGISTER and SAVE
+                saveUserLocally(user: user)
+                saveUserInBackground(user: user)
+                completion(user, nil)
+            } else { //if not new user LOGIN and UPDATE
+                fetchUserWith(userId: user.userId) { (user) in
+                    guard let user = user else {
+                        completion(nil, "Error fetching user")
+                        return
+                    }
+                    user.updatedAt = Date() //update user's updatedAt
+                    if user.imageUrl != "" { //if user has image
+                        getUserImage(user: user) { (error, image) in
+                            if let error = error {
+                                completion(nil, error)
+                            }
+                            user.profileImage = image!
+                            saveUserLocally(user: user)
+                            saveUserInBackground(user: user)
+                        }
+                    } else { //if user has no image...
+                        user.profileImage = profileImage //default profileImage
+                        saveUserLocally(user: user)
+                        saveUserInBackground(user: user)
+                    }
+                }
+            }
+        }
+    }
+    
     class func registerUserWith(phoneNumber: String, verificationCode: String, completion: @escaping (_ error: String?, _ shouldLogin: Bool) -> Void) {
         let verificationID = UserDefaults.standard.value(forKey: kVERIFICATIONCODE) //kVERIFICATIONCODE = "firebase_verification" //Once our user inputs phone number and request a code, firebase will send the modification code which is not the password code. This code is sent by Firebase in the background to identify if the application is actually running on the device that is requesting the code.
         let credentials = PhoneAuthProvider.provider().credential(withVerificationID: verificationID as! String, verificationCode: verificationCode)
@@ -86,22 +139,6 @@ extension User {
                     }
                 }
             }
-            
-            
-            //            fetchUserWith(userId: (userResult.user.uid), completion: { (user) in //check if there is user then logged in else register
-            //                if user != nil && user?.firstName != "" { //if user is nil and user has a first name, provides extra protection
-            //                    saveUserLocally(user: user!) //save user in our UserDefaults. We dont need to save in background because we are already getting/fetching the user
-            //                    completion(error, true) //call our callback function to exit and finally input the error or shouldLogin to true
-            //                } else { //register the user
-            //                    guard let uid: String = userResult?.user.uid else { return }
-            //                    guard let phoneNumber = userResult?.user.phoneNumber else { return }
-            //                    let user = User(_userId: uid, _username: "", _firstName: "", _lastName: "", _email: "", _phoneNumber: phoneNumber, _imageUrl: "", _authTypes: [.phone], _createdAt: Date(), _updatedAt: Date())
-            ////                    let user = User(_userID: uid, _phoneNumber: phoneNumber)
-            //                    saveUserLocally(user: user) //now we have the newly registered user, save it locally and in background
-            //                    saveUserInBackground(user: user)
-            //                    completion(error, false) //shouldLogin = false because we need to finish registering the user
-            //                }
-            //            })
         }
     }
 }
