@@ -193,15 +193,21 @@ extension AuthMenuVC: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
         if let error = error {
-            print(error.localizedDescription)
+            Service.presentAlert(on: self, title: "Google Authentication Error", message: error.localizedDescription)
+            return
         } else {
 //            let userId = user.userID // For client-side use only!
 //            let idToken = user.authentication.idToken // Safe to send to the server
 //            let fullName = user.profile.name
-            let firstName = user.profile.givenName
-            let lastName = user.profile.familyName
-            let email = user.profile.email
-            let userDetails = [kFIRSTNAME: firstName!, kLASTNAME: lastName!, kEMAIL: email!]
+            let firstName = user.profile.givenName ?? ""
+            let lastName = user.profile.familyName ?? ""
+            let email = user.profile.email ?? ""
+            var userDetails = [kFIRSTNAME: firstName, kLASTNAME: lastName, kEMAIL: email]
+            if user.profile.hasImage {
+                let imageUrl = user.profile.imageURL(withDimension: 100)
+                print("\(firstName)'s Image URL from Google = \(imageUrl)")
+                userDetails[kIMAGEURL] = imageUrl?.absoluteString
+            }
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             User.authenticateUser(credential: credential, userDetails: userDetails) { (user, error) in //authenticate user with credentials and get user
