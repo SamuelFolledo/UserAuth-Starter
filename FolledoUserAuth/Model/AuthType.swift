@@ -61,3 +61,22 @@ func authTypesToString(types: [AuthType]) -> [String] {
     return resultTypes
 }
 
+func getAuthTypesFrom(providerId: String) -> [AuthType] { //used at User.authenticateUser to get the AuthType array from providerId
+    var authTypes: [AuthType] = []
+    switch providerId {
+    case "facebook.com":
+        authTypes.append(.facebook)
+    case "google.com":
+        authTypes.append(.gmail)
+    case "apple.com":
+        authTypes.append(.apple)
+    case "phone":
+        authTypes.append(.phone)
+    case "email":
+        authTypes.append(.email)
+    default:
+        authTypes.append(.unknown)
+    }
+    print("GET AUTHTYPES = \(providerId) = \(authTypes)")
+    return authTypes
+}
