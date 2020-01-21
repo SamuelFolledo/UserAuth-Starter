@@ -65,16 +65,16 @@ extension User {
     //1) get user properties from userDetails, else empty or default
         let firstName: String = userDetails[kFIRSTNAME] as? String ?? ""
         let lastName: String = userDetails[kLASTNAME] as? String ?? ""
-        let userName: String = userDetails[kFIRSTNAME] as? String ?? ""
-        let email: String = userDetails[kLASTNAME] as? String ?? ""
-        let phoneNumber: String = userDetails[kLASTNAME] as? String ?? ""
-        let imageUrl: String = userDetails[kFIRSTNAME] as? String ?? ""
+        let userName: String = userDetails[kUSERNAME] as? String ?? ""
+        let email: String = userDetails[kEMAIL] as? String ?? ""
+        let phoneNumber: String = userDetails[kPHONENUMBER] as? String ?? ""
+        let imageUrl: String = userDetails[kIMAGEURL] as? String ?? ""
         let profileImage: UIImage = userDetails[kPROFILEIMAGE] as? UIImage ?? kDEFAULTPROFILEIMAGE
         let createdAt: Date = userDetails[kCREATEDAT] as? Date ?? Date()
         let updatedAt: Date = userDetails[kUPDATEDAT] as? Date ?? Date()
-        let authTypes: [AuthType] = userDetails[kAUTHTYPES] as? [AuthType] ?? []
+        var authTypes: [AuthType] = userDetails[kAUTHTYPES] as? [AuthType] ?? []
         
-        Auth.auth().signIn(with: credential) { (userResult, error) in
+        Auth.auth().signIn(with: credential) { (userResult, error) in //signin user
             if let error = error {
                 completion(nil, error.localizedDescription)
             }
@@ -82,8 +82,13 @@ extension User {
                 completion(nil, "No user results found")
                 return
             }
+            guard let providerId: String = userResult.additionalUserInfo?.providerID else {
+                completion(nil, "No user provider id found")
+                return
+            }
+            authTypes = getAuthTypesFrom(providerId: providerId)
             let user: User = User(_userId: userResult.user.uid, _username: userName, _firstName: firstName, _lastName: lastName, _email: email, _phoneNumber: phoneNumber, _imageUrl: imageUrl, _authTypes: authTypes, _createdAt: createdAt, _updatedAt: updatedAt)
-            print("PROVIDER = \(userResult.additionalUserInfo?.providerID)")
+            
             if userResult.additionalUserInfo!.isNewUser { //if new user, REGISTER and SAVE
                 saveUserLocally(user: user)
                 saveUserInBackground(user: user)
@@ -150,10 +155,9 @@ func registerUserEmailIntoDatabase(user: User, completion: @escaping (_ error: E
             completion(error, nil)
         } else { //if no error, save user
             saveEmailInDatabase(email:user.email) //MARK: save to another table
-                saveUserLocally(user: user)
-                saveUserInBackground(user: user)
-                completion(nil, user)
-//            }
+            saveUserLocally(user: user)
+            saveUserInBackground(user: user)
+            completion(nil, user)
         }
     })
 }
