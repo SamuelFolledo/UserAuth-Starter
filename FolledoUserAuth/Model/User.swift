@@ -70,10 +70,8 @@ class User: NSObject {
             self.updatedAt = Date()
         }
         if let authTypes = _dictionary[kAUTHTYPES] as? [AuthType] {
-            print("Auth types as [AuthType]")
             self.authTypes = authTypes
         } else if let authTypes = _dictionary[kAUTHTYPES] as? [String] {
-            print("Auth types as [String]")
             var resultTypes: [AuthType] = []
             for authType in authTypes {
                 resultTypes.append(AuthType(type: authType))
