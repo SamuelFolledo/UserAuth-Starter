@@ -65,11 +65,26 @@ class AuthMenuVC: UIViewController {
         //        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Facebook is still under production. Check back at a later time")
     }
     
-    @IBAction func anonymousButtonTapped(_ sender: Any) {
-        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Anonymous is still under production. Check back at a later time")
+//MARK: Helpers
+    @objc func appleButtonTapped() {
+        currentNonce = randomNonceString()
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(currentNonce!)
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request]) //screen for Apple signin
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests() //perform the request in this VC
     }
     
-//MARK: Helpers
+    fileprivate func setupAppleButton() {
+//        appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black) //.continue = "Continue With Apple", .black for black button
+        appleButton.layer.cornerRadius = appleButton.frame.height / 10
+        appleButton.clipsToBounds = true
+        appleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
+    }
+    
     fileprivate func setupGoogleButton() {
         googleButton.isAuthButton()
         // Shadow and Radius
