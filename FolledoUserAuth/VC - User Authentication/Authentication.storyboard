@@ -39,16 +39,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-Cj-74M">
                                                 <rect key="frame" x="41.333333333333343" y="315.33333333333326" width="331.33333333333326" height="276.66666666666674"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-fY-dYT">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-fY-dYT" customClass="ASAuthorizationAppleIDButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="42.333333333333336"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                        <state key="normal" title="Continue Anonymously">
+                                                        <state key="normal" title="Continue With Apple">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="anonymousButtonTapped:" destination="oGr-Uf-QFT" eventType="touchUpInside" id="r3n-aH-KNA"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QS-zc-9dA" customClass="FBSDKLoginButton">
                                                         <rect key="frame" x="0.0" y="58.333333333333371" width="331.33333333333331" height="42.666666666666657"/>
@@ -165,7 +161,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="User Authentication" id="gqe-0h-awX"/>
                     <connections>
-                        <outlet property="anonymousButton" destination="SQr-fY-dYT" id="jVy-7i-siF"/>
+                        <outlet property="appleButton" destination="SQr-fY-dYT" id="Z2k-4w-xKA"/>
                         <outlet property="emailButton" destination="VTx-eQ-kDn" id="q8f-Zc-0Gr"/>
                         <outlet property="facebookButton" destination="6QS-zc-9dA" id="sMN-RR-POD"/>
                         <outlet property="googleButton" destination="EA8-GN-1C5" id="fxc-SX-p9M"/>
