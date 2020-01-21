@@ -11,6 +11,7 @@ import FirebaseStorage
 import FacebookCore
 import FacebookLogin
 import FirebaseAuth
+import GoogleSignIn
 
 class AuthMenuVC: UIViewController {
     
@@ -40,7 +41,7 @@ class AuthMenuVC: UIViewController {
     func setUp() {
         anonymousButton.isAuthButton()
         setupFacebookButton()
-        googleButton.isAuthButton()
+        setupGoogleButton()
         phoneButton.isAuthButton()
         emailButton.isAuthButton()
     }
@@ -54,7 +55,7 @@ class AuthMenuVC: UIViewController {
     }
     
     @IBAction func googleButtonTapped(_ sender: Any) {
-        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Google is still under production. Check back at a later time")
+//        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Google is still under production. Check back at a later time")
     }
     
     @IBAction func facebookButtonTapped(_ sender: Any) {
@@ -66,6 +67,16 @@ class AuthMenuVC: UIViewController {
     }
     
 //MARK: Helpers
+    fileprivate func setupGoogleButton() {
+        googleButton.isAuthButton()
+        // Shadow and Radius
+        googleButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        googleButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        googleButton.layer.shadowOpacity = 1.0
+        googleButton.layer.shadowRadius = 0.0
+        googleButton.layer.masksToBounds = false //needed or shadow wont show
+    }
+    
     fileprivate func setupFacebookButton() { //setup facebook button and its font size
         facebookButton.isAuthButton()
 //        let fbButton = FBLoginButton(frame: facebookButton.center, permissions: [.publicProfile]) //programmatically create one
