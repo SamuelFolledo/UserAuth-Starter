@@ -32,6 +32,8 @@ public let kFACEBOOKAUTH: String = "facebookAuth"
 public let kGMAILAUTH: String = "gmailAuth"
 public let kANONYMOUSAUTH: String = "anonymousAuth"
 public let kAPPLEAUTH: String = "appleAuth"
+public let kGOOGLESIGNIN_ClIENTID: String = "234087664354-s7r1edlfo3o6gnvc7k0t5362tqofu5j0.apps.googleusercontent.com" //NOTE: DO NOT do this, keep these hidden for your app
+public let kGOOGLESIGNIN_REVERSEDCLIENTID: String = "com.googleusercontent.apps.234087664354-s7r1edlfo3o6gnvc7k0t5362tqofu5j0" //NOTE: DO NOT do this, keep these hidden for your app
 
 //Other properties for user
 public let kUSER: String = "user"
