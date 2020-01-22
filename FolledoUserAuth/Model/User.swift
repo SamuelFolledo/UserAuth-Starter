@@ -28,7 +28,7 @@ class User: NSObject {
     var updatedAt: Date
     var authTypes: [AuthType]
 
-    init(_userId: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: String = "", _imageUrl: String = "", _authTypes: [AuthType] = [.unknown], _createdAt: Date, _updatedAt: Date) {
+    init(_userId: String, _username: String = "", _firstName: String = "", _lastName: String = "", _email: String = "", _phoneNumber: String = "", _imageUrl: String = "", _authTypes: [AuthType] = [], _createdAt: Date, _updatedAt: Date = Date()) {
         userId = _userId
         username = _username
         firstName = _firstName
