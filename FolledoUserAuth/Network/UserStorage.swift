@@ -47,6 +47,8 @@ func getUserImage(imageUrl: String, completion: @escaping (_ error: String?, _ i
             completion("No image found", nil)
             return
         }
-        completion(nil, image) //remember to use Dispatch
+        DispatchQueue.main.async { //needed if called in background thread
+            completion(nil, image) //remember to use Dispatch
+        }
     }.resume()
 }
