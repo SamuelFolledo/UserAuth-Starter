@@ -57,15 +57,15 @@ Don't forget to:
 
 ## AuthMenu Screen
 Where users can select from either Sign In with Apple, Facebook, Google, Phone, or Email. Using Facebook or Google will take your profile picture if allowed
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/authMenu.PNG" width="621" height="1104"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/authMenu.PNG" width="466" height="828"> 
 
 ## Phone Auth/Email Auth Screen
 Signin or register via phone or email authentication. It will know if phone or email already exist in the database, and will either log in or register user accordingly. 
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/phoneAuth.PNG" width="621" height="1104"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/phoneAuth.PNG" width="466" height="828"> 
 
 ## Account Table
 User can view their profile picture and logout. (Upcoming features are, delete account from account settings, update names and profile picture)
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/accountTableView.PNG" width="621" height="1104"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/accountTableView.PNG" width="466" height="828"> 
 
 
 License under the [MIT License](LICENSE)
