@@ -56,9 +56,16 @@ Don't forget to:
 
 
 ## AuthMenu Screen
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="310" height="550`"> 
+Where users can select from either Sign In with Apple, Facebook, Google, Phone, or Email. Using Facebook or Google will take your profile picture if allowed
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/authMenu.PNG" width="621" height="1104"> 
 
-## Register View
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/register.png" width="310" height="550`"> 
+## Phone Auth/Email Auth Screen
+Signin or register via phone or email authentication. It will know if phone or email already exist in the database, and will either log in or register user accordingly. 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/phoneAuth.PNG" width="621" height="1104"> 
+
+## Account Table
+User can view their profile picture and logout. (Upcoming features are, delete account from account settings, update names and profile picture)
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/accountTableView.PNG" width="621" height="1104"> 
+
 
 License under the [MIT License](LICENSE)
