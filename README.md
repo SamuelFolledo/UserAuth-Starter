@@ -43,7 +43,6 @@ pod update
         - In developers.facebook.com, you will also need to go to your project's Settings and see the __Client OAuth Settings__ and paste _OAuth redirect URI from Firebase's project -> Authentication -> Sign-in method -> Facebook_ (e.g.https://folledouserauth.firebaseapp.com/__/auth/handler) into Valid OAuth Redirect URIs
         - You will also need to remove my 2 Facebook code blocks in Info.plist file and put yours instead.
         - [Fetching the Facebook User Data](https://riptutorial.com/ios/example/10188/fetching-the-facebook-user-data)
-        
     - [Google Signin Video](https://www.youtube.com/watch?v=BjsJNpgsl5c)
 
 
@@ -56,7 +55,7 @@ Don't forget to:
 
 
 
-## Login View
+## AuthMenu Screen
 <img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/FolledoUserAuth/assets/login.png" width="310" height="550`"> 
 
 ## Register View
