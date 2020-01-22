@@ -14,7 +14,7 @@ class AccountTableVC: UITableViewController {
     var cellData: [CellData] = [CellData]()
     let cellID: String = "accountCellID"
     var rows = 0
-    var profileImage: UIImage?
+//    var profileImage: UIImage?
     
 //MARK: IBOutlets
     
@@ -47,29 +47,30 @@ class AccountTableVC: UITableViewController {
     
 //MARK: Helpers
     func createDataCell() {
-        let url = URL(string: User.currentUser()!.imageUrl)
-        if let data = try? Data(contentsOf: url!) {
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    let cell1 = CellData.init(cellImage: image, cellTitle: "Profile")
-                    let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
-                    let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
-                    let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
-                    let cell5 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Logout")
-                    self.insertRowMode3(row: 0, cell: cell1) {
-                        self.insertRowMode3(row: 1, cell: cell2) {
-                            self.insertRowMode3(row: 2, cell: cell3) {
-                                self.insertRowMode3(row: 3, cell: cell4) {
-                                    self.insertRowMode3(row: 4, cell: cell5) {
-                                        print("Done inserting rows")
-                                    }
-                                }
-                            }
+        //        let url = URL(string: User.currentUser()!.imageUrl)
+        //        if let data = try? Data(contentsOf: url!) {
+        //            if let image = UIImage(data: data) {
+        //                DispatchQueue.main.async {
+        let profileImage = loadProfileImage()
+        let cell1 = CellData.init(cellImage: profileImage!, cellTitle: "Profile")
+        let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
+        let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
+        let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
+        let cell5 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Logout")
+        self.insertRowMode3(row: 0, cell: cell1) {
+            self.insertRowMode3(row: 1, cell: cell2) {
+                self.insertRowMode3(row: 2, cell: cell3) {
+                    self.insertRowMode3(row: 3, cell: cell4) {
+                        self.insertRowMode3(row: 4, cell: cell5) {
+                            print("Done inserting rows")
                         }
                     }
                 }
             }
         }
+        //                }
+        //            }
+        //        }
     }
     
 //didSelectRow
