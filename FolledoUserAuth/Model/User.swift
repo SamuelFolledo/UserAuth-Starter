@@ -155,6 +155,7 @@ class User: NSObject {
         UserDefaults.standard.synchronize() //save the changes
         do {
             try Auth.auth().signOut()
+            deleteProfileImage()
             withBlock(true)
         } catch let error as NSError {
             print("error logging out \(error.localizedDescription)")
