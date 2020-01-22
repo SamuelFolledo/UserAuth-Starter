@@ -79,10 +79,23 @@ class AuthMenuVC: UIViewController {
     }
     
     fileprivate func setupAppleButton() {
+        let newAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black) //.continue = "Continue With Apple", .black for black button
+        newAppleButton.translatesAutoresizingMaskIntoConstraints = false
+        appleButton.addSubview(newAppleButton)
+        NSLayoutConstraint.activate([
+            newAppleButton.centerYAnchor.constraint(equalTo: appleButton.centerYAnchor),
+            newAppleButton.leadingAnchor.constraint(equalTo: appleButton.leadingAnchor),
+            newAppleButton.trailingAnchor.constraint(equalTo: appleButton.trailingAnchor),
+            newAppleButton.widthAnchor.constraint(equalTo: appleButton.widthAnchor),
+            newAppleButton.heightAnchor.constraint(equalTo: appleButton.heightAnchor),
+        ])
+//        newAppleButton.frame = appleButton.frame
+//        appleButton = newAppleButton
 //        appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black) //.continue = "Continue With Apple", .black for black button
         appleButton.layer.cornerRadius = appleButton.frame.height / 10
         appleButton.clipsToBounds = true
-        appleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
+        newAppleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
+//        appleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
     }
     
     fileprivate func setupGoogleButton() {
@@ -205,7 +218,7 @@ extension AuthMenuVC: GIDSignInDelegate {
             var userDetails = [kFIRSTNAME: firstName, kLASTNAME: lastName, kEMAIL: email]
             if user.profile.hasImage {
                 let imageUrl = user.profile.imageURL(withDimension: 100)
-                print("\(firstName)'s Image URL from Google = \(imageUrl)")
+                print("\(firstName)'s Image URL from Google = \(String(describing: imageUrl))")
                 userDetails[kIMAGEURL] = imageUrl?.absoluteString
             }
             guard let authentication = user.authentication else { return }
@@ -248,7 +261,6 @@ extension AuthMenuVC: ASAuthorizationControllerDelegate { //delegate if the vc t
                     Service.presentAlert(on: self, title: "Apple Authentication Error", message: error)
                     return
                 }
-                
                 goToNextController(vc: self, user: user!)
             }
         default:
