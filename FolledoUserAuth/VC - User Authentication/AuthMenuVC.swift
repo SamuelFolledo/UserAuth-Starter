@@ -209,9 +209,14 @@ extension AuthMenuVC: GIDSignInDelegate {
             Service.presentAlert(on: self, title: "Google Authentication Error", message: error.localizedDescription)
             return
         } else {
+            //MARK: USE user.userID as password and objectId
 //            let userId = user.userID // For client-side use only!
 //            let idToken = user.authentication.idToken // Safe to send to the server
 //            let fullName = user.profile.name
+            print("USER = \(user)")
+            print("USER PROFILE = \(user.profile.debugDescription)")
+            print("USER DESCRIPTION = \(user.profile.description.debugDescription)")
+            print("USER ID \(user.userID)\nAUTH AUTH ID \(user.authentication.idToken)\nACCESSTOKEN \(user.authentication.accessToken)") //access token is what allows you to get into the database. //idToken is
             let firstName = user.profile.givenName ?? ""
             let lastName = user.profile.familyName ?? ""
             let email = user.profile.email ?? ""
