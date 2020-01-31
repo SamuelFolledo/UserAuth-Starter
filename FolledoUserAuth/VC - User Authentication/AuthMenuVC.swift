@@ -55,14 +55,9 @@ class AuthMenuVC: UIViewController {
     }
     
     @IBAction func googleButtonTapped(_ sender: Any) {
-//        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Google is still under production. Check back at a later time")
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.signIn()
-    }
-    
-    @IBAction func facebookButtonTapped(_ sender: Any) {
-        //        Service.presentAlert(on: self, title: "Not Released Yet", message: "Continue with Facebook is still under production. Check back at a later time")
     }
     
 //MARK: Helpers
@@ -89,18 +84,13 @@ class AuthMenuVC: UIViewController {
             newAppleButton.widthAnchor.constraint(equalTo: appleButton.widthAnchor),
             newAppleButton.heightAnchor.constraint(equalTo: appleButton.heightAnchor),
         ])
-//        newAppleButton.frame = appleButton.frame
-//        appleButton = newAppleButton
-//        appleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue, authorizationButtonStyle: .black) //.continue = "Continue With Apple", .black for black button
         appleButton.layer.cornerRadius = appleButton.frame.height / 10
         appleButton.clipsToBounds = true
         newAppleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
-//        appleButton.addTarget(self, action: #selector(AuthMenuVC.appleButtonTapped), for: .touchUpInside)
     }
     
     fileprivate func setupGoogleButton() {
         googleButton.isAuthButton()
-        // Shadow and Radius
         googleButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         googleButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         googleButton.layer.shadowOpacity = 1.0
@@ -126,26 +116,18 @@ extension AuthMenuVC: LoginButtonDelegate {
             Service.presentAlert(on: self, title: "Facebook Error", message: error.localizedDescription)
             return
         }
-        let spinner: UIActivityIndicatorView = UIActivityIndicatorView() as UIActivityIndicatorView
-        spinner.style = .large
-        spinner.center = view.center
-        self.view.addSubview(spinner)
-        spinner.startAnimating()
         guard let result = result else { return }
         if result.isCancelled { //if user canceled login
             print("User canceled Facebook Login")
-            spinner.stopAnimating()
         } else { //if fb login is successful
             if result.grantedPermissions.contains("email") { //make sure they gave us permissions
                 let graphRequest = GraphRequest(graphPath: "me", parameters: ["fields":"id, email, first_name, last_name, picture.type(large)"])
                 graphRequest.start { (connection, graphResult, error) in //start a connection with Graph API
                     if let error = error {
-                        spinner.stopAnimating()
                         Service.presentAlert(on: self, title: "Facebook Error", message: error.localizedDescription)
                         return
                     } else {
                         guard let userDetails: [String: AnyObject] = graphResult as? [String: AnyObject] else { //contain user's details
-                            spinner.stopAnimating()
                             print("No User Details")
                             return
                         }
@@ -153,14 +135,11 @@ extension AuthMenuVC: LoginButtonDelegate {
                         self.fetchFacebookUserWithUserDetails(userDetails: userDetails)
                     }
                 }
-                spinner.stopAnimating()
             } else { //result.grantedPermissions = false
-                spinner.stopAnimating()
                 Service.presentAlert(on: self, title: "Facebook Error", message: "Facebook failed to grant access")
                 return
             }
         }
-        print("Successfully logged in Facebook")
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) { //Delegate Method - Logout
@@ -190,7 +169,6 @@ extension AuthMenuVC: LoginButtonDelegate {
 extension AuthMenuVC: GIDSignInDelegate {
     func signInWillDispatch(_ signIn: GIDSignIn!, error: Error!) {
         print("GOOGLE SIGNINWILLDISPATCH?")
-        // myActivityIndicator.stopAnimating()
     }
     
     func signIn(_ signIn: GIDSignIn!,
@@ -227,7 +205,7 @@ extension AuthMenuVC: GIDSignInDelegate {
                 userDetails[kIMAGEURL] = imageUrl?.absoluteString
             }
             guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken) //are we goin to need a session token
             User.authenticateUser(credential: credential, userDetails: userDetails) { (user, error) in //authenticate user with credentials and get user
                 if let error = error {
                     Service.presentAlert(on: self, title: "Google Error", message: error)
