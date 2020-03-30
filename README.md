@@ -1,8 +1,4 @@
-<p align="center">
-
 # User Authentication Starter Code
-
-</p>
 
 ### The goal of this API is to be forked, used as a started code, and easily have User Authentication without hours of setting up.
 
