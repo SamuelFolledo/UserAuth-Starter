@@ -1,6 +1,6 @@
 <p align="center">
 
-#  Firebase User Authentication Starter Code
+# User Authentication Starter Code
 
 </p>
 
