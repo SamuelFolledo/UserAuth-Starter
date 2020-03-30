@@ -1,10 +1,21 @@
+<p align="center">
+
 #  Firebase User Authentication Starter Code
+
+</p>
+
 ### The goal of this API is to be forked, used as a started code, and easily have User Authentication without hours of setting up.
 
 ## Why Use?
 - **Hackathons** participants that wants to have a quick Firebase User Authentication built in your app with as little effort and time wasted as possible
 - **Prototyping** apps to immediately see a live app with P2P features and connectivity
 - **Learning** Firebase Authentication: *email login/register, Facebook login/register, phone login/register, anonymous signin*
+
+## Live Demo
+<p align="center">
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/gif/UserAuthDemo.gif" width="404" height="720">
+</p>
+
 
 ## How to Setup?
 1.  **Fork and Change Directory in Terminal**
