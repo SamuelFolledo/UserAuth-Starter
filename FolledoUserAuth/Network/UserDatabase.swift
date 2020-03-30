@@ -108,7 +108,7 @@ extension User {
                                 completion(nil, error)
                             }
                             user.updatedAt = Date()
-                            saveProfileImage(profileImage: image!)
+                            saveProfileImage(id: user.imageUrl, profileImage: image!)
                             saveUserLocally(user: user)
                             saveUserInBackground(user: user)
                             completion(user, nil)

@@ -63,6 +63,7 @@ class FinishRegistrationVC: UIViewController {
                         if let error = error {
                             Service.presentAlert(on: self, title: "Error Updating User", message: error)
                         } else {
+                            saveProfileImage(id: imageURL!, profileImage: self.userImageView.image!)
                             print("Successfuly updated user! \(userDictionaryFrom(user: User.currentUser()!))")
                             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         }

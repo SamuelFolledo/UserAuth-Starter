@@ -51,8 +51,11 @@ class AccountTableVC: UITableViewController {
         //        if let data = try? Data(contentsOf: url!) {
         //            if let image = UIImage(data: data) {
         //                DispatchQueue.main.async {
-        let profileImage = loadProfileImage()
-        let cell1 = CellData.init(cellImage: profileImage!, cellTitle: "Profile")
+        guard let imageUrl = User.currentUser()?.imageUrl else { print("User has no image url"); return }
+        print("user image url=",imageUrl)
+        let loadedImage = loadProfileImage(id: imageUrl)
+        guard let profileImage = loadedImage else { print("No profile image"); return }
+        let cell1 = CellData.init(cellImage: profileImage, cellTitle: "Profile")
         let cell2 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "About")
         let cell3 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Credits")
         let cell4 = CellData.init(cellImage: UIImage(named: "SFLogo"), cellTitle: "Settings")
