@@ -9,7 +9,7 @@
 
 ## Live Demo
 <p align="center">
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/gif/UserAuthDemo.gif" width="404" height="720">
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/gif/userAuthDemocopy.gif" width="404" height="720">
 </p>
 
 
