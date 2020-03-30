@@ -60,7 +60,9 @@ Don't forget to:
     - [Configuring APNs with FCM](https://firebase.google.com/docs/cloud-messaging/ios/certs)
 
 
-
+## Firebase Console Authentication Page
+Notice how phone, email is supported as well as Apple and Google under one email.
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/authMenu.PNG" width="466" height="828"> 
 
 ## AuthMenu Screen
 Where users can select from either Sign In with Apple, Facebook, Google, Phone, or Email. Using Facebook or Google will take your profile picture if allowed
