@@ -67,7 +67,7 @@ Notice how phone, email is supported as well as Apple and Google under one email
 ## AuthMenu Screen
 Where users can select from either Sign In with Apple, Facebook, Google, Phone, or Email. Using Facebook or Google will take your profile picture if allowed
 
-<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/version2/authMenu.PNG" width="466" height="828"> 
+<img src="https://github.com/SamuelFolledo/UserAuth-Starter/blob/master/static/firebaseConsoleScreenshot.png" width="750" height="386"> 
 
 
 ## Phone Auth/Email Auth Screen
